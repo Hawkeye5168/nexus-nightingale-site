@@ -259,7 +259,7 @@
 <section id="pipeline">
   <div class="wrap">
     <div class="section-kicker">The pipeline</div>
-    <h2>Twelve stages. <em>Four phases.</em> One dossier.</h2>
+    <h2>Fourteen stages. <em>Four phases.</em> One dossier.</h2>
     <p class="lead">The production orchestrator (<code>nexus9 dossier</code>) runs intake → supervised fold → mechanism gate → design in one command. Around it sit the rest of the platform: co-evolution, contact prediction, the nine-layer ENNEAD solver, thirteen modality routes, patient and trial matching, the 24-database evidence chain and the TJ Compassion audit.</p>
     <div class="phases">
 
@@ -287,15 +287,17 @@
           <div class="step"><span class="n">07</span><h3>Mechanism gate</h3><p>Gain of function may be degraded; loss of function is protected. The refusal is code — UBE3A and FXN return BLOCKED, not a degrader.</p><span class="cmd">nexus9 therapeutic</span></div>
           <div class="step"><span class="n">08</span><h3>Modality routing</h3><p>Thirteen routes: AUTOTAC, repurposing, polypharmacology, botanicals, fungi, natural proteins, phage, microbiome, CAR-T, mRNA, psychedelics, gene therapy, peptide.</p><span class="cmd">modality_db</span></div>
           <div class="step"><span class="n">09</span><h3>Molecular design</h3><p>Target-binding ligand + linker + p62-recruiting ligand. P00533: 446.0 + 194.2 + 257.0 = 897.2 Da, logP 0.9, permeability LOW.</p><span class="cmd">nexus9 ligand</span></div>
+          <div class="step"><span class="n">10</span><h3>Docking estimate</h3><p>All nine canonical AUTOTAC designs ranked by warhead IC50 — six STRONG, three MODERATE. An estimate, not a docking simulation.</p><span class="cmd">nexus9 dock</span></div>
+          <div class="step"><span class="n">11</span><h3>Toxicity screen</h3><p>Rule-based structural alerts over the nine designs: hERG, teratogenicity, solubility. Eight score 9/9 risk; predicted, not measured.</p><span class="cmd">nexus9 tox</span></div>
         </div>
       </div>
 
       <div class="phase-block">
         <div class="phase-head"><span class="phase-tag">Phase IV · Evidence</span><h3>Assemble, match, verify</h3></div>
         <div class="stagegrid">
-          <div class="step"><span class="n">10</span><h3>Knowledge assembly</h3><p>KAREN surfaces twenty-four biomedical databases and eight live connectors into one evidence chain — 101 phenotypes, 36 trials, 77 PGx rules.</p><span class="cmd">nexus9 karen query · pipeline</span></div>
-          <div class="step"><span class="n">11</span><h3>Patient &amp; trial match</h3><p>An eleven-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety profile.</p><span class="cmd">nexus9 ptrials for</span></div>
-          <div class="step"><span class="n">12</span><h3>Verify &amp; report</h3><p>The TJ Compassion audit and L.O.V.E. gate run before release; the dossier is written to PDF natively, with limitations declared.</p><span class="cmd">nexus9 audit · dossier-pdf</span></div>
+          <div class="step"><span class="n">12</span><h3>Knowledge assembly</h3><p>KAREN surfaces twenty-four biomedical databases and eight live connectors into one evidence chain — 101 phenotypes, 36 trials, 77 PGx rules.</p><span class="cmd">nexus9 karen query · pipeline</span></div>
+          <div class="step"><span class="n">13</span><h3>Patient &amp; trial match</h3><p>An eleven-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety profile.</p><span class="cmd">nexus9 ptrials for</span></div>
+          <div class="step"><span class="n">14</span><h3>Verify &amp; report</h3><p>The TJ Compassion audit and L.O.V.E. gate run before release; the dossier is written to PDF natively, with limitations declared.</p><span class="cmd">nexus9 audit · dossier-pdf</span></div>
         </div>
       </div>
 
@@ -308,7 +310,7 @@
 <section id="how" class="dark">
   <div class="wrap">
     <div class="section-kicker">How it works</div>
-    <h2>Four phases, <em>twelve stages.</em></h2>
+    <h2>Four phases, <em>fourteen stages.</em></h2>
     <p class="lead">Each phase has a defined input, a defined method and a defined output. The full architecture — every command, every database and the real output of a run — is on the pipeline page.</p>
 
     <!-- PHASE I -->
@@ -336,12 +338,12 @@
     <!-- PHASE III -->
     <div class="detail" style="border-top:1px solid rgba(169,207,217,0.25);">
       <h3 style="color:#fff;">Phase III · Decide and design</h3>
-      <p class="why">The gate reads mechanism before molecule. A <b>gain-of-function</b> target may be degraded; a <b>loss-of-function</b> target is protected, because removing a protein the patient already lacks would make them worse. The refusal is code — UBE3A in Angelman syndrome returns BLOCKED. Thirteen modality routes are available, and the designer computes target-binding ligand, linker and autophagy-recruiting ligand mass, logP and permeability.</p>
+      <p class="why">The gate reads mechanism before molecule. A <b>gain-of-function</b> target may be degraded; a <b>loss-of-function</b> target is protected, because removing a protein the patient already lacks would make them worse. The refusal is code — UBE3A in Angelman syndrome returns BLOCKED. Thirteen modality routes are available, and the designer computes target-binding ligand, linker and autophagy-recruiting ligand mass, logP and permeability. Two further validation stages run over the nine canonical designs: a docking estimate from warhead IC50 (not a simulation) and a rule-based toxicity screen (structural alerts, not measured).</p>
       <div class="io">
         <div class="card"><div class="t">Input</div><code>Target + mechanism class</code></div>
         <div class="card"><div class="t">Output</div><code>PASSED / BLOCKED · modality · chimera + MW</code></div>
       </div>
-      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 07–09: <code>therapeutic</code> · <code>modality_db</code> · <code>ligand</code> / <code>mass-reduce</code></p>
+      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 07–11: <code>therapeutic</code> · <code>modality_db</code> · <code>ligand</code> / <code>mass-reduce</code> · <code>dock</code> · <code>tox</code></p>
     </div>
 
     <!-- PHASE IV -->
@@ -352,7 +354,7 @@
         <div class="card"><div class="t">Input</div><code>Design + target evidence</code></div>
         <div class="card"><div class="t">Output</div><code>24-database chain · ranked trials · audited dossier</code></div>
       </div>
-      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 10–12: <code>karen</code> · <code>patient</code> / <code>pgx</code> / <code>ptrials</code> · <code>audit compassion</code> / <code>dossier-pdf</code></p>
+      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 12–14: <code>karen</code> · <code>patient</code> / <code>pgx</code> / <code>ptrials</code> · <code>audit compassion</code> / <code>dossier-pdf</code></p>
     </div>
 
     <p style="margin-top:32px; font-weight:700;"><a href="/pipeline/" style="color:var(--cyan);">Read the full pipeline architecture →</a></p>

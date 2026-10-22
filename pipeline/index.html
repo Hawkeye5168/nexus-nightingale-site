@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The NEXUS-9 pipeline — twelve stages, four phases</title>
+<title>The NEXUS-9 pipeline — fourteen stages, four phases</title>
 <meta name="description" content="The full NEXUS-9 architecture: live target intake, deep MSA and DCA, ContactNet contact maps, NIGHTINGALE and ENNEAD structure solving, the AUTOTAC mechanism gate, 13 modality routes, molecular design, the 24-database evidence chain, patient and trial matching, TJ Compassion verification and native reporting.">
 <link rel="canonical" href="https://sabretek.ltd/pipeline/">
 <meta name="theme-color" content="#173F5F">
@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="NEXUS NIGHTINGALE">
-<meta property="og:title" content="The NEXUS-9 pipeline — twelve stages, four phases">
+<meta property="og:title" content="The NEXUS-9 pipeline — fourteen stages, four phases">
 <meta property="og:description" content="Every stage of the NEXUS-9 platform, the command that runs it, and what it returns.">
 <meta property="og:url" content="https://sabretek.ltd/pipeline/">
 <meta property="og:image" content="https://sabretek.ltd/assets/og-image.png">
@@ -122,7 +122,7 @@
 <header class="page">
   <div class="wrap">
     <div class="kicker">NEXUS-9 · system architecture</div>
-    <h1>The pipeline is <em>twelve stages</em>, not five.</h1>
+    <h1>The pipeline is <em>fourteen stages</em>, not five.</h1>
     <p class="lead">The production orchestrator <code>nexus9 dossier &lt;target&gt;</code> runs intake → supervised
     fold → mechanism gate → design summary in one command. Around that spine sit the rest of the platform:
     co-evolution, contact prediction, the nine-layer ENNEAD solver, thirteen modality routes, patient and
@@ -134,8 +134,9 @@
 <section>
   <div class="wrap">
     <h2>The four phases</h2>
-    <p class="lead">Twelve stages across four phases. Some run automatically inside <code>nexus9 dossier</code>;
-    the rest are separate commands in the same 39-command binary and compose into the same evidence chain.</p>
+    <p class="lead">Twelve stages are target-specific; two more validate the canonical design set. Some run
+    automatically inside <code>nexus9 dossier</code>; the rest are separate commands in the same 39-command
+    binary and compose into the same evidence chain.</p>
 
     <!-- PHASE I -->
     <div class="phase">
@@ -262,7 +263,8 @@
       <div class="ph"><span class="tag">Phase III</span><h3>Decide and design</h3></div>
       <p class="pdesc">The gate is the ethical centre of the system. Degradation is only valid for a toxic
       gain of function; for a missing or weak protein it would make the patient worse. The system refuses the
-      wrong action before any molecule is drawn.</p>
+      wrong action before any molecule is drawn. After design, two validation stages score the nine canonical
+      designs for binding and toxicity — both explicit that they are estimates, not experiments.</p>
       <div class="stages">
 
         <article class="stage">
@@ -318,10 +320,44 @@
           </div>
         </article>
 
+        <article class="stage">
+          <div class="num">10</div>
+          <div>
+            <h4>Docking estimate</h4>
+            <span class="cmd">nexus9 dock</span>
+            <p>Scores all nine canonical AUTOTAC designs against their warheads' expected IC50 and ranks them
+            into affinity classes. It is an estimate of whether the warhead binds — not a docking simulation
+            of the full chimera.</p>
+            <div class="io">
+              <div><div class="t">Input</div><code>Nine canonical AUTOTAC designs</code></div>
+              <div><div class="t">Output</div><code>IC50 estimate · affinity class 1–9</code></div>
+            </div>
+            <div class="evidence"><b>Real run:</b> six of nine score <b>8/9 STRONG</b> (osimertinib EGFR C797S
+            842.84 Da, IC50 6.0; enzalutamide AR/VHL 802.97 Da, IC50 2.0), three score <b>6/9 MODERATE</b>.
+            The tool's own note: IC50 is the warhead's known binding, not the full AUTOTAC — real docking needs
+            AutoDock/Glide-class confirmation.</div>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="num">11</div>
+          <div>
+            <h4>Toxicity screen</h4>
+            <span class="cmd">nexus9 tox</span>
+            <p>Rule-based structural alerts over the same nine designs — hERG cardiotoxicity, teratogenicity,
+            solubility — with a 1–9 risk score. Predicted, not measured.</p>
+            <div class="io">
+              <div><div class="t">Input</div><code>Nine canonical AUTOTAC designs</code></div>
+              <div><div class="t">Output</div><code>Risk score · structural alerts</code></div>
+            </div>
+            <div class="evidence"><b>Real run:</b> all nine pass Lipinski; eight score <b>9/9 total risk</b>,
+            the AR/VHL design 5/9. Every thalidomide-class design carries a <b>HIGH teratogenicity</b> alert —
+            the kind of risk a degrader programme must see before synthesis.</div>
+          </div>
+        </article>
+
       </div>
     </div>
-
-    <!-- PHASE IV -->
     <div class="phase">
       <div class="ph"><span class="tag">Phase IV</span><h3>Evidence, patients, verification</h3></div>
       <p class="pdesc">A design is worthless without the evidence behind it. This phase assembles the
@@ -330,7 +366,7 @@
       <div class="stages">
 
         <article class="stage">
-          <div class="num">10</div>
+          <div class="num">12</div>
           <div>
             <h4>Knowledge assembly — KAREN</h4>
             <span class="cmd">nexus9 karen query &lt;name&gt;</span>
@@ -348,7 +384,7 @@
         </article>
 
         <article class="stage">
-          <div class="num">11</div>
+          <div class="num">13</div>
           <div>
             <h4>Patient and trial matching</h4>
             <span class="cmd">nexus9 patient · nexus9 pgx</span>
@@ -365,7 +401,7 @@
         </article>
 
         <article class="stage">
-          <div class="num">12</div>
+          <div class="num">14</div>
           <div>
             <h4>Verification and report</h4>
             <span class="cmd">nexus9 audit compassion</span>
@@ -443,9 +479,35 @@
       <tr><td><b>SABRE-9</b></td><td>Nonary VM, PTX/CUBIN compilation, photonic blockchain</td><td>RTX 5060 path</td></tr>
     </table>
     <div class="callout">
-      <p><b>Scale, verified from the binary:</b> 39 top-level commands, 141 dispatch arms, 219 Rust source
-      modules. The README's older figures (139 commands, 192 modules, 43 ContactNet checkpoints) are stale;
-      the numbers above are what the current help and source tree report.</p>
+      <p><b>Scale, verified from the binary:</b> 39 advertised commands, 141 dispatch arms, 219 Rust source
+      modules, 95 ContactNet checkpoints, 24 evidence databases — against the release build of
+      <b>22 October 2026, 09:41</b>. The README's older figures (139 commands, 192 modules, 43 checkpoints) are
+      stale; the numbers above are what the current help and source tree report.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);border-top:1px solid var(--slate);border-bottom:1px solid var(--slate);">
+  <div class="wrap">
+    <h2>The rest of the <em>binary</em></h2>
+    <p class="lead">The dossier orchestrator is one path through a much larger program. These are the
+    current build's other working surfaces — separate commands, not hidden steps inside
+    <code>nexus9 dossier</code>.</p>
+    <table>
+      <tr><th>Capability</th><th>Command</th><th>What it does</th></tr>
+      <tr><td><b>Ortholog route</b></td><td><code>nexus9 ortholog pipeline</code></td><td>EBI Proteins + UniProt → BLOSUM62 Smith-Waterman → MSA → DCA → ENNEAD fold → PDB. Fetches up to 500 orthologs to solve the coevolution-depth limit.</td></tr>
+      <tr><td><b>Proteome scale</b></td><td><code>nexus9 proteome</code></td><td>Partitions a 20,431-protein input across 81 Nelly nodes (27 non-empty at the 18/27 floor/ceiling) with 16 workers.</td></tr>
+      <tr><td><b>Batch reports</b></td><td><code>nexus9 gen-reports</code></td><td>Generates therapeutic reports from a prepared target list.</td></tr>
+      <tr><td><b>Training</b></td><td><code>nexus9 train · train-n9 · sovereign</code></td><td>Ternary funnel training, ContactNet N9 training, sovereign autotrain loop.</td></tr>
+      <tr><td><b>GPU / VM</b></td><td><code>nexus9 sabre-ptx · sabre-gpu · compile · run</code></td><td>Neo9 source → bytecode → PTX → CUBIN, targeting the RTX 5060.</td></tr>
+      <tr><td><b>Sovereign stack</b></td><td><code>nexus9 qeynos · blockchain</code></td><td>Five-layer encryption and the QEYNOS photonic blockchain seal.</td></tr>
+      <tr><td><b>Maintenance</b></td><td><code>nexus9 surgery</code></td><td>81-node surgery agent: scan, sweep, heal, test-fix, with rollback if cargo check fails.</td></tr>
+      <tr><td><b>Code generation</b></td><td><code>nexus9 rag</code></td><td>RAG generate / validate / improve / stats over the training corpus.</td></tr>
+    </table>
+    <div class="callout">
+      <p><b>Honest boundary:</b> the proteome and batch-report runners need prepared input files
+      (<code>human_proteome_training.json</code>, <code>top_targets_live.json</code>). The docking and
+      toxicity screens cover the nine canonical designs, not a newly generated chimera.</p>
     </div>
   </div>
 </section>
