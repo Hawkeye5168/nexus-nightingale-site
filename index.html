@@ -419,7 +419,12 @@
   var icon = document.getElementById('musicIcon');
   var audio = document.getElementById('bgm');
   if (!btn || !audio) return;
-  audio.volume = 0.32;
+
+  audio.volume = 0.28;
+
+  var offPref = false;
+  try { offPref = localStorage.getItem('nn-music-off') === '1'; } catch (e) {}
+
   function setState(playing) {
     btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
     icon.textContent = playing ? '❚❚' : '♪';
@@ -427,18 +432,50 @@
     btn.setAttribute('aria-label', label);
     btn.title = label;
   }
+
+  function fromToggle(e) {
+    return !!(e && e.target && btn.contains(e.target));
+  }
+
+  function attemptStart() {
+    try { audio.currentTime = 0; } catch (e) {}
+    audio.play().then(function () { disarm(); setState(true); }).catch(function () {});
+  }
+
+  function onGesture(e) {
+    if (fromToggle(e)) return;
+    attemptStart();
+  }
+
+  function arm() {
+    window.addEventListener('pointerdown', onGesture, true);
+    window.addEventListener('keydown', onGesture, true);
+    window.addEventListener('touchstart', onGesture, true);
+  }
+
+  function disarm() {
+    window.removeEventListener('pointerdown', onGesture, true);
+    window.removeEventListener('keydown', onGesture, true);
+    window.removeEventListener('touchstart', onGesture, true);
+  }
+
+  if (!offPref) {
+    // Try immediately; if the browser blocks audible autoplay, start on the first interaction.
+    audio.play().then(function () { setState(true); }).catch(function () { arm(); });
+  }
+
   btn.addEventListener('click', function () {
     if (audio.paused) {
-      try { audio.currentTime = 0; } catch (e) {}
-      audio.play().then(function () { setState(true); }).catch(function () {
-        btn.title = 'Music unavailable';
-      });
+      try { localStorage.removeItem('nn-music-off'); } catch (e) {}
+      attemptStart();
     } else {
+      try { localStorage.setItem('nn-music-off', '1'); } catch (e) {}
       audio.pause();
       try { audio.currentTime = 0; } catch (e) {}
       setState(false);
     }
   });
+
   audio.addEventListener('play', function () { setState(true); });
   audio.addEventListener('pause', function () { setState(false); });
 })();
