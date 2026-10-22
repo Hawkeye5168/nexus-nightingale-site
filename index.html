@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NEXUS NIGHTINGALE — Sovereign Therapeutic Pipeline</title>
-<meta name="description" content="NEXUS NIGHTINGALE is a complete computational drug-discovery pipeline: live target intake, supervised protein folding, mechanism-based routing, degrader design, patient and trial matching, and a 22-database evidence chain — producing citation-referenced therapeutic dossiers on a single desktop computer.">
+<meta name="description" content="NEXUS NIGHTINGALE is a complete computational drug-discovery pipeline: live target intake, supervised protein folding, mechanism-based routing, degrader design, patient and trial matching, and a 24-database evidence chain — producing citation-referenced therapeutic dossiers on a single desktop computer.">
 <link rel="canonical" href="https://sabretek.ltd/">
 <meta name="theme-color" content="#173F5F">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -246,7 +246,7 @@
   <img class="logo" src="assets/logo-512.jpg" width="150" height="150" alt="NEXUS NIGHTINGALE logo">
   <div class="kicker">Sabre-Tek Limited · Therapeutic Discovery</div>
   <h1>A complete computational drug-discovery pipeline, <em>sovereign</em> and verified.</h1>
-  <p class="sub">NEXUS NIGHTINGALE takes a protein target from sequence to therapeutic dossier — supervised protein folding, mechanism-based routing, molecule design, and a 22-database evidence chain — running on a single desktop computer. No cloud. Every claim citation-referenced.</p>
+  <p class="sub">NEXUS NIGHTINGALE takes a protein target from sequence to therapeutic dossier — supervised protein folding, mechanism-based routing, molecule design, and a 24-database evidence chain — running on a single desktop computer. No cloud. Every claim citation-referenced.</p>
   <div class="buttons">
     <a class="btn primary" href="#pipeline">See the pipeline</a>
     <a class="btn ghost" href="#how">How it works</a>
@@ -260,7 +260,7 @@
   <div class="wrap">
     <div class="section-kicker">The pipeline</div>
     <h2>Twelve stages. <em>Four phases.</em> One dossier.</h2>
-    <p class="lead">The production orchestrator (<code>nexus9 dossier</code>) runs intake → supervised fold → mechanism gate → design in one command. Around it sit the rest of the platform: co-evolution, contact prediction, the nine-layer ENNEAD solver, thirteen modality routes, patient and trial matching, the 22-database evidence chain and the TJ Compassion audit.</p>
+    <p class="lead">The production orchestrator (<code>nexus9 dossier</code>) runs intake → supervised fold → mechanism gate → design in one command. Around it sit the rest of the platform: co-evolution, contact prediction, the nine-layer ENNEAD solver, thirteen modality routes, patient and trial matching, the 24-database evidence chain and the TJ Compassion audit.</p>
     <div class="phases">
 
       <div class="phase-block">
@@ -268,7 +268,7 @@
         <div class="stagegrid">
           <div class="step"><span class="n">01</span><h3>Live intake</h3><p>UniProt, AlphaFold, PDB, PubChem and ClinicalTrials.gov resolve the target at run time — 1,210 aa and 134,277 Da for EGFR.</p><span class="cmd">nexus9 live</span></div>
           <div class="step"><span class="n">02</span><h3>Deep MSA</h3><p>A real multiple-sequence alignment from OMA orthologs, storing the co-evolutionary signal the next stage consumes.</p><span class="cmd">nexus9 karen deepmsa</span></div>
-          <div class="step"><span class="n">03</span><h3>Contact map</h3><p>Two independent routes: DCA direct couplings (Morcos 2011) and the ContactNet neural predictor, 65 checkpoints on disk.</p><span class="cmd">nexus9 dca · contactnet</span></div>
+          <div class="step"><span class="n">03</span><h3>Contact map</h3><p>Two independent routes: DCA direct couplings (Morcos 2011) and the ContactNet neural predictor, 95 checkpoints on disk.</p><span class="cmd">nexus9 dca · contactnet</span></div>
         </div>
       </div>
 
@@ -293,7 +293,7 @@
       <div class="phase-block">
         <div class="phase-head"><span class="phase-tag">Phase IV · Evidence</span><h3>Assemble, match, verify</h3></div>
         <div class="stagegrid">
-          <div class="step"><span class="n">10</span><h3>Knowledge assembly</h3><p>KAREN surfaces twenty-two biomedical databases and eight live connectors into one evidence chain — 101 phenotypes, 36 trials, 77 PGx rules.</p><span class="cmd">nexus9 karen query · pipeline</span></div>
+          <div class="step"><span class="n">10</span><h3>Knowledge assembly</h3><p>KAREN surfaces twenty-four biomedical databases and eight live connectors into one evidence chain — 101 phenotypes, 36 trials, 77 PGx rules.</p><span class="cmd">nexus9 karen query · pipeline</span></div>
           <div class="step"><span class="n">11</span><h3>Patient &amp; trial match</h3><p>An eleven-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety profile.</p><span class="cmd">nexus9 ptrials for</span></div>
           <div class="step"><span class="n">12</span><h3>Verify &amp; report</h3><p>The TJ Compassion audit and L.O.V.E. gate run before release; the dossier is written to PDF natively, with limitations declared.</p><span class="cmd">nexus9 audit · dossier-pdf</span></div>
         </div>
@@ -347,10 +347,10 @@
     <!-- PHASE IV -->
     <div class="detail" style="border-top:1px solid rgba(169,207,217,0.25);">
       <h3 style="color:#fff;">Phase IV · Evidence, patients, verification</h3>
-      <p class="why">Twenty-two biomedical databases are surfaced through KAREN, with live connectors to UniProt, PubChem, PDB, ClinicalTrials.gov, ChEMBL, NCBI Gene, Reactome and OpenTargets. The eleven-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety. The TJ Compassion audit and L.O.V.E. gate run before release, and the dossier is rendered to PDF natively — with its limitations declared.</p>
+      <p class="why">Twenty-four biomedical databases are surfaced through KAREN, with live connectors to UniProt, PubChem, PDB, ClinicalTrials.gov, ChEMBL, NCBI Gene, Reactome and OpenTargets. The eleven-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety. The TJ Compassion audit and L.O.V.E. gate run before release, and the dossier is rendered to PDF natively — with its limitations declared.</p>
       <div class="io">
         <div class="card"><div class="t">Input</div><code>Design + target evidence</code></div>
-        <div class="card"><div class="t">Output</div><code>22-database chain · ranked trials · audited dossier</code></div>
+        <div class="card"><div class="t">Output</div><code>24-database chain · ranked trials · audited dossier</code></div>
       </div>
       <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 10–12: <code>karen</code> · <code>patient</code> / <code>pgx</code> / <code>ptrials</code> · <code>audit compassion</code> / <code>dossier-pdf</code></p>
     </div>
@@ -376,8 +376,8 @@
           <tr><th>Stage</th><th>Result</th></tr>
           <tr>
             <td><span class="k">Fold</span></td>
-            <td><span class="v">TM 0.9927 · GDT-TS 99.0% · RMSD 0.59 Å</span> <span class="ok">✓</span><br>
-            <span style="font-size:13px;color:#41789B;">Supervised reconstruction of the 314-residue kinase domain against 1M17 — a guided baseline, 409 ms, zero steric clashes. Unguided fold on the same target: TM 0.84 · RMSD 3.21 Å.</span></td>
+            <td><span class="v">TM 0.7393 · RMSD 4.32 Å</span> <span class="ok">✓</span><br>
+            <span style="font-size:13px;color:#41789B;">Supervised fold of P00533 against PDB 1XKK at 1,000 iterations (current build, 22 Oct 2026). The default 100-iteration run scores TM 0.7321 · RMSD 4.38 Å; the 20-iteration demo scores 0.6137 · 6.19 Å. Reference-guided reconstruction, not a blind prediction.</span></td>
           </tr>
           <tr>
             <td><span class="k">Eligibility</span></td>
@@ -397,8 +397,8 @@
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="num">0.59 Å</div><div class="label">guided fold baseline — EGFR kinase domain (unguided: 3.21 Å)</div></div>
-      <div class="stat"><div class="num">22</div><div class="label">databases cross-referenced per target</div></div>
+      <div class="stat"><div class="num">0.7393</div><div class="label">TM-score — supervised fold of EGFR against PDB 1XKK (1,000 iterations)</div></div>
+      <div class="stat"><div class="num">24</div><div class="label">biomedical databases cross-referenced per target</div></div>
       <div class="stat"><div class="num">9</div><div class="label">disease mechanisms, each routed to its correct intervention</div></div>
     </div>
   </div>
@@ -483,7 +483,7 @@
   <div class="wrap">
     <div>
       <h4>NEXUS NIGHTINGALE</h4>
-      <p>A sovereign therapeutic pipeline — protein folding, molecule design and a 22-database evidence chain, producing citation-referenced therapeutic dossiers on a single desktop computer.</p>
+      <p>A sovereign therapeutic pipeline — protein folding, molecule design and a 24-database evidence chain, producing citation-referenced therapeutic dossiers on a single desktop computer.</p>
       <p style="margin-top:16px;">A Sabre-Tek Limited program.</p>
       <p style="margin-top:12px; font-size:12.5px; opacity:0.85;">Front-page music: Eine kleine Nachtmusik, K. 525, I. Allegro — W. A. Mozart (public domain, via Wikimedia Commons).</p>
     </div>

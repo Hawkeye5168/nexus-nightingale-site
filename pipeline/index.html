@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The NEXUS-9 pipeline — twelve stages, four phases</title>
-<meta name="description" content="The full NEXUS-9 architecture: live target intake, deep MSA and DCA, ContactNet contact maps, NIGHTINGALE and ENNEAD structure solving, the AUTOTAC mechanism gate, 13 modality routes, molecular design, the 22-database evidence chain, patient and trial matching, TJ Compassion verification and native reporting.">
+<meta name="description" content="The full NEXUS-9 architecture: live target intake, deep MSA and DCA, ContactNet contact maps, NIGHTINGALE and ENNEAD structure solving, the AUTOTAC mechanism gate, 13 modality routes, molecular design, the 24-database evidence chain, patient and trial matching, TJ Compassion verification and native reporting.">
 <link rel="canonical" href="https://sabretek.ltd/pipeline/">
 <meta name="theme-color" content="#173F5F">
 <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -126,7 +126,7 @@
     <p class="lead">The production orchestrator <code>nexus9 dossier &lt;target&gt;</code> runs intake → supervised
     fold → mechanism gate → design summary in one command. Around that spine sit the rest of the platform:
     co-evolution, contact prediction, the nine-layer ENNEAD solver, thirteen modality routes, patient and
-    trial matching, the 22-database evidence chain, and the TJ Compassion audit. Below is every stage, the
+    trial matching, the 24-database evidence chain, and the TJ Compassion audit. Below is every stage, the
     command that runs it, and what it actually returned on a real target.</p>
   </div>
 </header>
@@ -135,7 +135,7 @@
   <div class="wrap">
     <h2>The four phases</h2>
     <p class="lead">Twelve stages across four phases. Some run automatically inside <code>nexus9 dossier</code>;
-    the rest are separate commands in the same 37-command binary and compose into the same evidence chain.</p>
+    the rest are separate commands in the same 39-command binary and compose into the same evidence chain.</p>
 
     <!-- PHASE I -->
     <div class="phase">
@@ -187,7 +187,7 @@
               <div><div class="t">Input</div><code>Deep MSA / sequence</code></div>
               <div><div class="t">Output</div><code>Ranked residue-residue contacts</code></div>
             </div>
-            <div class="evidence"><b>On disk:</b> 65 ContactNet checkpoints, from 364-byte seed maps to
+            <div class="evidence"><b>On disk:</b> 95 ContactNet checkpoints, from 364-byte seed maps to
             5,644-byte trained maps.</div>
           </div>
         </article>
@@ -215,9 +215,10 @@
               <div><div class="t">Input</div><code>UniProt accession + reference PDB</code></div>
               <div><div class="t">Output</div><code>Coordinates · TM-score · RMSD · fold status</code></div>
             </div>
-            <div class="evidence"><b>Real run (P00533, dossier path):</b> TM 0.9948 · RMSD 0.48 Å · Status OK —
-            <b>supervised, guided toward the reference structure: a reconstruction baseline, not a blind
-            prediction.</b> The unguided, independently reproducible run scores TM 0.8371 · RMSD 3.21 Å.</div>
+            <div class="evidence"><b>Real run (P00533, current build 22 Oct 2026):</b> reference PDB 1XKK ·
+            TM 0.7393 · RMSD 4.32 Å at 1,000 iterations · Status OK — <b>supervised against a reference
+            structure, so a reconstruction rather than a blind prediction.</b> The default run scores
+            TM 0.7321 · RMSD 4.38 Å; the 20-iteration demo scores 0.6137 · 6.19 Å.</div>
           </div>
         </article>
 
@@ -324,7 +325,7 @@
     <div class="phase">
       <div class="ph"><span class="tag">Phase IV</span><h3>Evidence, patients, verification</h3></div>
       <p class="pdesc">A design is worthless without the evidence behind it. This phase assembles the
-      twenty-two biomedical databases, matches the target to real patients and recruiting trials, applies the
+      twenty-four biomedical databases, matches the target to real patients and recruiting trials, applies the
       TJ Compassion / L.O.V.E. gate, and writes the dossier in native Rust.</p>
       <div class="stages">
 
@@ -336,10 +337,10 @@
             <span class="cmd">nexus9 karen pipeline &lt;uniprot&gt;</span>
             <p>KAREN is the zero-search co-processor: a constant-time lookup over the assembled evidence, with
             live connectors to UniProt, PubChem, RCSB PDB, ClinicalTrials.gov, ChEMBL, NCBI Gene, Reactome and
-            OpenTargets. The twenty-two biomedical databases are surfaced through it into one record.</p>
+            OpenTargets. The twenty-four biomedical databases are surfaced through it into one record.</p>
             <div class="io">
               <div><div class="t">Input</div><code>Target, design, pathway</code></div>
-              <div><div class="t">Output</div><code>22-database evidence chain</code></div>
+              <div><div class="t">Output</div><code>24-database evidence chain</code></div>
             </div>
             <div class="evidence"><b>Coverage in the binary:</b> 101 clinical phenotypes, 36 curated trials,
             77 pharmacogenomic rules, 9 patient variant records.</div>
@@ -390,10 +391,11 @@
 
 <section style="background:var(--white);border-top:1px solid var(--slate);border-bottom:1px solid var(--slate);">
   <div class="wrap">
-    <h2>The 22 evidence <em>databases</em></h2>
-    <p class="lead">These are the biomedical databases the evidence chain draws from. The binary also ships
-    seven pattern, game and infrastructure databases (arc patterns, crystal palace, modality, nonary games,
-    physics anomalies, resonance patterns, string resonance) which are not counted as clinical evidence.</p>
+    <h2>The 24 evidence <em>databases</em></h2>
+    <p class="lead">These are the biomedical databases the evidence chain draws from. Of the binary's 31
+    database modules, 24 are biomedical evidence; the other seven are pattern, game and infrastructure
+    (arc patterns, crystal palace, modality, nonary games, physics anomalies, resonance patterns, string
+    resonance) and are not counted as clinical evidence.</p>
     <div class="dbs">
       <span><b>Adverse events</b> — event and severity records</span>
       <span><b>Antimicrobial resistance</b> — resistance determinants</span>
@@ -406,6 +408,8 @@
       <span><b>Drug interactions</b> — CYP450 and transporter matrix</span>
       <span><b>Endothelial / vascular</b> — vascular biology</span>
       <span><b>Human genome</b> — 81 therapeutic genes (9 × 9)</span>
+      <span><b>Interaction network</b> — protein and pathway interactions</span>
+      <span><b>Patent / FTO</b> — freedom-to-operate landscape</span>
       <span><b>Microbiome</b> — microbiome therapeutics</span>
       <span><b>NIGHTINGALE structural</b> — fold and structure records</span>
       <span><b>Orphan disease</b> — rare disease registry</span>
@@ -430,7 +434,7 @@
       <tr><th>Subsystem</th><th>What it does</th><th>Evidence</th></tr>
       <tr><td><b>NIGHTINGALE fold</b></td><td>Supervised protein structure prediction with TM/RMSD scoring</td><td>Production path</td></tr>
       <tr><td><b>ENNEAD solver</b></td><td>Nine-layer ab initio constraint solver, fold / resolve / bench</td><td>Research path</td></tr>
-      <tr><td><b>ContactNet</b></td><td>Neural residue-contact prediction</td><td>65 checkpoints</td></tr>
+      <tr><td><b>ContactNet</b></td><td>Neural residue-contact prediction</td><td>95 checkpoints</td></tr>
       <tr><td><b>DCA</b></td><td>Direct coupling analysis, Morcos 2011, AP contact score</td><td>Independent of ContactNet</td></tr>
       <tr><td><b>KAREN</b></td><td>Zero-search co-processor over the evidence chain; 8 live connectors</td><td>UniProt · PubChem · PDB · ChEMBL · Gene · Reactome · OpenTargets · trials</td></tr>
       <tr><td><b>NELLY swarm</b></td><td>81-node PHI-constrained consensus brain</td><td>PHI 1.618034; coherence &gt; 0.90</td></tr>
@@ -439,7 +443,7 @@
       <tr><td><b>SABRE-9</b></td><td>Nonary VM, PTX/CUBIN compilation, photonic blockchain</td><td>RTX 5060 path</td></tr>
     </table>
     <div class="callout">
-      <p><b>Scale, verified from the binary:</b> 37 top-level commands, 125 dispatch arms, 197 Rust source
+      <p><b>Scale, verified from the binary:</b> 39 top-level commands, 141 dispatch arms, 219 Rust source
       modules. The README's older figures (139 commands, 192 modules, 43 ContactNet checkpoints) are stale;
       the numbers above are what the current help and source tree report.</p>
     </div>
@@ -461,7 +465,9 @@
   ✓ MW: 134277.0 Da
 
 ▌ STAGE 2: NIGHTINGALE SUPERVISED FOLD (production iterations)
-  ✓ PDB: P00533  TM=0.9948  RMSD=0.48 Å  Status=OK
+  ✓ PDB: 1XKK  TM=0.7393  RMSD=4.32 Å  Status=OK
+
+✓ STRUCTURAL EVIDENCE: TM=0.7393 (>= 0.5, correct-fold threshold).
 
 ▌ STAGE 3: THERAPEUTIC / DESIGN PIPELINE
   Mechanism: GAIN-OF-FUNCTION
@@ -477,11 +483,11 @@ $ nexus9 ligand P00533
   TOTAL: 897.2 Da  (&lt; 1200 Da)
   LogP: 0.9  Permeability: LOW (MW &gt; 800 ... NOT CNS-penetrant)</pre>
     <div class="note">
-      <p><b>Read the fold number correctly.</b> TM 0.9948 / RMSD 0.48 Å is the <b>supervised</b> path, guided
-      toward the experimental structure. It measures how well the engine can reconstruct a known answer, not
-      how well it predicts an unknown one.</p>
-      <p>The independently reproducible <b>unguided</b> run scores <b>TM 0.8371 / RMSD 3.21 Å</b>. Both belong
-      in the record; only the second is a blind-prediction claim.</p>
+      <p><b>Read the fold number correctly.</b> TM 0.7393 / RMSD 4.32 Å is the <b>supervised</b> path,
+      folded against PDB 1XKK. It measures how well the engine reconstructs a known structure, not how well
+      it predicts an unseen one.</p>
+      <p>Iteration count matters and travels with the number: the default run scores
+      <b>TM 0.7321 / RMSD 4.38 Å</b>; the 20-iteration demo scores <b>0.6137 / 6.19 Å</b>.</p>
     </div>
   </div>
 </section>
@@ -507,7 +513,7 @@ $ nexus9 ligand P00533
 <footer>
   <div class="wrap">
     <h4>NEXUS NIGHTINGALE</h4>
-    <p>A sovereign therapeutic pipeline — protein folding, molecule design and a 22-database evidence chain,
+    <p>A sovereign therapeutic pipeline — protein folding, molecule design and a 24-database evidence chain,
     producing citation-referenced dossiers on a single desktop computer.</p>
     <p><a href="/">Home</a> · <a href="/#pipeline">Pipeline</a> · <a href="/course/">Course</a> ·
     <a href="/diseases/">Disease dossiers</a> · <a href="/#contact">Contact</a></p>
