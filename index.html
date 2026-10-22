@@ -68,9 +68,12 @@
   .btn:hover{transform:translateY(-2px); text-decoration:none;}
   .btn.primary{background:var(--navy); color:var(--white); box-shadow:0 8px 24px rgba(23,63,95,0.25);}
   .btn.ghost{background:transparent; color:var(--navy); border:2px solid var(--navy);}
-  .btn.music{font-family:inherit; background:transparent; border:2px solid var(--steel); color:var(--navy);}
-  .btn.music:hover{border-color:var(--cerulean); color:var(--navy);}
-  .btn.music[aria-pressed="true"]{border-color:var(--cerulean); color:var(--navy); background:rgba(118,181,197,0.12);}
+  .music-toggle{position:fixed; right:20px; bottom:20px; z-index:90; width:44px; height:44px;
+    border-radius:50%; border:1px solid rgba(23,63,95,0.18); background:rgba(255,255,255,0.72);
+    color:var(--steel); font-family:inherit; font-size:17px; line-height:1; cursor:pointer;
+    opacity:0.45; backdrop-filter:blur(6px); transition:opacity .2s, color .2s, border-color .2s;}
+  .music-toggle:hover{opacity:1; color:var(--navy); border-color:var(--cerulean);}
+  .music-toggle[aria-pressed="true"]{opacity:0.8; color:var(--navy); border-color:var(--cerulean);}
 
   section{padding:96px 40px;}
   .wrap{max-width:1080px; margin:0 auto;}
@@ -153,6 +156,7 @@
     footer .wrap{grid-template-columns:1fr;}
     .io{grid-template-columns:1fr;}
     .hero .logo{height:110px;width:110px;}
+    .music-toggle{right:14px; bottom:14px; width:40px; height:40px;}
   }
 </style>
 </head>
@@ -175,6 +179,10 @@
   </div>
 </nav>
 
+<button class="music-toggle" id="musicBtn" type="button" aria-pressed="false" aria-label="Play background music" title="Play background music">
+  <span id="musicIcon" aria-hidden="true">♪</span>
+</button>
+
 <header class="hero">
   <img class="logo" src="assets/logo-512.jpg" width="150" height="150" alt="NEXUS NIGHTINGALE logo">
   <div class="kicker">Sabre-Tek Limited · Therapeutic Discovery</div>
@@ -183,7 +191,7 @@
   <div class="buttons">
     <a class="btn primary" href="#pipeline">See the pipeline</a>
     <a class="btn ghost" href="#how">How it works</a>
-    <button class="btn ghost music" id="musicBtn" type="button" aria-pressed="false">♪ Play music</button>
+    <a class="btn ghost" href="/course/">The course</a>
   </div>
   <audio id="bgm" src="assets/music/satie-gymnopedie-no1.mp3" loop preload="none"></audio>
 </header>
@@ -408,23 +416,31 @@
 <script>
 (function () {
   var btn = document.getElementById('musicBtn');
+  var icon = document.getElementById('musicIcon');
   var audio = document.getElementById('bgm');
   if (!btn || !audio) return;
   audio.volume = 0.32;
   function setState(playing) {
-    btn.textContent = playing ? '❚❚ Pause music' : '♪ Play music';
     btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+    icon.textContent = playing ? '❚❚' : '♪';
+    var label = playing ? 'Stop background music' : 'Play background music';
+    btn.setAttribute('aria-label', label);
+    btn.title = label;
   }
   btn.addEventListener('click', function () {
     if (audio.paused) {
+      try { audio.currentTime = 0; } catch (e) {}
       audio.play().then(function () { setState(true); }).catch(function () {
-        btn.textContent = 'Music unavailable';
+        btn.title = 'Music unavailable';
       });
     } else {
       audio.pause();
+      try { audio.currentTime = 0; } catch (e) {}
       setState(false);
     }
   });
+  audio.addEventListener('play', function () { setState(true); });
+  audio.addEventListener('pause', function () { setState(false); });
 })();
 </script>
 </body>
