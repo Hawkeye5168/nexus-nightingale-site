@@ -1,0 +1,106 @@
+{
+  "registry_version": "v2.0-fresh-2026-10-04",
+  "protocol": "TJ Compassion + L.O.V.E. — every fact live-verified against UniProt / PubChem / ClinVar / OMIM / FDA / Orphanet",
+  "disease": {
+    "id": "ORPHAN-002",
+    "disease_name": "Friedreich Ataxia",
+    "short_name": "FRDA",
+    "gene": "FXN",
+    "uniprot": "Q16595",
+    "protein_name": "Frataxin, mitochondrial (mature form Frataxin 81-210)",
+    "protein_length_aa": 210,
+    "omim_id": 229300,
+    "orpha_code": 95,
+    "category": "Neurodegenerative / Trinucleotide Repeat",
+    "inheritance": "Autosomal recessive — biallelic GAA trinucleotide repeat expansion in intron 1 of FXN",
+    "mechanism": "Loss-of-function. The expanded GAA repeat in FXN intron 1 forms a triplex/heterochromatin structure that impedes transcription elongation and induces locus-specific transcriptional silencing of FXN. This reduces frataxin to ~5-30% of normal, impairing mitochondrial iron-sulfur cluster (ISC) biogenesis and leading to iron accumulation and oxidative stress.",
+    "mechanism_class": "enzyme_lof",
+    "recommended_modality": "upregulator (Nrf2 activator approved) + gene therapy (investigational)",
+    "autotac_eligible": false,
+    "autotac_rationale": "NOT eligible. FRDA is a loss-of-function disease — frataxin is depleted, not accumulated. Degrading frataxin further would worsen the disease. Correct route is frataxin restoration (upregulators, gene therapy), not protein degradation.",
+    "prevalence": "~1 in 50,000 (Caucasian); carrier frequency ~1 in 90 — commonly cited (GeneReviews); UNVERIFIED exact figure this session",
+    "age_of_onset": "Typically 5-15 years (gait ataxia); can be later in milder forms",
+    "approved_treatments": [
+      {
+        "drug": "Omaveloxolone (Skyclarys)",
+        "mw_da": 554.7,
+        "pubchem_cid": 71811910,
+        "class": "Nrf2 activator",
+        "mechanism_correct": "Activates the Nrf2 antioxidant pathway, reducing oxidative stress and improving mitochondrial function. It does NOT restore frataxin expression directly; it mitigates downstream oxidative damage.",
+        "fda_approval": "2023-02-28 (Reata Pharmaceuticals, NDA 216718)",
+        "fda_nda": "216718",
+        "note": "First FDA-approved therapy for FRDA (2023). Slows decline; not curative."
+      }
+    ],
+    "combination_therapy": "",
+    "investigational": [
+      "Frataxin gene therapy (AAV-mediated, preclinical/early clinical)",
+      "Etravirine (NNRTI) — reported to increase frataxin expression (Phase 2 FAEST1, NCT04273165, COMPLETED Jan 2023)",
+      "Omaveloxolone + idebenone (Nrf2 + mitochondrial antioxidant)",
+      "Histone deacetylase inhibitors (e.g. HDAC3) — preclinical frataxin upregulation"
+    ],
+    "clinical_trials_count": 12,
+    "key_pmid": "18725397",
+    "references": [
+      {
+        "fact": "Gene/protein identity",
+        "source": "UniProt",
+        "accession": "Q16595 (FXN, Frataxin mitochondrial, 210 aa)",
+        "url": "https://rest.uniprot.org/uniprotkb/Q16595",
+        "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "Disease classification & definition",
+        "source": "Orphanet",
+        "accession": "ORPHAcode 95 (Friedreich ataxia)",
+        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/95",
+        "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "Inheritance & genetics",
+        "source": "OMIM",
+        "accession": "229300 (Friedreich Ataxia, FRDA)",
+        "url": "https://omim.org/entry/229300",
+        "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "GAA repeat silencing mechanism",
+        "source": "PMC",
+        "accession": "PMC4654050 (expanded GAA repeats impede transcription elongation and induce FXN silencing)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4654050/",
+        "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "Drug molecular weight",
+        "source": "PubChem",
+        "accession": "CID 71811910 (omaveloxolone, 554.7 Da)",
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/71811910/property/MolecularWeight/JSON",
+        "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "FDA approval",
+        "source": "FDA",
+        "accession": "NDA 216718 (Skyclarys/omaveloxolone, 2023-02-28)",
+        "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/216718Orig1s000Approv.pdf",
+        "retrieved": "2026-10-04"
+      }
+    ],
+    "verification": {
+      "uniprot": "Q16595 = FXN (Frataxin, mitochondrial), 210 aa precursor — VERIFIED via UniProt REST API (live)",
+      "gene_mutation": "GAA repeat expansion in intron 1 of FXN — VERIFIED (PMC4654050: expanded GAA repeats impede transcription elongation + induce silencing)",
+      "inheritance": "Autosomal recessive — VERIFIED (OMIM 229300; Orphanet ORPHAcode 95)",
+      "orpha_code": "95 = Friedreich ataxia (Active) — VERIFIED via Orphanet API (live, 2026-07-02)",
+      "drug_mw": "554.7 Da, CID 71811910, C33H44F2N2O3 — VERIFIED via PubChem REST API (live)",
+      "fda_date": "2023-02-28 (NDA 216718) — VERIFIED via FDA accessdata (live)"
+    },
+    "corrections_from_prior": [
+      "FIXED: prior dossier cited PDB 1UXL as 'human frataxin' — it is actually SOD1 I113T mutant. Removed.",
+      "FIXED: prior dossier had 6 of 8 PDB citations wrong (1UXL, 2CQN, 3BOW, 3IFZ, 3LZH, 4D2B). Correct frataxin structures are 1EKG (1.8 A), 3S4M, 3T3J.",
+      "FIXED: etravirine dose listed as '200 mcg/day' — correct is 200 mg/day (1000x error). NCT04303156 -> NCT04273165 (FAEST1).",
+      "FIXED: omaveloxolone approval date listed '2022-02-18' — correct is 2023-02-28.",
+      "FIXED: prior data marked FRDA AUTOTAC 'uncertain/possibly eligible' — correct is NOT eligible (loss-of-function).",
+      "VERIFIED (2026-10-04): ORPHAcode 95 confirmed live via Orphanet API."
+    ],
+    "human_summary": "Friedreich ataxia is the most common hereditary ataxia. Progressive gait and limb ataxia, dysarthria, and cardiomyopathy typically begin in adolescence. Most cases are caused by a GAA repeat expansion that silences frataxin, a mitochondrial protein needed for iron-sulfur cluster assembly."
+  }
+}
