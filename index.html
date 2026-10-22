@@ -58,23 +58,39 @@
     background:linear-gradient(180deg, var(--offwhite) 0%, #E7EEF2 100%);
     position:relative; overflow:hidden;
   }
-  header.hero > .hero-art{position:absolute; inset:0;
-    z-index:0; pointer-events:none; opacity:.16;
-    background:url('/assets/art/1m17-navy.svg') no-repeat center 54%; background-size:min(1150px,92%) auto;}
+  header.hero > .hero-art{position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden;}
+  .motif{position:absolute; background-repeat:no-repeat; background-size:contain;
+    opacity:.72; filter:blur(.3px); pointer-events:none;}
+  .hero-art .tl{left:-190px; top:-170px; width:min(740px,74vw); height:min(740px,74vw);
+    background-image:url('/assets/art/net-1crn.svg');
+    -webkit-mask-image:radial-gradient(circle at 0% 0%,#000 12%,transparent 82%);
+    mask-image:radial-gradient(circle at 0% 0%,#000 12%,transparent 82%);}
+  .hero-art .tr{right:-210px; top:-190px; width:min(800px,80vw); height:min(800px,80vw);
+    background-image:url('/assets/art/net-1m17.svg');
+    -webkit-mask-image:radial-gradient(circle at 100% 0%,#000 12%,transparent 82%);
+    mask-image:radial-gradient(circle at 100% 0%,#000 12%,transparent 82%);}
+  .hero-art .bl{left:-210px; bottom:-190px; width:min(760px,76vw); height:min(760px,76vw);
+    background-image:url('/assets/art/net-2hhb.svg');
+    -webkit-mask-image:radial-gradient(circle at 0% 100%,#000 12%,transparent 80%);
+    mask-image:radial-gradient(circle at 0% 100%,#000 12%,transparent 80%);}
+  .hero-art .br{right:-170px; bottom:-160px; width:min(680px,68vw); height:min(680px,68vw);
+    background-image:url('/assets/art/net-1m17.svg'); transform:scaleX(-1);
+    -webkit-mask-image:radial-gradient(circle at 100% 100%,#000 12%,transparent 80%);
+    mask-image:radial-gradient(circle at 100% 100%,#000 12%,transparent 80%);}
   header.hero > *:not(.hero-art){position:relative; z-index:1;}
   #diseases{position:relative; overflow:hidden;}
-  #diseases .diseases-art{position:absolute; right:-4%; top:20px; width:560px; height:560px;
-    z-index:0; pointer-events:none; opacity:.18;
-    background:url('/assets/art/2hhb-navy.svg') no-repeat right top; background-size:contain;
-    -webkit-mask-image:linear-gradient(to left,#000 35%,transparent 92%);
-    mask-image:linear-gradient(to left,#000 35%,transparent 92%);}
+  #diseases .diseases-art{position:absolute; right:-150px; top:-130px; width:540px; height:540px;
+    z-index:0; pointer-events:none; opacity:.55;
+    background:url('/assets/art/net-2hhb.svg') no-repeat right top; background-size:contain;
+    -webkit-mask-image:radial-gradient(circle at 100% 0%,#000 12%,transparent 80%);
+    mask-image:radial-gradient(circle at 100% 0%,#000 12%,transparent 80%);}
   #diseases .wrap{position:relative; z-index:1;}
   #technology{position:relative; overflow:hidden;}
-  #technology .tech-art{position:absolute; right:-2%; top:24px; width:420px; height:420px;
-    z-index:0; pointer-events:none; opacity:.18;
-    background:url('/assets/art/1crn-navy.svg') no-repeat right top; background-size:contain;
-    -webkit-mask-image:linear-gradient(to left,#000 35%,transparent 92%);
-    mask-image:linear-gradient(to left,#000 35%,transparent 92%);}
+  #technology .tech-art{position:absolute; right:-130px; top:-110px; width:480px; height:480px;
+    z-index:0; pointer-events:none; opacity:.55;
+    background:url('/assets/art/net-1crn.svg') no-repeat right top; background-size:contain;
+    -webkit-mask-image:radial-gradient(circle at 100% 0%,#000 12%,transparent 80%);
+    mask-image:radial-gradient(circle at 100% 0%,#000 12%,transparent 80%);}
   #technology .wrap{position:relative; z-index:1;}
   .hero .logo{height:150px; width:150px; border-radius:50%; object-fit:cover;
     box-shadow:0 12px 40px rgba(23,63,95,0.25); margin-bottom:32px;}
@@ -178,9 +194,10 @@
     footer .wrap{grid-template-columns:1fr;}
     .io{grid-template-columns:1fr;}
     .hero .logo{height:110px;width:110px;}
-    header.hero > .hero-art{opacity:.13; width:150%; right:-40%;}
-    #diseases .diseases-art{display:none;}
-    #technology .tech-art{display:none;}
+    .hero-art .tl, .hero-art .bl{display:none;}
+    .hero-art .tr{width:430px; height:430px; right:-150px; top:-130px; opacity:.5;}
+    .hero-art .br{width:360px; height:360px; right:-120px; bottom:-110px; opacity:.45;}
+    #diseases .diseases-art, #technology .tech-art{display:none;}
     .music-toggle{right:14px; bottom:14px; width:40px; height:40px;}
   }
 </style>
@@ -209,7 +226,12 @@
 </button>
 
 <header class="hero">
-  <div class="hero-art" aria-hidden="true"></div>
+  <div class="hero-art" aria-hidden="true">
+    <span class="motif tl"></span>
+    <span class="motif tr"></span>
+    <span class="motif bl"></span>
+    <span class="motif br"></span>
+  </div>
   <img class="logo" src="assets/logo-512.jpg" width="150" height="150" alt="NEXUS NIGHTINGALE logo">
   <div class="kicker">Sabre-Tek Limited · Therapeutic Discovery</div>
   <h1>A complete computational drug-discovery pipeline, <em>sovereign</em> and verified.</h1>
