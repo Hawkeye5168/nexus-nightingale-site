@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NEXUS NIGHTINGALE — Sovereign Therapeutic Pipeline</title>
-<meta name="description" content="NEXUS NIGHTINGALE is a complete computational drug-discovery pipeline: supervised protein folding, mechanism-based target routing, degrader design, and a 22-database / 38-section evidence chain — producing citation-referenced therapeutic dossiers on a single desktop computer.">
+<meta name="description" content="NEXUS NIGHTINGALE is a complete computational drug-discovery pipeline: live target intake, supervised protein folding, mechanism-based routing, degrader design, patient and trial matching, and a 22-database evidence chain — producing citation-referenced therapeutic dossiers on a single desktop computer.">
 <link rel="canonical" href="https://sabretek.ltd/">
 <meta name="theme-color" content="#173F5F">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -131,6 +131,15 @@
   .step h3{font-size:17px; color:var(--navy); margin-bottom:8px;}
   .step p{font-size:14px; color:var(--steel);}
   .step .cmd{display:block; margin-top:12px; font-family:Consolas,"Courier New",monospace; font-size:12px; color:var(--steel); background:var(--offwhite); border:1px solid var(--slate); border-radius:6px; padding:6px 8px;}
+  .phases{display:grid; gap:34px; margin-top:40px;}
+  .phase-block{border-top:1px solid var(--slate); padding-top:22px;}
+  .phase-block:first-child{border-top:0; padding-top:0;}
+  .phase-head{display:flex; align-items:baseline; gap:14px; margin-bottom:16px; flex-wrap:wrap;}
+  .phase-tag{font-family:Consolas,"Courier New",monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--cerulean); font-weight:700;}
+  .phase-head h3{font-size:20px; color:var(--navy); font-weight:800;}
+  .stagegrid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .stagegrid .step{padding:22px 20px;}
+  .archlink{margin-top:28px; font-size:15px; font-weight:700;}
 
   /* detail blocks */
   .detail{margin-top:48px; border-top:1px solid var(--slate); padding-top:40px;}
@@ -194,6 +203,7 @@
     footer .wrap{grid-template-columns:1fr;}
     .io{grid-template-columns:1fr;}
     .hero .logo{height:110px;width:110px;}
+    .stagegrid{grid-template-columns:1fr;}
     .hero-art .tl, .hero-art .bl{display:none;}
     .hero-art .tr{width:430px; height:430px; right:-150px; top:-130px; opacity:.5;}
     .hero-art .br{width:360px; height:360px; right:-120px; bottom:-110px; opacity:.45;}
@@ -212,6 +222,7 @@
   <div class="links">
     <a href="#pipeline">Pipeline</a>
     <a href="#how">How it works</a>
+    <a href="/pipeline/">Architecture</a>
     <a href="#example">Example</a>
     <a href="#diseases">Diseases</a>
     <a href="#verification">Verification</a>
@@ -248,15 +259,48 @@
 <section id="pipeline">
   <div class="wrap">
     <div class="section-kicker">The pipeline</div>
-    <h2>One target in. A complete dossier out.</h2>
-    <p class="lead">The pipeline runs end to end in seconds. Each stage is a distinct, verifiable step — and every output carries its evidence.</p>
-    <div class="pipeline">
-      <div class="step"><span class="n">1</span><h3>Fold</h3><p>Supervised protein folding predicts structure, then checks itself against a known reference structure down to sub-ångström accuracy.</p></div>
-      <div class="step"><span class="n">2</span><h3>Route</h3><p>An eligibility gate reads the target's mechanism and routes it: gain-of-function targets may be degraded, loss-of-function targets are protected.</p></div>
-      <div class="step"><span class="n">3</span><h3>Design</h3><p>Virtual molecule design with real numbers — a chimera that recruits the cell's own clean-up system to remove a harmful protein, or an appropriate alternative when degradation is wrong.</p></div>
-      <div class="step"><span class="n">4</span><h3>Assemble</h3><p>A 22-database chain is surfaced into a structured dossier: genes, structures, drugs, trials, pathways, resistance, interactions and more.</p></div>
-      <div class="step"><span class="n">5</span><h3>Report</h3><p>A citation-referenced therapeutic dossier — protein biology through to a stated recommendation, with limitations declared.</p></div>
+    <h2>Twelve stages. <em>Four phases.</em> One dossier.</h2>
+    <p class="lead">The production orchestrator (<code>nexus9 dossier</code>) runs intake → supervised fold → mechanism gate → design in one command. Around it sit the rest of the platform: co-evolution, contact prediction, the nine-layer ENNEAD solver, thirteen modality routes, patient and trial matching, the 22-database evidence chain and the TJ Compassion audit.</p>
+    <div class="phases">
+
+      <div class="phase-block">
+        <div class="phase-head"><span class="phase-tag">Phase I · Resolve</span><h3>Target and co-evolution</h3></div>
+        <div class="stagegrid">
+          <div class="step"><span class="n">01</span><h3>Live intake</h3><p>UniProt, AlphaFold, PDB, PubChem and ClinicalTrials.gov resolve the target at run time — 1,210 aa and 134,277 Da for EGFR.</p><span class="cmd">nexus9 live</span></div>
+          <div class="step"><span class="n">02</span><h3>Deep MSA</h3><p>A real multiple-sequence alignment from OMA orthologs, storing the co-evolutionary signal the next stage consumes.</p><span class="cmd">nexus9 karen deepmsa</span></div>
+          <div class="step"><span class="n">03</span><h3>Contact map</h3><p>Two independent routes: DCA direct couplings (Morcos 2011) and the ContactNet neural predictor, 65 checkpoints on disk.</p><span class="cmd">nexus9 dca · contactnet</span></div>
+        </div>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-head"><span class="phase-tag">Phase II · Structure</span><h3>Fold, refine, locate</h3></div>
+        <div class="stagegrid">
+          <div class="step"><span class="n">04</span><h3>Supervised fold</h3><p>NIGHTINGALE predicts the structure and scores it against the experimental reference: TM-score and RMSD, labelled as guided or unguided.</p><span class="cmd">nexus9 fold</span></div>
+          <div class="step"><span class="n">05</span><h3>Ab initio fold</h3><p>ENNEAD's nine-layer constraint solver folds without a template and refines the result. Research path, not production.</p><span class="cmd">nexus9 ennead fold</span></div>
+          <div class="step"><span class="n">06</span><h3>Domains &amp; pockets</h3><p>Hierarchical domain decomposition and a binding-pocket finder that recommends a degradation route.</p><span class="cmd">nexus9 fold-domains · pocket</span></div>
+        </div>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-head"><span class="phase-tag">Phase III · Decide</span><h3>Gate, route, design</h3></div>
+        <div class="stagegrid">
+          <div class="step"><span class="n">07</span><h3>Mechanism gate</h3><p>Gain of function may be degraded; loss of function is protected. The refusal is code — UBE3A and FXN return BLOCKED, not a degrader.</p><span class="cmd">nexus9 therapeutic</span></div>
+          <div class="step"><span class="n">08</span><h3>Modality routing</h3><p>Thirteen routes: AUTOTAC, repurposing, polypharmacology, botanicals, fungi, natural proteins, phage, microbiome, CAR-T, mRNA, psychedelics, gene therapy, peptide.</p><span class="cmd">modality_db</span></div>
+          <div class="step"><span class="n">09</span><h3>Molecular design</h3><p>Target-binding ligand + linker + p62-recruiting ligand. P00533: 446.0 + 194.2 + 257.0 = 897.2 Da, logP 0.9, permeability LOW.</p><span class="cmd">nexus9 ligand</span></div>
+        </div>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-head"><span class="phase-tag">Phase IV · Evidence</span><h3>Assemble, match, verify</h3></div>
+        <div class="stagegrid">
+          <div class="step"><span class="n">10</span><h3>Knowledge assembly</h3><p>KAREN surfaces twenty-two biomedical databases and eight live connectors into one evidence chain — 101 phenotypes, 36 trials, 77 PGx rules.</p><span class="cmd">nexus9 karen query · pipeline</span></div>
+          <div class="step"><span class="n">11</span><h3>Patient &amp; trial match</h3><p>An eleven-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety profile.</p><span class="cmd">nexus9 ptrials for</span></div>
+          <div class="step"><span class="n">12</span><h3>Verify &amp; report</h3><p>The TJ Compassion audit and L.O.V.E. gate run before release; the dossier is written to PDF natively, with limitations declared.</p><span class="cmd">nexus9 audit · dossier-pdf</span></div>
+        </div>
+      </div>
+
     </div>
+    <p class="archlink"><a href="/pipeline/">Full pipeline architecture — every stage, command and real output →</a></p>
   </div>
 </section>
 
@@ -264,58 +308,54 @@
 <section id="how" class="dark">
   <div class="wrap">
     <div class="section-kicker">How it works</div>
-    <h2>Every stage, <em>spelled out.</em></h2>
-    <p class="lead">Five computational stages, each with a defined input, a defined method, and a defined output. Detail below is deliberately concrete — the system is inspectable, not a black box.</p>
+    <h2>Four phases, <em>twelve stages.</em></h2>
+    <p class="lead">Each phase has a defined input, a defined method and a defined output. The full architecture — every command, every database and the real output of a run — is on the pipeline page.</p>
 
-    <!-- STAGE 1 -->
+    <!-- PHASE I -->
     <div class="detail" style="border-top:1px solid rgba(169,207,217,0.25);">
-      <h3 style="color:#fff;">1 · Fold — supervised protein folding</h3>
-      <p class="why">Takes an amino-acid sequence and predicts its three-dimensional structure, then measures that prediction against a known experimental structure. The score it reports is a <b>TM-score</b> (template-modeling score: 1.0 is a perfect match, above 0.5 is generally the same fold) and an <b>RMSD</b> in ångströms (how far, on average, the predicted atoms sit from the reference — 1 Å is one ten-billionth of a metre, roughly the width of a hydrogen atom).</p>
+      <h3 style="color:#fff;">Phase I · Resolve the target</h3>
+      <p class="why">Identity first. The sequence, organism, length and mass are fetched from UniProt at run time; a deep ortholog alignment supplies the co-evolutionary signal; DCA and ContactNet produce two independent contact maps. Unknown accessions fail loudly rather than being guessed at.</p>
       <div class="io">
-        <div class="card"><div class="t">Input</div><code>UniProt accession (e.g. P00533)</code><code>Reference PDB structure (e.g. 1M17)</code></div>
-        <div class="card"><div class="t">Output</div><code>Predicted 3D coordinates</code><code>TM-score · RMSD · clash count</code></div>
+        <div class="card"><div class="t">Input</div><code>UniProt accession or gene symbol</code></div>
+        <div class="card"><div class="t">Output</div><code>Verified record · deep MSA · ranked contacts</code></div>
       </div>
+      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 01–03: <code>live</code> · <code>karen deepmsa</code> · <code>dca</code> / <code>contactnet</code></p>
     </div>
 
-    <!-- STAGE 2 -->
+    <!-- PHASE II -->
     <div class="detail" style="border-top:1px solid rgba(169,207,217,0.25);">
-      <h3 style="color:#fff;">2 · Route — mechanism-based eligibility</h3>
-      <p class="why">Not every disease should have its protein removed. A <b>gain-of-function</b> disease (cancer-driving overactivity, toxic protein build-up) can benefit from degrading the protein; a <b>loss-of-function</b> disease (an enzyme that is missing or weak) would be <b>made worse</b> by degrading it. This gate decides, and refuses the wrong action — a safety decision, made explicitly.</p>
+      <h3 style="color:#fff;">Phase II · Solve the structure</h3>
+      <p class="why">Structure is solved by the supervised <b>NIGHTINGALE</b> path and, for research, by ENNEAD's nine-layer constraint solver. Both report a <b>TM-score</b> (1.0 perfect, above 0.5 the same fold) and an <b>RMSD</b> in ångströms against the experimental reference. Guided numbers are labelled as reconstruction, not blind prediction; the unguided run is reported separately. Domains and binding pockets are located before any design begins.</p>
       <div class="io">
-        <div class="card"><div class="t">Input</div><code>Target identifier + disease mechanism class</code></div>
-        <div class="card"><div class="t">Output</div><code>PASSED (degradable) or BLOCKED (protected)</code><code>Routed to the correct modality</code></div>
+        <div class="card"><div class="t">Input</div><code>Sequence + reference PDB</code></div>
+        <div class="card"><div class="t">Output</div><code>Coordinates · TM-score · RMSD · pockets</code></div>
       </div>
+      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 04–06: <code>fold</code> · <code>ennead fold/resolve</code> · <code>fold-domains</code> / <code>pocket</code></p>
     </div>
 
-    <!-- STAGE 3 -->
+    <!-- PHASE III -->
     <div class="detail" style="border-top:1px solid rgba(169,207,217,0.25);">
-      <h3 style="color:#fff;">3 · Design — virtual molecule construction</h3>
-      <p class="why">For a degradable target, the system assembles a <b>chimera</b>: one end binds the harmful protein, the other recruits the cell's own disposal machinery, and a linker joins them. It computes the total mass in <b>daltons</b> (Da — a measure of molecular weight) and checks drug-like properties: how well a molecule crosses membranes, and whether it could reach the brain. When degradation is the wrong answer, it routes to an appropriate alternative instead — enzyme replacement, gene therapy, or a corrector.</p>
+      <h3 style="color:#fff;">Phase III · Decide and design</h3>
+      <p class="why">The gate reads mechanism before molecule. A <b>gain-of-function</b> target may be degraded; a <b>loss-of-function</b> target is protected, because removing a protein the patient already lacks would make them worse. The refusal is code — UBE3A in Angelman syndrome returns BLOCKED. Thirteen modality routes are available, and the designer computes target-binding ligand, linker and autophagy-recruiting ligand mass, logP and permeability.</p>
       <div class="io">
-        <div class="card"><div class="t">Input</div><code>Eligible target + its binding site</code></div>
-        <div class="card"><div class="t">Output</div><code>Warhead + linker + recruitment ligand</code><code>Total molecular weight (Da)</code><code>Permeability / logP / CNS checks</code></div>
+        <div class="card"><div class="t">Input</div><code>Target + mechanism class</code></div>
+        <div class="card"><div class="t">Output</div><code>PASSED / BLOCKED · modality · chimera + MW</code></div>
       </div>
+      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 07–09: <code>therapeutic</code> · <code>modality_db</code> · <code>ligand</code> / <code>mass-reduce</code></p>
     </div>
 
-    <!-- STAGE 4 -->
+    <!-- PHASE IV -->
     <div class="detail" style="border-top:1px solid rgba(169,207,217,0.25);">
-      <h3 style="color:#fff;">4 · Assemble — the evidence chain</h3>
-      <p class="why">Twenty-two authoritative databases are queried and cross-referenced, then surfaced into a structured dossier. Nothing is written from memory: each fact is retrieved from a live source and carries its citation. The registry gate rejects unknown identifiers rather than guessing at them.</p>
+      <h3 style="color:#fff;">Phase IV · Evidence, patients, verification</h3>
+      <p class="why">Twenty-two biomedical databases are surfaced through KAREN, with live connectors to UniProt, PubChem, PDB, ClinicalTrials.gov, ChEMBL, NCBI Gene, Reactome and OpenTargets. The eleven-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety. The TJ Compassion audit and L.O.V.E. gate run before release, and the dossier is rendered to PDF natively — with its limitations declared.</p>
       <div class="io">
-        <div class="card"><div class="t">Input</div><code>Target + assembled design + pathway data</code></div>
-        <div class="card"><div class="t">Output</div><code>22-database evidence chain</code><code>Citation per fact</code></div>
+        <div class="card"><div class="t">Input</div><code>Design + target evidence</code></div>
+        <div class="card"><div class="t">Output</div><code>22-database chain · ranked trials · audited dossier</code></div>
       </div>
+      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 10–12: <code>karen</code> · <code>patient</code> / <code>pgx</code> / <code>ptrials</code> · <code>audit compassion</code> / <code>dossier-pdf</code></p>
     </div>
 
-    <!-- STAGE 5 -->
-    <div class="detail" style="border-top:1px solid rgba(169,207,217,0.25);">
-      <h3 style="color:#fff;">5 · Report — the dossier</h3>
-      <p class="why">The final document covers protein biology, structural data, the drug landscape (what exists and at what stage), resistance and risks, and a stated recommendation — written so a researcher can follow every step. Where a figure could not be verified, the dossier says so rather than presenting it as certain.</p>
-      <div class="io">
-        <div class="card"><div class="t">Input</div><code>Full evidence chain for the target</code></div>
-        <div class="card"><div class="t">Output</div><code>A structured, citation-referenced dossier</code><code>Declared limitations and open risks</code></div>
-      </div>
-    </div>
+    <p style="margin-top:32px; font-weight:700;"><a href="/pipeline/" style="color:var(--cyan);">Read the full pipeline architecture →</a></p>
   </div>
 </section>
 
@@ -449,7 +489,7 @@
     </div>
     <div>
       <h4>Explore</h4>
-      <p><a href="#pipeline">Pipeline</a></p>
+      <p><a href="#pipeline">Pipeline</a> · <a href="/pipeline/">Architecture</a> · <a href="/course/">Course</a></p>
       <p><a href="#how">How it works</a></p>
       <p><a href="#example">Worked example</a></p>
       <p><a href="#diseases">Diseases</a></p>
