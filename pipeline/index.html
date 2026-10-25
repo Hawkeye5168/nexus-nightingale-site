@@ -182,10 +182,13 @@
           <div>
             <h4>Contact map</h4>
             <span class="cmd">nexus9 dca compute &lt;msa.fasta&gt; [uniprot]</span>
+            <span class="cmd">nexus9 dca contacts &lt;uniprot&gt;</span>
             <span class="cmd">nexus9 contactnet check &lt;uniprot&gt;</span>
             <p>Two independent contact routes. DCA implements the Morcos 2011 direct-coupling method and ranks
             pairs by an average-product score; ContactNet is the neural contact predictor. They are
-            mathematically different, so agreement between them is meaningful.</p>
+            mathematically different, so agreement between them is meaningful. DCA now auto-generates: if no
+            coevolution data exists for a target, <code>dca contacts</code> fetches orthologs, builds the MSA,
+            computes the direct couplings and saves them — no pre-computed file required.</p>
             <div class="io">
               <div><div class="t">Input</div><code>Deep MSA / sequence</code></div>
               <div><div class="t">Output</div><code>Ranked residue-residue contacts</code></div>
@@ -218,10 +221,11 @@
               <div><div class="t">Input</div><code>UniProt accession + reference PDB</code></div>
               <div><div class="t">Output</div><code>Coordinates · TM-score · RMSD · fold status</code></div>
             </div>
-            <div class="evidence"><b>Real run (P00533, current build 22 Oct 2026):</b> reference PDB 1XKK ·
-            TM 0.7393 · RMSD 4.32 Å at 1,000 iterations · Status OK — <b>supervised against a reference
-            structure, so a reconstruction rather than a blind prediction.</b> The default run scores
-            TM 0.7321 · RMSD 4.38 Å; the 20-iteration demo scores 0.6137 · 6.19 Å.</div>
+            <div class="evidence"><b>Real run (P00533, clean build 25 Oct 2026):</b> reference PDB 1XKK ·
+            TM 0.6142 · RMSD 6.16 Å · Status OK — <b>supervised against a reference structure, so a
+            reconstruction rather than a blind prediction.</b> The earlier 0.7393 came from a stale
+            ContactNet checkpoint (a 46-residue 1CRN map loaded for unrelated targets), now fixed; 0.6142
+            is the reproducible number.</div>
           </div>
         </article>
 
@@ -529,9 +533,9 @@
   ✓ MW: 134277.0 Da
 
 ▌ STAGE 2: NIGHTINGALE SUPERVISED FOLD (production iterations)
-  ✓ PDB: 1XKK  TM=0.7393  RMSD=4.32 Å  Status=OK
+  ✓ PDB: 1XKK  TM=0.6142  RMSD=6.16 Å  Status=OK
 
-✓ STRUCTURAL EVIDENCE: TM=0.7393 (>= 0.5, correct-fold threshold).
+✓ STRUCTURAL EVIDENCE: TM=0.6142 (>= 0.5, correct-fold threshold).
 
 ▌ STAGE 3: THERAPEUTIC / DESIGN PIPELINE
   Mechanism: GAIN-OF-FUNCTION
@@ -547,11 +551,13 @@ $ nexus9 ligand P00533
   TOTAL: 897.2 Da  (&lt; 1200 Da)
   LogP: 0.9  Permeability: LOW (MW &gt; 800 ... NOT CNS-penetrant)</pre>
     <div class="note">
-      <p><b>Read the fold number correctly.</b> TM 0.7393 / RMSD 4.32 Å is the <b>supervised</b> path,
-      folded against PDB 1XKK. It measures how well the engine reconstructs a known structure, not how well
-      it predicts an unseen one.</p>
-      <p>Iteration count matters and travels with the number: the default run scores
-      <b>TM 0.7321 / RMSD 4.38 Å</b>; the 20-iteration demo scores <b>0.6137 / 6.19 Å</b>.</p>
+      <p><b>Read the fold number correctly.</b> TM 0.6142 / RMSD 6.16 Å is the <b>supervised</b> path,
+      folded against PDB 1XKK. It measures how well the engine reconstructs a known structure, not how
+      well it predicts an unseen one.</p>
+      <p><b>Why the number moved:</b> the earlier 0.7393 was inflated by a stale-checkpoint bug — a
+      46-residue 1CRN contact map being loaded for unrelated targets. The engine is now consolidated to
+      one clean path. 0.6142 is lower, reproducible, and the number a stakeholder gets when they run
+      <code>nexus9 fold P00533</code> themselves. The benchmark fold (1M17) remains TM 0.9801 / 0.94 Å.</p>
     </div>
   </div>
 </section>

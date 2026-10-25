@@ -380,8 +380,8 @@
           <tr><th>Stage</th><th>Result</th></tr>
           <tr>
             <td><span class="k">Fold</span></td>
-            <td><span class="v">TM 0.7393 · RMSD 4.32 Å</span> <span class="ok">✓</span><br>
-            <span style="font-size:13px;color:#41789B;">Supervised fold of P00533 against PDB 1XKK at 1,000 iterations (current build, 22 Oct 2026). The default 100-iteration run scores TM 0.7321 · RMSD 4.38 Å; the 20-iteration demo scores 0.6137 · 6.19 Å. Reference-guided reconstruction, not a blind prediction.</span></td>
+            <td><span class="v">TM 0.6142 · RMSD 6.16 Å</span> <span class="ok">✓</span><br>
+            <span style="font-size:13px;color:#41789B;">Supervised fold of P00533 against PDB 1XKK on the clean build (25 Oct 2026). The earlier 0.7393 figure was inflated by a stale-checkpoint bug — a 46-residue 1CRN contact map loaded for unrelated targets — and is not reproducible. This is the honest number. Reference-guided reconstruction, not a blind prediction.</span></td>
           </tr>
           <tr>
             <td><span class="k">Eligibility</span></td>
@@ -401,7 +401,7 @@
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="num">0.7393</div><div class="label">TM-score — supervised fold of EGFR against PDB 1XKK (1,000 iterations)</div></div>
+      <div class="stat"><div class="num">0.6142</div><div class="label">TM-score — supervised fold of EGFR against PDB 1XKK (clean build, 25 Oct 2026)</div></div>
       <div class="stat"><div class="num">24</div><div class="label">biomedical databases cross-referenced per target</div></div>
       <div class="stat"><div class="num">9</div><div class="label">disease mechanisms, each routed to its correct intervention</div></div>
     </div>
@@ -464,9 +464,9 @@
     <h2>The <em>technology.</em></h2>
     <p class="lead">A sovereign, self-contained stack — no cloud dependency, no per-query cost, designed to run on commodity hardware.</p>
     <div class="pillars" style="grid-template-columns:repeat(auto-fit,minmax(420px,1fr));">
-      <div class="pillar" style="background:var(--white); border:1px solid var(--slate);"><h3 style="color:var(--navy);">Protein folding</h3><p style="color:var(--steel);">A supervised folding engine that recovers near-native structure, and reports its own confidence against the reference — sub-ångström agreement on the benchmark target.</p></div>
+      <div class="pillar" style="background:var(--white); border:1px solid var(--slate);"><h3 style="color:var(--navy);">Protein folding</h3><p style="color:var(--steel);">A supervised folding engine that recovers near-native structure, and reports its own confidence against the reference — sub-ångström agreement on the benchmark target (1M17: TM 0.9801 / RMSD 0.94 Å on the clean build).</p></div>
       <div class="pillar" style="background:var(--white); border:1px solid var(--slate);"><h3 style="color:var(--navy);">Molecule design</h3><p style="color:var(--steel);">Computes designed candidates with explicit molecular weight, linker geometry and property checks — permeability, logP, blood-brain-barrier.</p></div>
-      <div class="pillar" style="background:var(--white); border:1px solid var(--slate);"><h3 style="color:var(--navy);">Knowledge engine</h3><p style="color:var(--steel);">Twenty-two therapeutic databases surfaced into a single evidence chain, with every record carrying its citation.</p></div>
+      <div class="pillar" style="background:var(--white); border:1px solid var(--slate);"><h3 style="color:var(--navy);">Knowledge engine</h3><p style="color:var(--steel);">Twenty-four therapeutic databases surfaced into a single evidence chain, with every record carrying its citation.</p></div>
       <div class="pillar" style="background:var(--white); border:1px solid var(--slate);"><h3 style="color:var(--navy);">Sovereign by design</h3><p style="color:var(--steel);">Runs entirely on local hardware. No data leaves the machine, no external query costs, nothing dependent on a third-party service remaining available.</p></div>
     </div>
   </div>
