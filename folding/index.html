@@ -85,7 +85,7 @@
 <header class="hero">
   <div class="kicker">NEXUS-9 · Structure</div>
   <h1>Fold <em>Explorer</em></h1>
-  <p>Real 1,000-iteration supervised fold runs against named PDB references. Each card shows the measured TM-score and RMSD — including the low scores and the construct limits. Nothing here is a de-novo prediction.</p>
+  <p>Real 1,000-iteration supervised fold runs against named PDB references. Each card shows the measured TM-score and RMSD — including the low scores and the engine/construct limits. Nothing here is a de-novo prediction.</p>
 </header>
 
 <main class="wrap">
@@ -129,6 +129,7 @@
     <div class="panel">
       <h2>What it does not claim</h2>
       <p>These are supervised, template-guided refinements — not blind predictions and not AlphaFold comparisons. A high TM means the engine recovered the reference construct; it does not mean the full-length protein was modelled.</p>
+      <p>Low scores are not all construct artefacts. TP53/1AIE (31 aa) and APP/1AAP (58 aa) remain low even at 5,000 iterations — that is an optimizer limit, and it is shown here rather than hidden.</p>
       <p>No efficacy, drug, or clinical claim is made. Research use only. Not clinically validated.</p>
     </div>
   </section>
@@ -149,7 +150,7 @@
   function quality(tm){
     if (tm >= 0.8) return ['good','Reference recovered'];
     if (tm >= 0.5) return ['mid','Partial recovery'];
-    return ['low','Low / construct-limited'];
+    return ['low','Low / engine or construct limit'];
   }
 
   function pick(t){
@@ -173,7 +174,7 @@
     document.getElementById('note').textContent =
       t.tm >= 0.5
         ? 'The engine recovered this reference construct at TM ' + t.tm.toFixed(4) + '. This is supervised refinement, not a blind prediction.'
-        : 'The reference is a different domain, construct or assembly (TM ' + t.tm.toFixed(4) + '). The low score is published rather than hidden.';
+        : 'This reference scored TM ' + t.tm.toFixed(4) + '. The cause can be a different domain/construct, or the supervised optimizer failing to converge for this topology. The low score is published rather than hidden.';
     fetch('data/' + t.id + '.json').then(r => r.json()).then(d => { points = d.points || []; }).catch(() => { points = []; });
   }
 
