@@ -154,7 +154,7 @@
   function pick(t){
     current = t;
     document.querySelectorAll('.item').forEach(el => el.classList.toggle('on', el.dataset.id === t.id));
-    document.getElementById('title').textContent = t.gene + ' · ' + t.disease;
+    document.getElementById('title').textContent = t.id + ' · ' + t.disease;
     document.getElementById('pdbTag').textContent = t.pdb;
     document.getElementById('gene').textContent = t.gene;
     document.getElementById('uniprot').textContent = t.uniprot;
@@ -224,7 +224,7 @@
     targets.forEach((t,i) => {
       const b=document.createElement('button');
       b.className='item'+(i===0?' on':''); b.dataset.id=t.id;
-      b.innerHTML='<b>'+t.gene+'</b><span>'+t.tm.toFixed(3)+'</span>';
+      b.innerHTML='<b>'+t.id+'</b><span>'+t.tm.toFixed(3)+'</span>';
       b.addEventListener('click',()=>pick(t));
       box.appendChild(b);
     });
