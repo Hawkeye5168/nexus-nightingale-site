@@ -23,13 +23,14 @@
     "approved_treatments": [
       {
         "drug": "Alglucosidase alfa (Myozyme/Lumizyme)",
-        "mw_da": 0.0,
-        "pubchem_cid": 0,
+        "mw_da": null,
+        "pubchem_cid": null,
         "class": "Enzyme replacement therapy (recombinant acid alpha-glucosidase)",
         "mechanism_correct": "Recombinant acid alpha-glucosidase that replaces the deficient enzyme, restoring lysosomal glycogen degradation. Administered intravenously every 2 weeks. Disease-modifying for both infantile and late-onset forms.",
         "fda_approval": "2006 (Myozyme, infantile-onset); 2010 (Lumizyme, late-onset)",
         "fda_nda": "",
-        "note": "NOTE: alglucosidase alfa is a recombinant glycoprotein enzyme (~110 kDa), NOT a small molecule — MW/PubChem CID left 0 to avoid fabrication."
+        "note": "NOTE: alglucosidase alfa is a recombinant glycoprotein enzyme (~110 kDa), NOT a small molecule — MW/PubChem CID left 0 to avoid fabrication.",
+        "mw_note": "biologic — molecular weight not applicable"
       }
     ],
     "combination_therapy": "",

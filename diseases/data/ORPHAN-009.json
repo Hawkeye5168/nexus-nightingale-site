@@ -23,13 +23,14 @@
     "approved_treatments": [
       {
         "drug": "Patisiran (Onpattro)",
-        "mw_da": 0.0,
-        "pubchem_cid": 0,
+        "mw_da": null,
+        "pubchem_cid": null,
         "class": "TTR mRNA silencer (RNA interference)",
         "mechanism_correct": "A small interfering RNA (siRNA) that degrades TTR mRNA, reducing hepatic transthyretin production and thereby lowering amyloidogenic TTR levels. It is NOT a small molecule and does not degrade the protein directly.",
         "fda_approval": "2018-08-10 (Alnylam, NDA 211172)",
         "fda_nda": "211172",
-        "note": "NOTE: patisiran is an siRNA (~14 kDa duplex), not a small molecule — MW/PubChem CID left 0 to avoid fabrication. First-in-class RNAi therapy."
+        "note": "NOTE: patisiran is an siRNA (~14 kDa duplex), not a small molecule — MW/PubChem CID left 0 to avoid fabrication. First-in-class RNAi therapy.",
+        "mw_note": "siRNA — molecular weight not applicable"
       }
     ],
     "combination_therapy": "",

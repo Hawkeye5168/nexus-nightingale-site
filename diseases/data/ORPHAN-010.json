@@ -23,13 +23,14 @@
     "approved_treatments": [
       {
         "drug": "Alpha-1 Proteinase Inhibitor (human, e.g. Prolastin-C / Zemaira / Aralast)",
-        "mw_da": 0.0,
-        "pubchem_cid": 0,
+        "mw_da": null,
+        "pubchem_cid": null,
         "class": "Augmentation therapy (purified human A1AT)",
         "mechanism_correct": "Intravenous infusion of purified human alpha-1-antitrypsin to restore circulating antiprotease levels, protecting the lung from elastase-mediated damage. Addresses the loss-of-function component only; does not clear hepatic Z-AAT polymers.",
         "fda_approval": "1987 (first A1AT augmentation products)",
         "fda_nda": "",
-        "note": "NOTE: A1AT augmentation is a pooled human plasma-derived protein (~52 kDa), NOT a small molecule — MW/PubChem CID left 0 to avoid fabrication."
+        "note": "NOTE: A1AT augmentation is a pooled human plasma-derived protein (~52 kDa), NOT a small molecule — MW/PubChem CID left 0 to avoid fabrication.",
+        "mw_note": "biologic — molecular weight not applicable"
       }
     ],
     "combination_therapy": "",

@@ -23,13 +23,19 @@
     "approved_treatments": [
       {
         "drug": "D-Penicillamine and Trientine (chelators); Zinc acetate (absorption blocker)",
-        "mw_da": 0.0,
-        "pubchem_cid": 0,
+        "mw_da": null,
+        "pubchem_cid": null,
         "class": "Copper chelator + zinc",
         "mechanism_correct": "Chelators bind and promote urinary excretion of excess copper; zinc induces metallothionein to block intestinal copper absorption. Both lower body copper burden.",
         "fda_approval": "Penicillamine/trientine/zinc long-established for Wilson disease",
         "fda_nda": "",
-        "note": "MW/CID left 0 — multiple drugs (penicillamine 149.2 Da, trientine 146.2 Da, zinc); individual MWs not re-verified this session."
+        "note": "MW/CID left 0 — multiple drugs (penicillamine 149.2 Da, trientine 146.2 Da, zinc); individual MWs not re-verified this session.",
+        "pubchem_cids": [
+          5852,
+          5565,
+          11192
+        ],
+        "mw_note": "combination small molecules — penicillamine CID 5852, trientine CID 5565, zinc acetate CID 11192"
       }
     ],
     "combination_therapy": "",

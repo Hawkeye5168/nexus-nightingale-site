@@ -23,13 +23,14 @@
     "approved_treatments": [
       {
         "drug": "Imiglucerase (Cerezyme)",
-        "mw_da": 0.0,
-        "pubchem_cid": 0,
+        "mw_da": null,
+        "pubchem_cid": null,
         "class": "Enzyme replacement therapy (recombinant GCase)",
         "mechanism_correct": "Recombinant human glucocerebrosidase that replaces the deficient enzyme, restoring glucosylceramide degradation. Administered intravenously. This is the definitive disease-modifying therapy for type 1 Gaucher disease.",
         "fda_approval": "1994 (Cerezyme)",
         "fda_nda": "",
-        "note": "NOTE: imiglucerase is a recombinant glycoprotein enzyme (~55 kDa), NOT a small molecule — molecular weight and PubChem CID are not applicable (MW/CID fields left 0 to avoid fabrication)."
+        "note": "NOTE: imiglucerase is a recombinant glycoprotein enzyme (~55 kDa), NOT a small molecule — molecular weight and PubChem CID are not applicable (MW/CID fields left 0 to avoid fabrication).",
+        "mw_note": "biologic — molecular weight not applicable"
       }
     ],
     "combination_therapy": "",

@@ -117,34 +117,8 @@
     .route{padding:22px;}
   }
 </style>
-<style id="beta-style">
-#beta-bar{position:fixed;top:0;left:0;right:0;z-index:9999;background:#E0A94B;color:#0E2A40;
-  font:600 12px/1.35 "Segoe UI",Arial,sans-serif;text-align:center;padding:6px 12px;
-  letter-spacing:.02em;box-shadow:0 1px 0 rgba(0,0,0,.18)}
-#beta-bar a{color:#0E2A40;text-decoration:underline}
-@media(max-width:600px){#beta-bar{font-size:11px;padding:5px 8px}}
-body{padding-top:44px}
-nav{top:44px}
-</style>
 </head>
 <body>
-<div id="beta-bar" role="status">
-BETA — this site is under construction. Facts are being re-verified against primary sources.
-Report errors to <a href="mailto:lee.oulton@sabretek.co.uk">lee.oulton@sabretek.co.uk</a>.
-</div>
-<script id="beta-fit">
-(function(){
-  function fit(){
-    var b=document.getElementById('beta-bar'); if(!b) return;
-    var h=b.offsetHeight;
-    document.body.style.paddingTop=h+'px';
-    var n=document.querySelectorAll('nav');
-    for(var i=0;i<n.length;i++){n[i].style.top=h+'px';}
-  }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fit);}else{fit();}
-  window.addEventListener('resize',fit);
-})();
-</script>
 <nav>
   <a class="brand" href="/" style="text-decoration:none;">
     <img src="/assets/logo-512.jpg" width="40" height="40" alt="NEXUS NIGHTINGALE">
@@ -203,7 +177,7 @@ Report errors to <a href="mailto:lee.oulton@sabretek.co.uk">lee.oulton@sabretek.
 
   <section class="block">
     <h2><span class="num">05</span>Treatment today</h2>
-    <div class="drug"><div class="drug-head"><h3>D-Penicillamine and Trientine (chelators); Zinc acetate (absorption blocker)</h3><span class="pill-date">Penicillamine/trientine/zinc long-established for Wilson disease</span></div><div class="meta">Copper chelator + zinc · 0.0 Da · PubChem CID 0</div><p>Chelators bind and promote urinary excretion of excess copper; zinc induces metallothionein to block intestinal copper absorption. Both lower body copper burden.</p></div>
+    <div class="drug"><div class="drug-head"><h3>D-Penicillamine and Trientine (chelators); Zinc acetate (absorption blocker)</h3><span class="pill-date">Penicillamine/trientine/zinc long-established for Wilson disease</span></div><div class="meta">Copper chelator + zinc · penicillamine 149.2 Da · trientine 146.2 Da · zinc acetate 183.5 Da</div><p>Chelators bind and promote urinary excretion of excess copper; zinc induces metallothionein to block intestinal copper absorption. Both lower body copper burden.</p></div>
   </section>
 
   <section class="block">

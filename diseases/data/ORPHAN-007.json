@@ -23,13 +23,14 @@
     "approved_treatments": [
       {
         "drug": "Agalsidase beta (Fabrazyme)",
-        "mw_da": 0.0,
-        "pubchem_cid": 0,
+        "mw_da": null,
+        "pubchem_cid": null,
         "class": "Enzyme replacement therapy (recombinant Î±-galactosidase A)",
         "mechanism_correct": "Recombinant Î±-galactosidase A that replaces the deficient enzyme, restoring Gb3 degradation. Administered intravenously every 2 weeks. Disease-modifying for the non-classic and classic forms.",
         "fda_approval": "2003 (Fabrazyme)",
         "fda_nda": "",
-        "note": "NOTE: agalsidase beta is a recombinant glycoprotein enzyme (~100 kDa homodimer), NOT a small molecule — MW/PubChem CID left 0 to avoid fabrication."
+        "note": "NOTE: agalsidase beta is a recombinant glycoprotein enzyme (~100 kDa homodimer), NOT a small molecule — MW/PubChem CID left 0 to avoid fabrication.",
+        "mw_note": "biologic — molecular weight not applicable"
       }
     ],
     "combination_therapy": "",
