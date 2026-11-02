@@ -52,7 +52,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 510 (Lesch-Nyhan syndrome)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/510",
+        "url": "https://www.orpha.net/en/disease/detail/510",
         "retrieved": "2026-10-04"
       },
       {
@@ -83,6 +83,8 @@
       "NOTE: prior v1 data conflated Lesch-Nyhan (HPRT1) with progeria (LMNA) inheritance in one record — the fresh entry is gene-correct (HPRT1, not LMNA).",
       "CLARIFIED: allopurinol treats hyperuricemia only, NOT the neurological/behavioural phenotype — this distinction was absent in prior data."
     ],
-    "human_summary": "Lesch-Nyhan syndrome is an X-linked disorder of purine metabolism caused by complete HPRT1 deficiency. Affected boys develop uric acid overproduction (kidney stones, gout) alongside severe neurological disability and a striking, near-universal self-injurious biting behaviour. Allopurinol controls the uric acid but not the neurology."
+    "human_summary": "Lesch-Nyhan syndrome is an X-linked disorder of purine metabolism caused by complete HPRT1 deficiency. Affected boys develop uric acid overproduction (kidney stones, gout) alongside severe neurological disability and a striking, near-universal self-injurious biting behaviour. Allopurinol controls the uric acid but not the neurology.",
+    "clinical_trials_total": 7,
+    "clinical_trials_note": "3 curated interventional trials; 7 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

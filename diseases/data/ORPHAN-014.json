@@ -37,7 +37,7 @@
       "No degrader or gene therapy indicated — the channel blocker is the definitive approach"
     ],
     "clinical_trials_count": 5,
-    "key_pmid": "16873703",
+    "key_pmid": 32027066,
     "references": [
       {
         "fact": "Gene/protein identity",
@@ -50,7 +50,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 224 (Neonatal diabetes mellitus)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/224",
+        "url": "https://www.orpha.net/en/disease/detail/224",
         "retrieved": "2026-10-04"
       },
       {
@@ -66,6 +66,13 @@
         "accession": "Switching from Insulin to Oral Sulfonylureas (Pearson et al., NEJM 355:467)",
         "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa061759",
         "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "Disease review",
+        "source": "Hum Mutat 2020",
+        "accession": "32027066",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32027066/",
+        "retrieved": "2026-11-02"
       }
     ],
     "verification": {
@@ -80,6 +87,8 @@
       "VERIFIED (2026-10-04): built fresh. ORPHAcode 224 confirmed live via Orphanet API.",
       "CLARIFIED: KCNJ11 neonatal diabetes is a GAIN-OF-FUNCTION CHANNEL — the correct modality is a channel BLOCKER (sulfonylurea), NOT a degrader, NOT enzyme replacement, NOT gene therapy."
     ],
-    "human_summary": "Permanent neonatal diabetes due to KCNJ11 mutations is a gain-of-function channelopathy: an overactive ATP-sensitive potassium channel suppresses insulin secretion. The striking clinical result is that most patients can be switched from insulin injections to oral sulfonylurea tablets, which close the channel and restore insulin — a channel-blocker cure, not a degrader or replacement."
+    "human_summary": "Permanent neonatal diabetes due to KCNJ11 mutations is a gain-of-function channelopathy: an overactive ATP-sensitive potassium channel suppresses insulin secretion. The striking clinical result is that most patients can be switched from insulin injections to oral sulfonylurea tablets, which close the channel and restore insulin — a channel-blocker cure, not a degrader or replacement.",
+    "clinical_trials_total": 2,
+    "clinical_trials_note": "5 curated interventional trials; 2 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

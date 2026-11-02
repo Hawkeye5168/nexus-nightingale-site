@@ -40,7 +40,7 @@
       "CRISPR/Cas9 in vivo TTR gene editing (clinical, e.g. NTLA-2001)"
     ],
     "clinical_trials_count": 40,
-    "key_pmid": "29748357",
+    "key_pmid": 33188616,
     "references": [
       {
         "fact": "Gene/protein identity",
@@ -53,7 +53,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 271861 (Hereditary ATTR amyloidosis)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/271861",
+        "url": "https://www.orpha.net/en/disease/detail/271861",
         "retrieved": "2026-10-04"
       },
       {
@@ -69,6 +69,13 @@
         "accession": "NDA 211172 (Onpattro/patisiran, 2018-08-10)",
         "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/211172Orig1s000SumR.pdf",
         "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "Disease review",
+        "source": "Neurol Sci 2022",
+        "accession": "33188616",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33188616/",
+        "retrieved": "2026-11-02"
       }
     ],
     "verification": {
@@ -84,6 +91,8 @@
       "CLARIFIED: patisiran silences TTR mRNA (does NOT bind or degrade the protein directly) — the mechanism is RNA-level reduction of the toxic protein.",
       "CLARIFIED: TTR amyloidosis is a toxic gain-of-function — AUTOTAC/degrader eligible (silencing/stabilizing/degradaing the amyloidogenic TTR are all valid directions)."
     ],
-    "human_summary": "Hereditary transthyretin amyloidosis is an autosomal dominant disease in which mutant transthyretin misfolds and forms amyloid deposits in nerves and heart, causing progressive neuropathy and cardiomyopathy. It is a toxic gain-of-function amyloidosis; approved therapies silence or stabilise the amyloidogenic protein, and selective degraders are the next frontier."
+    "human_summary": "Hereditary transthyretin amyloidosis is an autosomal dominant disease in which mutant transthyretin misfolds and forms amyloid deposits in nerves and heart, causing progressive neuropathy and cardiomyopathy. It is a toxic gain-of-function amyloidosis; approved therapies silence or stabilise the amyloidogenic protein, and selective degraders are the next frontier.",
+    "clinical_trials_total": 270,
+    "clinical_trials_note": "40 curated interventional trials; 270 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

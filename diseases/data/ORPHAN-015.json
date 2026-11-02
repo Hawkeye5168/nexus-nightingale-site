@@ -51,7 +51,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 905 (Wilson disease)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/905",
+        "url": "https://www.orpha.net/en/disease/detail/905",
         "retrieved": "2026-10-04"
       },
       {
@@ -74,6 +74,8 @@
       "VERIFIED (2026-10-04): built fresh. ORPHAcode 905 confirmed live via Orphanet API.",
       "CLARIFIED: Wilson is a CHELATABLE METAL overload disease — the correct modality is copper CHELATION (remove the toxic metal), not protein degradation, not enzyme replacement, not a channel drug."
     ],
-    "human_summary": "Wilson disease is an autosomal recessive disorder of copper transport caused by ATP7B deficiency, leading to toxic copper accumulation in the liver, brain, and cornea. It presents with liver disease, neuropsychiatric symptoms, and Kayser-Fleischer rings. Treatment is copper chelation and zinc — removing the toxic metal, a strategy distinct from degradation or replacement."
+    "human_summary": "Wilson disease is an autosomal recessive disorder of copper transport caused by ATP7B deficiency, leading to toxic copper accumulation in the liver, brain, and cornea. It presents with liver disease, neuropsychiatric symptoms, and Kayser-Fleischer rings. Treatment is copper chelation and zinc — removing the toxic metal, a strategy distinct from degradation or replacement.",
+    "clinical_trials_total": 84,
+    "clinical_trials_note": "10 curated interventional trials; 84 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

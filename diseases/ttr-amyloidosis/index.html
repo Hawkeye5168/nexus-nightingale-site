@@ -62,7 +62,7 @@
   .fact .v small{display:block; font-weight:400; color:var(--steel); font-size:12.5px; margin-top:3px;}
 
   .route{background:var(--navy); color:var(--white); border-radius:14px; padding:28px 30px;}
-  .route h2{color:var(--white);} .route p{color:var(--cyan);} .route .why{color:var(--slate); font-size:15px;}
+  .route h2{color:var(--white);} .route p{color:var(--cyan);} .route p strong{color:var(--white);} .route .why{color:var(--slate); font-size:15px;}
   .route .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;}
   .route .pill{font-size:12px; font-weight:800; padding:6px 12px; border-radius:999px;
     background:rgba(169,207,217,0.14); color:var(--cyan); border:1px solid rgba(169,207,217,0.3);}
@@ -117,8 +117,34 @@
     .route{padding:22px;}
   }
 </style>
+<style id="beta-style">
+#beta-bar{position:fixed;top:0;left:0;right:0;z-index:9999;background:#E0A94B;color:#0E2A40;
+  font:600 12px/1.35 "Segoe UI",Arial,sans-serif;text-align:center;padding:6px 12px;
+  letter-spacing:.02em;box-shadow:0 1px 0 rgba(0,0,0,.18)}
+#beta-bar a{color:#0E2A40;text-decoration:underline}
+@media(max-width:600px){#beta-bar{font-size:11px;padding:5px 8px}}
+body{padding-top:44px}
+nav{top:44px}
+</style>
 </head>
 <body>
+<div id="beta-bar" role="status">
+BETA — this site is under construction. Facts are being re-verified against primary sources.
+Report errors to <a href="mailto:lee.oulton@sabretek.co.uk">lee.oulton@sabretek.co.uk</a>.
+</div>
+<script id="beta-fit">
+(function(){
+  function fit(){
+    var b=document.getElementById('beta-bar'); if(!b) return;
+    var h=b.offsetHeight;
+    document.body.style.paddingTop=h+'px';
+    var n=document.querySelectorAll('nav');
+    for(var i=0;i<n.length;i++){n[i].style.top=h+'px';}
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fit);}else{fit();}
+  window.addEventListener('resize',fit);
+})();
+</script>
 <nav>
   <a class="brand" href="/" style="text-decoration:none;">
     <img src="/assets/logo-512.jpg" width="40" height="40" alt="NEXUS NIGHTINGALE">
@@ -149,7 +175,7 @@
 <main>
   <section class="block">
     <h2><span class="num">01</span>At a glance</h2>
-    <div class="glance"><div class="fact"><div class="k">Gene</div><div class="v">TTR</div></div><div class="fact"><div class="k">Protein</div><div class="v">Transthyretin (ATTR / prealbumin)<small>UniProt P02766 · 147 aa</small></div></div><div class="fact"><div class="k">Inheritance</div><div class="v">Autosomal dominant — TTR mutations (e.g. Val30Met, the most common)</div></div><div class="fact"><div class="k">Age of onset</div><div class="v">Adult onset (typically 30-70 years; earlier in endemic Val30Met regions)</div></div><div class="fact"><div class="k">Prevalence</div><div class="v">~1 in 100,000 (Val30Met endemic in Portugal/Sweden/Japan; higher there) — commonly cited; UNVERIFIED exact figure this session<small>Marked unverified in the registry</small></div></div><div class="fact"><div class="k">Category</div><div class="v">Amyloidosis / Toxic Aggregate</div></div><div class="fact"><div class="k">Mechanism class</div><div class="v">toxic_gof</div></div><div class="fact"><div class="k">Clinical trials</div><div class="v">40 registered<small>ClinicalTrials.gov count at registry build</small></div></div></div>
+    <div class="glance"><div class="fact"><div class="k">Gene</div><div class="v">TTR</div></div><div class="fact"><div class="k">Protein</div><div class="v">Transthyretin (ATTR / prealbumin)<small>UniProt P02766 · 147 aa</small></div></div><div class="fact"><div class="k">Inheritance</div><div class="v">Autosomal dominant — TTR mutations (e.g. Val30Met, the most common)</div></div><div class="fact"><div class="k">Age of onset</div><div class="v">Adult onset (typically 30-70 years; earlier in endemic Val30Met regions)</div></div><div class="fact"><div class="k">Prevalence</div><div class="v">~1 in 100,000 (Val30Met endemic in Portugal/Sweden/Japan; higher there) — commonly cited; UNVERIFIED exact figure this session<small>Marked unverified in the registry</small></div></div><div class="fact"><div class="k">Category</div><div class="v">Amyloidosis / Toxic Aggregate</div></div><div class="fact"><div class="k">Mechanism class</div><div class="v">toxic_gof</div></div><div class="fact"><div class="k">Clinical trials</div><div class="v">270 studies<small>ClinicalTrials.gov, 2 Nov 2026</small></div></div></div>
   </section>
 
   <section class="block">
@@ -184,7 +210,7 @@
     <h2><span class="num">06</span>In the pipeline</h2>
     <ul class="plain"><li>Inotersen (Tegsedi) — antisense oligonucleotide TTR silencer (approved 2018)</li><li>TTR stabilizers: tafamidis (Vyndaqel) — binds native tetramer, prevents dissociation (approved 2019)</li><li>Selective TTR degraders (PROTAC/AUTOTAC) — preclinical</li><li>CRISPR/Cas9 in vivo TTR gene editing (clinical, e.g. NTLA-2001)</li></ul>
     
-    <p><strong>Key reference:</strong> PMID 29748357 · <a href="https://pubmed.ncbi.nlm.nih.gov/29748357/" rel="noopener">PubMed</a></p>
+    <p><strong>Key reference:</strong> PMID 33188616 · <a href="https://pubmed.ncbi.nlm.nih.gov/33188616/" rel="noopener">PubMed</a></p>
   </section>
 
   <section class="block">
@@ -198,7 +224,7 @@
     <h2><span class="num">08</span>Sources</h2>
     <table class="src">
       <tr><th>Fact</th><th>Source</th><th>Accession</th><th>Retrieved</th></tr>
-      <tr><td>Gene/protein identity</td><td>UniProt</td><td><a href="https://rest.uniprot.org/uniprotkb/P02766" rel="noopener">P02766 (TTR, Transthyretin, 147 aa)</a></td><td>2026-10-04</td></tr><tr><td>Disease classification &amp; definition</td><td>Orphanet</td><td><a href="https://api.orphacode.org/EN/ClinicalEntity/orphacode/271861" rel="noopener">ORPHAcode 271861 (Hereditary ATTR amyloidosis)</a></td><td>2026-10-04</td></tr><tr><td>Inheritance &amp; genetics</td><td>OMIM</td><td><a href="https://omim.org/entry/105210" rel="noopener">105210 (Transthyretin Amyloidosis)</a></td><td>2026-10-04</td></tr><tr><td>FDA approval (RNAi therapy)</td><td>FDA</td><td><a href="https://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/211172Orig1s000SumR.pdf" rel="noopener">NDA 211172 (Onpattro/patisiran, 2018-08-10)</a></td><td>2026-10-04</td></tr>
+      <tr><td>Gene/protein identity</td><td>UniProt</td><td><a href="https://rest.uniprot.org/uniprotkb/P02766" rel="noopener">P02766 (TTR, Transthyretin, 147 aa)</a></td><td>2026-10-04</td></tr><tr><td>Disease classification &amp; definition</td><td>Orphanet</td><td><a href="https://www.orpha.net/en/disease/detail/271861" rel="noopener">ORPHAcode 271861 (Hereditary ATTR amyloidosis)</a></td><td>2026-10-04</td></tr><tr><td>Inheritance &amp; genetics</td><td>OMIM</td><td><a href="https://omim.org/entry/105210" rel="noopener">105210 (Transthyretin Amyloidosis)</a></td><td>2026-10-04</td></tr><tr><td>FDA approval (RNAi therapy)</td><td>FDA</td><td><a href="https://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/211172Orig1s000SumR.pdf" rel="noopener">NDA 211172 (Onpattro/patisiran, 2018-08-10)</a></td><td>2026-10-04</td></tr>
     </table>
     <div class="note" style="margin-top:16px;">
       Source record: <a href="/diseases/data/ORPHAN-009.json" download>ORPHAN-009.json</a> — orphan registry v2.0-fresh-2026-10-04.

@@ -62,7 +62,7 @@
   .fact .v small{display:block; font-weight:400; color:var(--steel); font-size:12.5px; margin-top:3px;}
 
   .route{background:var(--navy); color:var(--white); border-radius:14px; padding:28px 30px;}
-  .route h2{color:var(--white);} .route p{color:var(--cyan);} .route .why{color:var(--slate); font-size:15px;}
+  .route h2{color:var(--white);} .route p{color:var(--cyan);} .route p strong{color:var(--white);} .route .why{color:var(--slate); font-size:15px;}
   .route .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;}
   .route .pill{font-size:12px; font-weight:800; padding:6px 12px; border-radius:999px;
     background:rgba(169,207,217,0.14); color:var(--cyan); border:1px solid rgba(169,207,217,0.3);}
@@ -117,8 +117,34 @@
     .route{padding:22px;}
   }
 </style>
+<style id="beta-style">
+#beta-bar{position:fixed;top:0;left:0;right:0;z-index:9999;background:#E0A94B;color:#0E2A40;
+  font:600 12px/1.35 "Segoe UI",Arial,sans-serif;text-align:center;padding:6px 12px;
+  letter-spacing:.02em;box-shadow:0 1px 0 rgba(0,0,0,.18)}
+#beta-bar a{color:#0E2A40;text-decoration:underline}
+@media(max-width:600px){#beta-bar{font-size:11px;padding:5px 8px}}
+body{padding-top:44px}
+nav{top:44px}
+</style>
 </head>
 <body>
+<div id="beta-bar" role="status">
+BETA — this site is under construction. Facts are being re-verified against primary sources.
+Report errors to <a href="mailto:lee.oulton@sabretek.co.uk">lee.oulton@sabretek.co.uk</a>.
+</div>
+<script id="beta-fit">
+(function(){
+  function fit(){
+    var b=document.getElementById('beta-bar'); if(!b) return;
+    var h=b.offsetHeight;
+    document.body.style.paddingTop=h+'px';
+    var n=document.querySelectorAll('nav');
+    for(var i=0;i<n.length;i++){n[i].style.top=h+'px';}
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fit);}else{fit();}
+  window.addEventListener('resize',fit);
+})();
+</script>
 <nav>
   <a class="brand" href="/" style="text-decoration:none;">
     <img src="/assets/logo-512.jpg" width="40" height="40" alt="NEXUS NIGHTINGALE">
@@ -149,7 +175,7 @@
 <main>
   <section class="block">
     <h2><span class="num">01</span>At a glance</h2>
-    <div class="glance"><div class="fact"><div class="k">Gene</div><div class="v">GAA</div></div><div class="fact"><div class="k">Protein</div><div class="v">Lysosomal alpha-glucosidase (acid maltase / alglucosidase alfa)<small>UniProt P10253 · 952 aa</small></div></div><div class="fact"><div class="k">Inheritance</div><div class="v">Autosomal recessive — GAA mutations</div></div><div class="fact"><div class="k">Age of onset</div><div class="v">Infantile onset (0-12 months, severe cardiomyopathy) or late-onset (childhood/adult, muscle weakness)</div></div><div class="fact"><div class="k">Prevalence</div><div class="v">~1 in 40,000 (all forms combined); infantile form ~1 in 138,000 — commonly cited; UNVERIFIED exact figure this session<small>Marked unverified in the registry</small></div></div><div class="fact"><div class="k">Category</div><div class="v">Lysosomal Storage / Glycogen Storage</div></div><div class="fact"><div class="k">Mechanism class</div><div class="v">enzyme_lof</div></div><div class="fact"><div class="k">Clinical trials</div><div class="v">35 registered<small>ClinicalTrials.gov count at registry build</small></div></div></div>
+    <div class="glance"><div class="fact"><div class="k">Gene</div><div class="v">GAA</div></div><div class="fact"><div class="k">Protein</div><div class="v">Lysosomal alpha-glucosidase (acid maltase / alglucosidase alfa)<small>UniProt P10253 · 952 aa</small></div></div><div class="fact"><div class="k">Inheritance</div><div class="v">Autosomal recessive — GAA mutations</div></div><div class="fact"><div class="k">Age of onset</div><div class="v">Infantile onset (0-12 months, severe cardiomyopathy) or late-onset (childhood/adult, muscle weakness)</div></div><div class="fact"><div class="k">Prevalence</div><div class="v">~1 in 40,000 (all forms combined); infantile form ~1 in 138,000 — commonly cited; UNVERIFIED exact figure this session<small>Marked unverified in the registry</small></div></div><div class="fact"><div class="k">Category</div><div class="v">Lysosomal Storage / Glycogen Storage</div></div><div class="fact"><div class="k">Mechanism class</div><div class="v">enzyme_lof</div></div><div class="fact"><div class="k">Clinical trials</div><div class="v">178 studies<small>ClinicalTrials.gov, 2 Nov 2026</small></div></div></div>
   </section>
 
   <section class="block">
@@ -198,7 +224,7 @@
     <h2><span class="num">08</span>Sources</h2>
     <table class="src">
       <tr><th>Fact</th><th>Source</th><th>Accession</th><th>Retrieved</th></tr>
-      <tr><td>Gene/protein identity</td><td>UniProt</td><td><a href="https://rest.uniprot.org/uniprotkb/P10253" rel="noopener">P10253 (GAA, Lysosomal alpha-glucosidase, 952 aa)</a></td><td>2026-10-04</td></tr><tr><td>Disease classification &amp; definition</td><td>Orphanet</td><td><a href="https://api.orphacode.org/EN/ClinicalEntity/orphacode/365" rel="noopener">ORPHAcode 365 (Glycogen storage disease due to acid maltase deficiency)</a></td><td>2026-10-04</td></tr><tr><td>Inheritance &amp; genetics</td><td>OMIM</td><td><a href="https://omim.org/entry/232300" rel="noopener">232300 (Glycogen Storage Disease II / Pompe Disease)</a></td><td>2026-10-04</td></tr>
+      <tr><td>Gene/protein identity</td><td>UniProt</td><td><a href="https://rest.uniprot.org/uniprotkb/P10253" rel="noopener">P10253 (GAA, Lysosomal alpha-glucosidase, 952 aa)</a></td><td>2026-10-04</td></tr><tr><td>Disease classification &amp; definition</td><td>Orphanet</td><td><a href="https://www.orpha.net/en/disease/detail/365" rel="noopener">ORPHAcode 365 (Glycogen storage disease due to acid maltase deficiency)</a></td><td>2026-10-04</td></tr><tr><td>Inheritance &amp; genetics</td><td>OMIM</td><td><a href="https://omim.org/entry/232300" rel="noopener">232300 (Glycogen Storage Disease II / Pompe Disease)</a></td><td>2026-10-04</td></tr>
     </table>
     <div class="note" style="margin-top:16px;">
       Source record: <a href="/diseases/data/ORPHAN-008.json" download>ORPHAN-008.json</a> — orphan registry v2.0-fresh-2026-10-04.

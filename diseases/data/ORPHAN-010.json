@@ -40,7 +40,7 @@
       "Gene therapy / CRISPR correction (preclinical)"
     ],
     "clinical_trials_count": 25,
-    "key_pmid": "33431719",
+    "key_pmid": 32268028,
     "references": [
       {
         "fact": "Gene/protein identity",
@@ -53,7 +53,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 60 (Alpha-1-antitrypsin deficiency)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/60",
+        "url": "https://www.orpha.net/en/disease/detail/60",
         "retrieved": "2026-10-04"
       },
       {
@@ -69,6 +69,13 @@
         "accession": "Ronzoni et al., polymer-blocking therapy (10.1172/jci.insight.194354)",
         "url": "https://doi.org/10.1172/jci.insight.194354",
         "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "Disease review",
+        "source": "N Engl J Med 2020",
+        "accession": "32268028",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32268028/",
+        "retrieved": "2026-11-02"
       }
     ],
     "verification": {
@@ -84,6 +91,8 @@
       "CLARIFIED: A1AT deficiency is a DUAL-mechanism disease — liver (toxic GoF polymerisation) + lung (LoF antiprotease deficiency). AUTOTAC is NOT a blanket 'eligible' — only the hepatic component is a plausible degrader target.",
       "CLARIFIED: augmentation therapy addresses the LoF (lung) component only; it does not clear hepatic Z-AAT polymers."
     ],
-    "human_summary": "Alpha-1 antitrypsin deficiency is an autosomal co-dominant disorder caused by the SERPINA1 Z allele, whose protein product polymerizes and accumulates in the liver (causing cirrhosis) while deficient circulating antiprotease leaves the lungs vulnerable to emphysema. It is a dual gain-of-function (liver) and loss-of-function (lung) disease; augmentation therapy treats the lung component."
+    "human_summary": "Alpha-1 antitrypsin deficiency is an autosomal co-dominant disorder caused by the SERPINA1 Z allele, whose protein product polymerizes and accumulates in the liver (causing cirrhosis) while deficient circulating antiprotease leaves the lungs vulnerable to emphysema. It is a dual gain-of-function (liver) and loss-of-function (lung) disease; augmentation therapy treats the lung component.",
+    "clinical_trials_total": 147,
+    "clinical_trials_note": "25 curated interventional trials; 147 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

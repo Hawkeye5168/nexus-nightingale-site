@@ -28,7 +28,7 @@
       "Symptomatic: anti-seizure medication (levetiracetam, etc.)"
     ],
     "clinical_trials_count": 8,
-    "key_pmid": "34511156",
+    "key_pmid": 37599585,
     "references": [
       {
         "fact": "Gene/protein identity",
@@ -41,7 +41,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 72 (Angelman syndrome)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/72",
+        "url": "https://www.orpha.net/en/disease/detail/72",
         "retrieved": "2026-10-04"
       },
       {
@@ -50,6 +50,13 @@
         "accession": "105830 (Angelman Syndrome)",
         "url": "https://omim.org/entry/105830",
         "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "Disease review",
+        "source": "Expert Rev Neurother 2023",
+        "accession": "37599585",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37599585/",
+        "retrieved": "2026-11-02"
       }
     ],
     "verification": {
@@ -64,6 +71,8 @@
       "VERIFIED (2026-10-04): built fresh. ORPHAcode 72 confirmed live via Orphanet API.",
       "CLARIFIED: Angelman is HAPLOINSUFFICIENCY via imprinting — the fix is UNSILENCING the paternal allele (ASO), not degradation, not enzyme replacement, not a channel drug."
     ],
-    "human_summary": "Angelman syndrome is a neurodevelopmental disorder caused by loss of the maternal UBE3A allele, leaving neurons without UBE3A because the paternal allele is normally silenced by imprinting. It causes severe developmental delay, ataxia, seizures, and a characteristic happy demeanor. The therapeutic frontier is antisense-mediated unsilencing of the intact paternal allele."
+    "human_summary": "Angelman syndrome is a neurodevelopmental disorder caused by loss of the maternal UBE3A allele, leaving neurons without UBE3A because the paternal allele is normally silenced by imprinting. It causes severe developmental delay, ataxia, seizures, and a characteristic happy demeanor. The therapeutic frontier is antisense-mediated unsilencing of the intact paternal allele.",
+    "clinical_trials_total": 56,
+    "clinical_trials_note": "8 curated interventional trials; 56 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

@@ -28,7 +28,7 @@
       "CRISPR/Cas9 excision of the CTG repeat (preclinical)"
     ],
     "clinical_trials_count": 15,
-    "key_pmid": "16717058",
+    "key_pmid": 40983775,
     "references": [
       {
         "fact": "Gene/protein identity",
@@ -41,7 +41,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 273 (Steinert myotonic dystrophy)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/273",
+        "url": "https://www.orpha.net/en/disease/detail/273",
         "retrieved": "2026-10-04"
       },
       {
@@ -50,6 +50,13 @@
         "accession": "160900 (Myotonic Dystrophy 1)",
         "url": "https://omim.org/entry/160900",
         "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "Disease review",
+        "source": "Nat Rev Neurol 2025",
+        "accession": "40983775",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40983775/",
+        "retrieved": "2026-11-02"
       }
     ],
     "verification": {
@@ -64,6 +71,8 @@
       "VERIFIED (2026-10-04): built fresh. ORPHAcode 273 confirmed live via Orphanet API.",
       "CLARIFIED: DM1 is RNA-TOXICITY (mutant CUG-repeat mRNA sequesters splicing factors), NOT protein toxicity. The correct modality is antisense RNA degradation, not a protein degrader."
     ],
-    "human_summary": "Myotonic dystrophy type 1 is an autosomal dominant disorder caused by a CTG repeat expansion in DMPK, whose expanded CUG-repeat mRNA forms toxic nuclear foci that disrupt RNA splicing. It causes myotonia, progressive muscle weakness, cardiac conduction defects, and cataracts. Antisense therapy targeting the toxic RNA is the leading disease-modifying approach."
+    "human_summary": "Myotonic dystrophy type 1 is an autosomal dominant disorder caused by a CTG repeat expansion in DMPK, whose expanded CUG-repeat mRNA forms toxic nuclear foci that disrupt RNA splicing. It causes myotonia, progressive muscle weakness, cardiac conduction defects, and cataracts. Antisense therapy targeting the toxic RNA is the leading disease-modifying approach.",
+    "clinical_trials_total": 179,
+    "clinical_trials_note": "15 curated interventional trials; 179 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

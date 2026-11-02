@@ -53,7 +53,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 98896 (Duchenne muscular dystrophy)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/98896",
+        "url": "https://www.orpha.net/en/disease/detail/98896",
         "retrieved": "2026-10-04"
       },
       {
@@ -91,6 +91,8 @@
       "CLARIFIED: deflazacort is SYMPTOMATIC (anti-inflammatory), not disease-modifying — the disease-modifying route is gene therapy / exon skipping, now correctly listed as investigational.",
       "CLARIFIED: DMD is pure loss-of-function — NOT AUTOTAC eligible. Prior data marked DMD 'CLIN-RDY' without explaining the mechanism-gate decision."
     ],
-    "human_summary": "Duchenne muscular dystrophy is the most common childhood muscular dystrophy, an X-linked disorder caused by dystrophin deficiency. Boys develop progressive muscle weakness from early childhood, losing ambulation in their teens and dying from respiratory or cardiac failure in young adulthood. Gene therapy and exon-skipping are the leading disease-modifying approaches."
+    "human_summary": "Duchenne muscular dystrophy is the most common childhood muscular dystrophy, an X-linked disorder caused by dystrophin deficiency. Boys develop progressive muscle weakness from early childhood, losing ambulation in their teens and dying from respiratory or cardiac failure in young adulthood. Gene therapy and exon-skipping are the leading disease-modifying approaches.",
+    "clinical_trials_total": 502,
+    "clinical_trials_note": "40 curated interventional trials; 502 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

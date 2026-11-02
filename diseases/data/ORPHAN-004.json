@@ -40,7 +40,7 @@
       "Small-molecule splicing modulators of HTT"
     ],
     "clinical_trials_count": 60,
-    "key_pmid": "33168986",
+    "key_pmid": 34413240,
     "references": [
       {
         "fact": "Gene/protein identity",
@@ -53,7 +53,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 399 (Huntington disease)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/399",
+        "url": "https://www.orpha.net/en/disease/detail/399",
         "retrieved": "2026-10-04"
       },
       {
@@ -76,6 +76,13 @@
         "accession": "Polyglutamine-mediated ribotoxicity (Aviner et al. 2024)",
         "url": "https://www.nature.com/articles/s41556-024-01414-x",
         "retrieved": "2026-10-04"
+      },
+      {
+        "fact": "Disease review",
+        "source": "Pract Neurol 2022",
+        "accession": "34413240",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34413240/",
+        "retrieved": "2026-11-02"
       }
     ],
     "verification": {
@@ -91,6 +98,8 @@
       "CLARIFIED: deutetrabenazine is SYMPTOMATIC (chorea) only, not disease-modifying — this distinction is essential and was often omitted in prior data.",
       "CLARIFIED: HD has BOTH a toxic gain-of-function (aggregation) AND a loss-of-function component; the primary driver is gain-of-function, which is why AUTOTAC is eligible."
     ],
-    "human_summary": "Huntington disease is an autosomal dominant neurodegenerative disorder caused by a CAG repeat expansion in HTT. It causes progressive motor dysfunction (chorea), cognitive decline, and psychiatric symptoms, typically beginning in mid-adulthood. Mutant huntingtin forms toxic aggregates in striatal neurons. Current treatment is symptomatic only; allele-selective degradation and ASO silencing are the leading disease-modifying frontiers."
+    "human_summary": "Huntington disease is an autosomal dominant neurodegenerative disorder caused by a CAG repeat expansion in HTT. It causes progressive motor dysfunction (chorea), cognitive decline, and psychiatric symptoms, typically beginning in mid-adulthood. Mutant huntingtin forms toxic aggregates in striatal neurons. Current treatment is symptomatic only; allele-selective degradation and ASO silencing are the leading disease-modifying frontiers.",
+    "clinical_trials_total": 302,
+    "clinical_trials_note": "60 curated interventional trials; 302 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

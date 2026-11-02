@@ -51,7 +51,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 740 (Hutchinson-Gilford progeria syndrome)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/740",
+        "url": "https://www.orpha.net/en/disease/detail/740",
         "retrieved": "2026-10-04"
       },
       {
@@ -98,6 +98,8 @@
       "FIXED (double-check 2026-10-04): protein name corrected to 'Prelamin-A/C'; mechanism made precise (50-codon deletion, retained farnesylation, missing ZMPSTE24 site).",
       "VERIFIED (2026-10-04): ORPHAcode 740 confirmed live via Orphanet API. Prevalence/median-age still UNVERIFIED (Orphanet nomenclature API does not carry epidemiology figures)."
     ],
-    "human_summary": "Children with HGPS age ~8x faster than normal. Growth failure, hair loss, skin changes, and premature atherosclerosis lead to death from heart attack or stroke at a median age of ~14.5 years."
+    "human_summary": "Children with HGPS age ~8x faster than normal. Growth failure, hair loss, skin changes, and premature atherosclerosis lead to death from heart attack or stroke at a median age of ~14.5 years.",
+    "clinical_trials_total": 11,
+    "clinical_trials_note": "5 curated interventional trials; 11 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

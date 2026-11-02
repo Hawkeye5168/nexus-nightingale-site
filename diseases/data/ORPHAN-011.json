@@ -52,7 +52,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 586 (Cystic fibrosis)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/586",
+        "url": "https://www.orpha.net/en/disease/detail/586",
         "retrieved": "2026-10-04"
       },
       {
@@ -82,6 +82,8 @@
       "VERIFIED (2026-10-04): built fresh. ORPHAcode 586 confirmed live via Orphanet API.",
       "CLARIFIED: CF is a TRAFFICKING/FOLDING defect, not a simple LoF — the correct modality is corrector+potentiator (protein rescue), not degrader or enzyme replacement."
     ],
-    "human_summary": "Cystic fibrosis is an autosomal recessive disorder caused by CFTR mutations, most commonly F508del, which misfolds the chloride channel and prevents it reaching the cell surface. It causes progressive lung disease, pancreatic insufficiency, and male infertility. CFTR modulator drugs (correctors + potentiators) rescue the protein's folding and gating — a fundamentally different strategy from degradation or enzyme replacement."
+    "human_summary": "Cystic fibrosis is an autosomal recessive disorder caused by CFTR mutations, most commonly F508del, which misfolds the chloride channel and prevents it reaching the cell surface. It causes progressive lung disease, pancreatic insufficiency, and male infertility. CFTR modulator drugs (correctors + potentiators) rescue the protein's folding and gating — a fundamentally different strategy from degradation or enzyme replacement.",
+    "clinical_trials_total": 76,
+    "clinical_trials_note": "80 curated interventional trials; 76 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

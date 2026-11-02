@@ -52,7 +52,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 365 (Glycogen storage disease due to acid maltase deficiency)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/365",
+        "url": "https://www.orpha.net/en/disease/detail/365",
         "retrieved": "2026-10-04"
       },
       {
@@ -76,6 +76,8 @@
       "CLARIFIED: alglucosidase alfa is a recombinant enzyme (not a small molecule), so MW/PubChem CID are intentionally 0.",
       "CLARIFIED: enzyme replacement therapy is the correct disease-modifying route for a LoF lysosomal storage disease — NOT AUTOTAC."
     ],
-    "human_summary": "Pompe disease is an autosomal recessive lysosomal storage disorder caused by acid alpha-glucosidase (GAA) deficiency, leading to glycogen accumulation in muscle. The infantile form causes severe cardiomyopathy and early death; the late-onset form causes progressive muscle weakness and respiratory failure. Enzyme replacement therapy is the standard disease-modifying treatment."
+    "human_summary": "Pompe disease is an autosomal recessive lysosomal storage disorder caused by acid alpha-glucosidase (GAA) deficiency, leading to glycogen accumulation in muscle. The infantile form causes severe cardiomyopathy and early death; the late-onset form causes progressive muscle weakness and respiratory failure. Enzyme replacement therapy is the standard disease-modifying treatment.",
+    "clinical_trials_total": 178,
+    "clinical_trials_note": "35 curated interventional trials; 178 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }

@@ -52,7 +52,7 @@
         "fact": "Disease classification & definition",
         "source": "Orphanet",
         "accession": "ORPHAcode 324 (Fabry disease)",
-        "url": "https://api.orphacode.org/EN/ClinicalEntity/orphacode/324",
+        "url": "https://www.orpha.net/en/disease/detail/324",
         "retrieved": "2026-10-04"
       },
       {
@@ -83,6 +83,8 @@
       "CLARIFIED: agalsidase beta is a recombinant enzyme (not a small molecule), so MW/PubChem CID are intentionally 0.",
       "CLARIFIED: enzyme replacement / chaperone therapy is the correct route for a LoF lysosomal storage disease — NOT AUTOTAC."
     ],
-    "human_summary": "Fabry disease is an X-linked lysosomal storage disorder caused by Î±-galactosidase A deficiency, leading to globotriaosylceramide accumulation in the kidneys, heart, and vasculature. It causes progressive renal failure, cardiomyopathy, and neuropathic pain. Enzyme replacement and chaperone therapy are the standard disease-modifying approaches."
+    "human_summary": "Fabry disease is an X-linked lysosomal storage disorder caused by Î±-galactosidase A deficiency, leading to globotriaosylceramide accumulation in the kidneys, heart, and vasculature. It causes progressive renal failure, cardiomyopathy, and neuropathic pain. Enzyme replacement and chaperone therapy are the standard disease-modifying approaches.",
+    "clinical_trials_total": 258,
+    "clinical_trials_note": "30 curated interventional trials; 258 ClinicalTrials.gov studies in total (2026-11-02)"
   }
 }
