@@ -118,6 +118,13 @@
         "accession": "3T3K — Q148R frataxin construct, 1.24 Å",
         "url": "https://www.rcsb.org/structure/3T3K",
         "retrieved": "2026-11-02"
+      },
+      {
+        "fact": "Frataxin level",
+        "source": "GeneReviews",
+        "accession": "NBK1281 (Friedreich Ataxia)",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK1281/",
+        "retrieved": "2026-11-02"
       }
     ],
     "verification": {
