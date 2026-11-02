@@ -6,9 +6,10 @@
   "disease": "Cancer",
   "pdb": "1XKK",
   "tm": 0.6502,
-  "rmsd": 6.2,
+  "rmsd": 6.18,
   "construct": "EGFR kinase domain",
-  "residues": 289
+  "residues": 289,
+  "iterations": 1000
  },
  {
   "id": "MYC",
@@ -19,7 +20,8 @@
   "tm": 0.9999,
   "rmsd": 0.03,
   "construct": "apo OmoMYC (engineered MYC bHLH-LZ)",
-  "residues": 74
+  "residues": 74,
+  "iterations": 1000
  },
  {
   "id": "MAX",
@@ -30,7 +32,8 @@
   "tm": 0.9216,
   "rmsd": 1.02,
   "construct": "Max bHLH-LZ",
-  "residues": 87
+  "residues": 87,
+  "iterations": 1000
  },
  {
   "id": "HTT",
@@ -38,10 +41,11 @@
   "uniprot": "P42858",
   "disease": "Huntington's",
   "pdb": "3IOT",
-  "tm": 0.9193,
-  "rmsd": 8.82,
+  "tm": 0.9259,
+  "rmsd": 8.77,
   "construct": "huntingtin N-terminal exon-1 region, 17 Gln",
-  "residues": 388
+  "residues": 388,
+  "iterations": 1000
  },
  {
   "id": "SPIKE",
@@ -49,10 +53,11 @@
   "uniprot": "P0DTC2",
   "disease": "COVID-19",
   "pdb": "22OV",
-  "tm": 0.7921,
+  "tm": 0.7905,
   "rmsd": 5.91,
   "construct": "SARS-CoV-2 BA.3.2.2 spike",
-  "residues": 1069
+  "residues": 1069,
+  "iterations": 1000
  },
  {
   "id": "KRAS",
@@ -60,10 +65,11 @@
   "uniprot": "P01116",
   "disease": "Cancer",
   "pdb": "11FT",
-  "tm": 0.3752,
-  "rmsd": 9.73,
+  "tm": 0.3869,
+  "rmsd": 8.96,
   "construct": "KRAS G12C/Q99L, GDP-bound",
-  "residues": 170
+  "residues": 170,
+  "iterations": 1000
  },
  {
   "id": "TDP43",
@@ -71,10 +77,11 @@
   "uniprot": "Q13148",
   "disease": "ALS/FTD",
   "pdb": "2CQG",
-  "tm": 0.4379,
-  "rmsd": 5.94,
+  "tm": 0.9369,
+  "rmsd": 0.99,
   "construct": "TDP-43 RRM domain",
-  "residues": 103
+  "residues": 103,
+  "iterations": 1000
  },
  {
   "id": "EZH2",
@@ -82,10 +89,11 @@
   "uniprot": "Q15910",
   "disease": "Cancer",
   "pdb": "4MI0",
-  "tm": 0.1197,
-  "rmsd": 21.58,
+  "tm": 0.5511,
+  "rmsd": 5.65,
   "construct": "EZH2 catalytic domain",
-  "residues": 208
+  "residues": 208,
+  "iterations": 1000
  },
  {
   "id": "SMARCA4",
@@ -93,10 +101,11 @@
   "uniprot": "P51532",
   "disease": "Cancer",
   "pdb": "2GRC",
-  "tm": 0.0419,
-  "rmsd": 104.19,
+  "tm": 0.1571,
+  "rmsd": 18.37,
   "construct": "BRG1 bromodomain",
-  "residues": 121
+  "residues": 121,
+  "iterations": 1000
  },
  {
   "id": "TP53",
@@ -104,10 +113,11 @@
   "uniprot": "P04637",
   "disease": "Cancer",
   "pdb": "1AIE",
-  "tm": 0.0402,
-  "rmsd": 12.93,
+  "tm": 0.1152,
+  "rmsd": 7.5,
   "construct": "p53 tetramerisation domain",
-  "residues": 31
+  "residues": 31,
+  "iterations": 1000
  },
  {
   "id": "APP",
@@ -118,7 +128,8 @@
   "tm": 0.1231,
   "rmsd": 9.66,
   "construct": "APP protease-inhibitor domain",
-  "residues": 56
+  "residues": 56,
+  "iterations": 1000
  },
  {
   "id": "MAPT",
@@ -126,10 +137,11 @@
   "uniprot": "P10636",
   "disease": "Alzheimer's",
   "pdb": "10IJ",
-  "tm": 0.0628,
-  "rmsd": 53.56,
+  "tm": 0.9987,
+  "rmsd": 0.14,
   "construct": "FTLD-tau filament (S305I)",
-  "residues": 107
+  "residues": 107,
+  "iterations": 1000
  },
  {
   "id": "SNCA",
@@ -137,9 +149,10 @@
   "uniprot": "P37840",
   "disease": "Parkinson's",
   "pdb": "12AR",
-  "tm": 0.0504,
-  "rmsd": 34.12,
+  "tm": 1.0,
+  "rmsd": 0.0,
   "construct": "mouse A53T alpha-synuclein fibril",
-  "residues": 64
+  "residues": 64,
+  "iterations": 1000
  }
 ]

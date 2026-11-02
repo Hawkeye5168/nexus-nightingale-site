@@ -85,7 +85,7 @@
 <header class="hero">
   <div class="kicker">NEXUS-9 · Structure</div>
   <h1>Fold <em>Explorer</em></h1>
-  <p>Real supervised fold runs against named PDB references. Each card shows the measured TM-score and RMSD — including the low scores and the construct limits. Nothing here is a de-novo prediction.</p>
+  <p>Real 1,000-iteration supervised fold runs against named PDB references. Each card shows the measured TM-score and RMSD — including the low scores and the construct limits. Nothing here is a de-novo prediction.</p>
 </header>
 
 <main class="wrap">
@@ -113,6 +113,7 @@
         <dt>Disease</dt><dd id="disease">—</dd>
         <dt>Reference PDB</dt><dd id="pdb">—</dd>
         <dt>Construct</dt><dd id="construct">—</dd>
+        <dt>Iterations</dt><dd id="iterations">—</dd>
         <dt>CA residues</dt><dd id="residues">—</dd>
       </dl>
       <p class="note" id="note">The score measures recovery of the reference construct. A low score can mean the PDB is a different domain or construct — it is published here rather than hidden.</p>
@@ -122,7 +123,7 @@
   <section class="about">
     <div class="panel">
       <h2>What this page is</h2>
-      <p>This is a viewer for completed NEXUS-9 runs. Each result was produced by <code>nexus9 fold &lt;UniProt&gt;</code> on the 2 November 2026 build, against the PDB the engine resolved. The 3D trace is the reference structure used for scoring.</p>
+      <p>This is a viewer for completed NEXUS-9 runs. Each result was produced by <code>nexus9 fold &lt;UniProt&gt; --iterations 1000</code> on the 2 November 2026 build, against the PDB the engine resolved. The 3D trace is the reference structure used for scoring.</p>
       <p>It is a static page, so it cannot fold a new sequence in the browser. The live console runs the Windows build against the local NEXUS-9 engine.</p>
     </div>
     <div class="panel">
@@ -133,7 +134,7 @@
   </section>
 </main>
 
-<footer>Sabre-Tek Limited · NEXUS NIGHTINGALE · results from the 2 Nov 2026 build · <a href="/">sabretek.ltd</a></footer>
+<footer>Sabre-Tek Limited · NEXUS NIGHTINGALE · 1,000-iteration results from the 2 Nov 2026 build · <a href="/">sabretek.ltd</a></footer>
 
 <script>
 (function(){
@@ -161,6 +162,7 @@
     document.getElementById('disease').textContent = t.disease;
     document.getElementById('pdb').textContent = t.pdb;
     document.getElementById('construct').textContent = t.construct;
+    document.getElementById('iterations').textContent = t.iterations ? t.iterations.toLocaleString() : '—';
     document.getElementById('residues').textContent = String(t.residues);
     document.getElementById('tm').textContent = t.tm.toFixed(4);
     document.getElementById('rmsd').textContent = t.rmsd.toFixed(2);
