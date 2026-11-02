@@ -142,7 +142,7 @@
     ],
     "human_summary": "Friedreich ataxia is the most common hereditary ataxia. Progressive gait and limb ataxia, dysarthria, and cardiomyopathy typically begin in adolescence. Most cases are caused by a GAA repeat expansion that silences frataxin, a mitochondrial protein needed for iron-sulfur cluster assembly.",
     "clinical_trials_total": 115,
-    "clinical_trials_note": "12 curated interventional trials; 115 ClinicalTrials.gov studies in total (2026-11-02)",
+    "clinical_trials_note": "12 registry-listed trials; 115 ClinicalTrials.gov studies in total (2026-11-02)",
     "uk_access": "MHRA approved omaveloxolone on 2025-04-23. NICE TA1061 was terminated on 2025-05-06 after Biogen withdrew. SMC2845 did not recommend it on 2026-03-09. Not routinely available on the NHS; individual funding routes are discretionary.",
     "structural_note": "PDB 3T3K is the Q148R disease-variant construct covering residues 82–210; it is not wild-type frataxin or the full 210-residue precursor."
   }
