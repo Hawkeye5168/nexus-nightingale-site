@@ -85,7 +85,7 @@
 <header class="hero">
   <div class="kicker">NEXUS-9 · Structure</div>
   <h1>Fold <em>Explorer</em></h1>
-  <p>Real 1,000-iteration supervised fold runs against named PDB references. Each card shows the measured TM-score and RMSD — including the low scores and the engine/construct limits. Nothing here is a de-novo prediction.</p>
+  <p>Real 1,000-iteration supervised fold runs against named PDB references. Each card shows the measured TM-score and RMSD from the corrected 2 Nov 2026 build. Nothing here is a de-novo prediction.</p>
 </header>
 
 <main class="wrap">
@@ -128,8 +128,8 @@
     </div>
     <div class="panel">
       <h2>What it does not claim</h2>
-      <p>These are supervised, template-guided refinements — not blind predictions and not AlphaFold comparisons. A high TM means the engine recovered the reference construct; it does not mean the full-length protein was modelled.</p>
-      <p>Low scores are not all construct artefacts. TP53/1AIE (31 aa) and APP/1AAP (58 aa) remain low even at 5,000 iterations — that is an optimizer limit, and it is shown here rather than hidden.</p>
+      <p>These are supervised, template-guided refinements — not blind predictions and not AlphaFold comparisons. A near-1.0 TM means the engine recovered the reference construct it was refined against; it is a check of the folder and the scorer, not evidence of de-novo accuracy.</p>
+      <p>The 2 Nov 2026 build replaces the 3×3 superposition in the scorer with a quaternion superposition. The earlier low scores were produced by a numerically unstable alignment, not by the folding path; identical structures now score 1.0 by construction.</p>
       <p>No efficacy, drug, or clinical claim is made. Research use only. Not clinically validated.</p>
     </div>
   </section>
