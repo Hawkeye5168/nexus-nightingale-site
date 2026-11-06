@@ -262,44 +262,44 @@
   <div class="wrap">
     <div class="section-kicker">The pipeline</div>
     <h2>Fourteen stages. <em>Four phases.</em> One dossier.</h2>
-    <p class="lead">The production orchestrator (<code>nexus9 dossier</code>) runs intake → supervised fold → mechanism gate → design in one command. Around it sit the rest of the platform: co-evolution, contact prediction, the nine-layer ENNEAD solver, thirteen modality routes, patient and trial matching, the 24-database evidence chain and the TJ Compassion audit.</p>
+    <p class="lead">The production orchestrator () runs intake → supervised fold → mechanism gate → design in one command. Around it sit the rest of the platform: co-evolution, contact prediction, the the ab initio research engine, thirteen modality routes, patient and trial matching, the 24-database evidence chain and the TJ Compassion audit.</p>
     <div class="phases">
 
       <div class="phase-block">
         <div class="phase-head"><span class="phase-tag">Phase I · Resolve</span><h3>Target and co-evolution</h3></div>
         <div class="stagegrid">
-          <div class="step"><span class="n">01</span><h3>Live intake</h3><p>UniProt, AlphaFold, PDB, PubChem and ClinicalTrials.gov resolve the target at run time — 1,210 aa and 134,277 Da for EGFR.</p><span class="cmd">nexus9 live</span></div>
-          <div class="step"><span class="n">02</span><h3>Deep MSA</h3><p>A real multiple-sequence alignment from OMA orthologs, storing the co-evolutionary signal the next stage consumes.</p><span class="cmd">nexus9 karen deepmsa</span></div>
-          <div class="step"><span class="n">03</span><h3>Contact map</h3><p>Two independent routes: DCA direct couplings (Morcos 2011) and the ContactNet neural predictor, 95 checkpoints on disk.</p><span class="cmd">nexus9 dca · contactnet</span></div>
+          <div class="step"><span class="n">01</span><h3>Live intake</h3><p>UniProt, AlphaFold, PDB, PubChem and ClinicalTrials.gov resolve the target at run time — 1,210 aa and 134,277 Da for EGFR.</p></div>
+          <div class="step"><span class="n">02</span><h3>Deep MSA</h3><p>A real multiple-sequence alignment from OMA orthologs, storing the co-evolutionary signal the next stage consumes.</p></div>
+          <div class="step"><span class="n">03</span><h3>Contact map</h3><p>Two independent routes: DCA direct couplings (Morcos 2011) and the ContactNet neural predictor, an ensemble of contact models on disk.</p></div>
         </div>
       </div>
 
       <div class="phase-block">
         <div class="phase-head"><span class="phase-tag">Phase II · Structure</span><h3>Fold, refine, locate</h3></div>
         <div class="stagegrid">
-          <div class="step"><span class="n">04</span><h3>Supervised fold</h3><p>NIGHTINGALE predicts the structure and scores it against the experimental reference: TM-score and RMSD, labelled as guided or unguided.</p><span class="cmd">nexus9 fold</span></div>
-          <div class="step"><span class="n">05</span><h3>Ab initio fold</h3><p>ENNEAD's nine-layer constraint solver folds without a template and refines the result. Research path, not production.</p><span class="cmd">nexus9 ennead fold</span></div>
-          <div class="step"><span class="n">06</span><h3>Domains &amp; pockets</h3><p>Hierarchical domain decomposition and a binding-pocket finder that recommends a degradation route.</p><span class="cmd">nexus9 fold-domains · pocket</span></div>
+          <div class="step"><span class="n">04</span><h3>Supervised fold</h3><p>NIGHTINGALE predicts the structure and scores it against the experimental reference: TM-score and RMSD, labelled as guided or unguided.</p></div>
+          <div class="step"><span class="n">05</span><h3>Ab initio fold</h3><p>the ab initio research engine folds without a template and refines the result. Research path, not production.</p></div>
+          <div class="step"><span class="n">06</span><h3>Domains &amp; pockets</h3><p>Hierarchical domain decomposition and a binding-pocket finder that recommends a degradation route.</p></div>
         </div>
       </div>
 
       <div class="phase-block">
         <div class="phase-head"><span class="phase-tag">Phase III · Decide</span><h3>Gate, route, design</h3></div>
         <div class="stagegrid">
-          <div class="step"><span class="n">07</span><h3>Mechanism gate</h3><p>Gain of function may be degraded; loss of function is protected. The refusal is code — UBE3A and FXN return BLOCKED, not a degrader.</p><span class="cmd">nexus9 therapeutic</span></div>
-          <div class="step"><span class="n">08</span><h3>Modality routing</h3><p>Thirteen routes: AUTOTAC, repurposing, polypharmacology, botanicals, fungi, natural proteins, phage, microbiome, CAR-T, mRNA, psychedelics, gene therapy, peptide.</p><span class="cmd">modality_db</span></div>
-          <div class="step"><span class="n">09</span><h3>Molecular design</h3><p>Target-binding ligand + linker + p62-recruiting ligand. P00533: 446.0 + 194.2 + 257.0 = 897.2 Da, logP 0.9, permeability LOW.</p><span class="cmd">nexus9 ligand</span></div>
-          <div class="step"><span class="n">10</span><h3>Docking estimate</h3><p>All nine canonical AUTOTAC designs ranked by warhead IC50 — six STRONG, three MODERATE. An estimate, not a docking simulation.</p><span class="cmd">nexus9 dock</span></div>
-          <div class="step"><span class="n">11</span><h3>Toxicity screen</h3><p>Rule-based structural alerts over the nine designs: hERG, teratogenicity, solubility. Eight score 9/9 risk; predicted, not measured.</p><span class="cmd">nexus9 tox</span></div>
+          <div class="step"><span class="n">07</span><h3>Mechanism gate</h3><p>Gain of function may be degraded; loss of function is protected. The refusal is code — UBE3A and FXN return BLOCKED, not a degrader.</p></div>
+          <div class="step"><span class="n">08</span><h3>Modality routing</h3><p>Thirteen routes: AUTOTAC, repurposing, polypharmacology, botanicals, fungi, natural proteins, phage, microbiome, CAR-T, mRNA, psychedelics, gene therapy, peptide.</p></div>
+          <div class="step"><span class="n">09</span><h3>Molecular design</h3><p>Target-binding ligand + linker + p62-recruiting ligand. P00533: 446.0 + 194.2 + 257.0 = 897.2 Da, logP 0.9, permeability LOW.</p></div>
+          <div class="step"><span class="n">10</span><h3>Docking estimate</h3><p>All the canonical AUTOTAC designs ranked by warhead IC50 — six STRONG, three MODERATE. An estimate, not a docking simulation.</p></div>
+          <div class="step"><span class="n">11</span><h3>Toxicity screen</h3><p>Rule-based structural alerts over the the designs: hERG, teratogenicity, solubility. Eight score 9/9 risk; predicted, not measured.</p></div>
         </div>
       </div>
 
       <div class="phase-block">
         <div class="phase-head"><span class="phase-tag">Phase IV · Evidence</span><h3>Assemble, match, verify</h3></div>
         <div class="stagegrid">
-          <div class="step"><span class="n">12</span><h3>Knowledge assembly</h3><p>KAREN surfaces twenty-four biomedical databases and eight live connectors into one evidence chain — 101 phenotypes, 36 trials, 77 PGx rules.</p><span class="cmd">nexus9 karen query · pipeline</span></div>
-          <div class="step"><span class="n">13</span><h3>Patient &amp; trial match</h3><p>An eleven-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety profile.</p><span class="cmd">nexus9 ptrials for</span></div>
-          <div class="step"><span class="n">14</span><h3>Verify &amp; report</h3><p>The TJ Compassion audit and L.O.V.E. gate run before release; the dossier is written to PDF natively, with limitations declared.</p><span class="cmd">nexus9 audit · dossier-pdf</span></div>
+          <div class="step"><span class="n">12</span><h3>Knowledge assembly</h3><p>the knowledge layer surfaces twenty-four biomedical databases and eight live connectors into one evidence chain — 101 phenotypes, 36 trials, 77 PGx rules.</p></div>
+          <div class="step"><span class="n">13</span><h3>Patient &amp; trial match</h3><p>An multi-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety profile.</p></div>
+          <div class="step"><span class="n">14</span><h3>Verify &amp; report</h3><p>The TJ Compassion audit and L.O.V.E. gate run before release; the dossier is written to PDF natively, with limitations declared.</p></div>
         </div>
       </div>
 
@@ -320,43 +320,43 @@
       <h3 style="color:#fff;">Phase I · Resolve the target</h3>
       <p class="why">Identity first. The sequence, organism, length and mass are fetched from UniProt at run time; a deep ortholog alignment supplies the co-evolutionary signal; DCA and ContactNet produce two independent contact maps. Unknown accessions fail loudly rather than being guessed at.</p>
       <div class="io">
-        <div class="card"><div class="t">Input</div><code>UniProt accession or gene symbol</code></div>
-        <div class="card"><div class="t">Output</div><code>Verified record · deep MSA · ranked contacts</code></div>
+        <div class="card"><div class="t">Input</div></div>
+        <div class="card"><div class="t">Output</div></div>
       </div>
-      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 01–03: <code>live</code> · <code>karen deepmsa</code> · <code>dca</code> / <code>contactnet</code></p>
+      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 01–03:  ·  ·  / </p>
     </div>
 
     <!-- PHASE II -->
     <div class="detail" style="border-top:1px solid rgba(169,207,217,0.25);">
       <h3 style="color:#fff;">Phase II · Solve the structure</h3>
-      <p class="why">Structure is solved by the supervised <b>NIGHTINGALE</b> path and, for research, by ENNEAD's nine-layer constraint solver. Both report a <b>TM-score</b> (1.0 perfect, above 0.5 the same fold) and an <b>RMSD</b> in ångströms against the experimental reference. Guided numbers are labelled as reconstruction, not blind prediction; the unguided run is reported separately. Domains and binding pockets are located before any design begins.</p>
+      <p class="why">Structure is solved by the supervised <b>NIGHTINGALE</b> path and, for research, by the ab initio research engine. Both report a <b>TM-score</b> (1.0 perfect, above 0.5 the same fold) and an <b>RMSD</b> in ångströms against the experimental reference. Guided numbers are labelled as reconstruction, not blind prediction; the unguided run is reported separately. Domains and binding pockets are located before any design begins.</p>
       <div class="io">
-        <div class="card"><div class="t">Input</div><code>Sequence + reference PDB</code></div>
-        <div class="card"><div class="t">Output</div><code>Coordinates · TM-score · RMSD · pockets</code></div>
+        <div class="card"><div class="t">Input</div></div>
+        <div class="card"><div class="t">Output</div></div>
       </div>
-      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 04–06: <code>fold</code> · <code>ennead fold/resolve</code> · <code>fold-domains</code> / <code>pocket</code></p>
+      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 04–06:  ·  ·  / </p>
     </div>
 
     <!-- PHASE III -->
     <div class="detail" style="border-top:1px solid rgba(169,207,217,0.25);">
       <h3 style="color:#fff;">Phase III · Decide and design</h3>
-      <p class="why">The gate reads mechanism before molecule. A <b>gain-of-function</b> target may be degraded; a <b>loss-of-function</b> target is protected, because removing a protein the patient already lacks would make them worse. The refusal is code — UBE3A in Angelman syndrome returns BLOCKED. Thirteen modality routes are available, and the designer computes target-binding ligand, linker and autophagy-recruiting ligand mass, logP and permeability. Two further validation stages run over the nine canonical designs: a docking estimate from warhead IC50 (not a simulation) and a rule-based toxicity screen (structural alerts, not measured).</p>
+      <p class="why">The gate reads mechanism before molecule. A <b>gain-of-function</b> target may be degraded; a <b>loss-of-function</b> target is protected, because removing a protein the patient already lacks would make them worse. The refusal is code — UBE3A in Angelman syndrome returns BLOCKED. Thirteen modality routes are available, and the designer computes target-binding ligand, linker and autophagy-recruiting ligand mass, logP and permeability. Two further validation stages run over the the canonical designs: a docking estimate from warhead IC50 (not a simulation) and a rule-based toxicity screen (structural alerts, not measured).</p>
       <div class="io">
-        <div class="card"><div class="t">Input</div><code>Target + mechanism class</code></div>
-        <div class="card"><div class="t">Output</div><code>PASSED / BLOCKED · modality · chimera + MW</code></div>
+        <div class="card"><div class="t">Input</div></div>
+        <div class="card"><div class="t">Output</div></div>
       </div>
-      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 07–11: <code>therapeutic</code> · <code>modality_db</code> · <code>ligand</code> / <code>mass-reduce</code> · <code>dock</code> · <code>tox</code></p>
+      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 07–11:  ·  ·  /  ·  · </p>
     </div>
 
     <!-- PHASE IV -->
     <div class="detail" style="border-top:1px solid rgba(169,207,217,0.25);">
       <h3 style="color:#fff;">Phase IV · Evidence, patients, verification</h3>
-      <p class="why">Twenty-four biomedical databases are surfaced through KAREN, with live connectors to UniProt, PubChem, PDB, ClinicalTrials.gov, ChEMBL, NCBI Gene, Reactome and OpenTargets. The eleven-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety. The TJ Compassion audit and L.O.V.E. gate run before release, and the dossier is rendered to PDF natively — with its limitations declared.</p>
+      <p class="why">Twenty-four biomedical databases are surfaced through the knowledge layer, with live connectors to UniProt, PubChem, PDB, ClinicalTrials.gov, ChEMBL, NCBI Gene, Reactome and OpenTargets. The multi-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety. The TJ Compassion audit and L.O.V.E. gate run before release, and the dossier is rendered to PDF natively — with its limitations declared.</p>
       <div class="io">
-        <div class="card"><div class="t">Input</div><code>Design + target evidence</code></div>
-        <div class="card"><div class="t">Output</div><code>24-database chain · ranked trials · audited dossier</code></div>
+        <div class="card"><div class="t">Input</div></div>
+        <div class="card"><div class="t">Output</div></div>
       </div>
-      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 12–14: <code>karen</code> · <code>patient</code> / <code>pgx</code> / <code>ptrials</code> · <code>audit compassion</code> / <code>dossier-pdf</code></p>
+      <p class="why" style="margin-top:18px; font-size:14px; color:var(--cyan);">Stages 12–14:  ·  /  /  ·  / </p>
     </div>
 
     <p style="margin-top:32px; font-weight:700;"><a href="/pipeline/" style="color:var(--cyan);">Read the full pipeline architecture →</a></p>
@@ -493,7 +493,7 @@
     </div>
     <div>
       <h4>Explore</h4>
-      <p><a href="#pipeline">Pipeline</a> · <a href="/pipeline/">Architecture</a> · <a href="/course/">Course</a></p>
+      <p><a href="#pipeline">Pipeline</a> · <a href="/pipeline/">Architecture</a> · <a href="/course/road-to-nexus-nightingale/">Road to NEXUS</a> · <a href="/course/">Course</a></p>
       <p><a href="#how">How it works</a></p>
       <p><a href="#example">Worked example</a></p>
       <p><a href="#diseases">Diseases</a></p>

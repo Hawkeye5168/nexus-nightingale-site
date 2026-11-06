@@ -5,593 +5,147 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The NEXUS-9 pipeline — fourteen stages, four phases</title>
-<meta name="description" content="The full NEXUS-9 architecture: live target intake, deep MSA and DCA, ContactNet contact maps, NIGHTINGALE and ENNEAD structure solving, the AUTOTAC mechanism gate, 13 modality routes, molecular design, the 24-database evidence chain, patient and trial matching, TJ Compassion verification and native reporting.">
+<title>How the NEXUS pipeline works — from target to cited dossier</title>
+<meta name="description" content="A plain-language view of the NEXUS computational drug-discovery pipeline: intake, evidence, structure, mechanism, design, safety gates and a citation-referenced research dossier.">
 <link rel="canonical" href="https://sabretek.ltd/pipeline/">
 <meta name="theme-color" content="#173F5F">
-<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="../assets/favicon-192.png" sizes="192x192" type="image/png">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="NEXUS NIGHTINGALE">
-<meta property="og:title" content="The NEXUS-9 pipeline — fourteen stages, four phases">
-<meta property="og:description" content="Every stage of the NEXUS-9 platform, the command that runs it, and what it returns.">
-<meta property="og:url" content="https://sabretek.ltd/pipeline/">
-<meta property="og:image" content="https://sabretek.ltd/assets/og-image.png">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <style>
-  :root{
-    --navy:#173F5F; --navy-deep:#0E2A40; --steel:#41789B;
-    --cerulean:#76B5C5; --cyan:#A9CFD9; --slate:#D1D9E0;
-    --offwhite:#F3F7F9; --white:#FFFFFF; --warning:#E0A94B;
-    --verified:#1FA88C; --flag:#C7562F;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
-    color:var(--navy); background:var(--offwhite); line-height:1.6; -webkit-font-smoothing:antialiased;}
-  a{color:var(--cerulean); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  nav{position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center;
-    justify-content:space-between; padding:14px 40px; background:rgba(243,247,249,0.94);
-    backdrop-filter:blur(10px); border-bottom:1px solid var(--slate);}
-  nav .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:1px;}
-  nav .brand img{height:40px; width:40px; border-radius:50%; object-fit:cover;}
-  nav .brand span b{color:var(--navy);}
-  nav .brand span i{font-style:normal; color:var(--steel);}
-  nav .links{display:flex; gap:24px; font-size:14px; letter-spacing:0.4px;}
-  nav .links a{color:var(--navy); font-weight:600;}
-  .wrap{max-width:1080px; margin:0 auto; padding:0 40px;}
-  header.page{padding:150px 0 64px; background:linear-gradient(180deg,var(--offwhite) 0%,#E7EEF2 100%);
-    border-bottom:1px solid var(--slate);}
-  .kicker{text-transform:uppercase; letter-spacing:4px; font-size:12px; font-weight:700; color:var(--cerulean); margin-bottom:14px;}
-  header.page h1{font-size:clamp(32px,5vw,52px); line-height:1.1; font-weight:800; max-width:18ch; margin-bottom:22px;}
-  header.page h1 em{font-style:normal; color:var(--cerulean);}
-  header.page p{font-size:19px; color:var(--steel); max-width:70ch;}
-  section{padding:72px 0;}
-  h2{font-size:clamp(24px,3.6vw,36px); line-height:1.15; font-weight:800; margin-bottom:18px; max-width:26ch;}
-  h2 em{font-style:normal; color:var(--cerulean);}
-  .lead{font-size:18px; color:var(--steel); max-width:74ch; margin-bottom:28px;}
-  .phase{border-top:1px solid var(--slate); padding-top:36px; margin-top:44px;}
-  .phase:first-of-type{border-top:0; padding-top:0; margin-top:0;}
-  .phase .ph{display:flex; align-items:baseline; gap:14px; margin-bottom:8px;}
-  .phase .ph .tag{font-family:Consolas,"Courier New",monospace; font-size:12px; letter-spacing:2px;
-    color:var(--cerulean); font-weight:700; text-transform:uppercase;}
-  .phase .ph h3{font-size:clamp(22px,3vw,30px); font-weight:800;}
-  .phase .pdesc{color:var(--steel); max-width:76ch; margin-bottom:26px;}
-  .stages{display:grid; gap:18px;}
-  .stage{background:var(--white); border:1px solid var(--slate); border-radius:12px; padding:26px 28px;
-    display:grid; grid-template-columns:64px 1fr; gap:20px;}
-  .stage .num{font-family:Consolas,"Courier New",monospace; font-size:26px; font-weight:800; color:var(--cerulean); line-height:1;}
-  .stage h4{font-size:19px; margin-bottom:6px;}
-  .stage .cmd{display:inline-block; font-family:Consolas,"Courier New",monospace; font-size:12.5px;
-    background:var(--offwhite); border:1px solid var(--slate); border-radius:6px; padding:4px 8px;
-    color:var(--steel); margin-bottom:12px;}
-  .stage p{font-size:15px; color:var(--steel); max-width:72ch;}
-  .stage .io{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px;}
-  .stage .io div{background:var(--offwhite); border:1px solid var(--slate); border-radius:8px; padding:12px 14px;}
-  .stage .io .t{font-size:11px; text-transform:uppercase; letter-spacing:1.6px; font-weight:700; color:var(--cerulean); margin-bottom:6px;}
-  .stage .io code{display:block; font-family:Consolas,"Courier New",monospace; font-size:12.5px; color:var(--navy);}
-  .evidence{margin-top:12px; font-size:13px; color:var(--steel); border-left:3px solid var(--cyan); padding-left:12px;}
-  .evidence b{color:var(--navy);}
-  .dbs{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:10px; margin-top:24px;}
-  .dbs span{background:var(--white); border:1px solid var(--slate); border-radius:7px; padding:9px 12px;
-    font-size:13px; color:var(--steel);}
-  .dbs span b{color:var(--navy);}
-  table{width:100%; border-collapse:collapse; margin-top:22px; background:var(--white);
-    border:1px solid var(--slate); border-radius:10px; overflow:hidden;}
-  th,td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--slate); font-size:14px; vertical-align:top;}
-  th{color:var(--steel); font-weight:700; text-transform:uppercase; letter-spacing:0.6px; font-size:11.5px; background:var(--offwhite);}
-  td b{color:var(--navy);}
-  pre{background:var(--navy-deep); color:var(--cyan); border-radius:10px; padding:22px 24px; overflow-x:auto;
-    font-family:Consolas,"Courier New",monospace; font-size:12.5px; line-height:1.65; margin-top:20px;}
-  pre .ok{color:#7FE3C8;}
-  .note{background:#FDF8EF; border-left:4px solid var(--warning); border-radius:8px; padding:20px 24px; margin-top:24px;}
-  .note p{color:#7A5B1E; font-size:14.5px; margin-bottom:8px;}
-  .note p:last-child{margin-bottom:0;}
-  .callout{background:var(--white); border:1px solid var(--slate); border-radius:10px; padding:20px 24px; margin-top:24px;}
-  .callout p{font-size:14.5px; color:var(--steel);}
-  footer{background:var(--navy-deep); color:var(--slate); padding:56px 0 36px; margin-top:64px;}
-  footer h4{color:var(--white); margin-bottom:12px; font-size:15px;}
-  footer p{font-size:13.5px; margin-bottom:10px;}
-  footer a{color:var(--cyan);}
-  footer .legal{border-top:1px solid rgba(169,207,217,0.2); margin-top:36px; padding-top:20px; font-size:12.5px; text-align:center;}
-  @media(max-width:820px){
-    nav{padding:14px 20px;} nav .links{display:none;}
-    .wrap{padding:0 20px;}
-    header.page{padding:120px 0 48px;}
-    section{padding:56px 0;}
-    .stage{grid-template-columns:1fr; gap:10px;}
-    .stage .io{grid-template-columns:1fr;}
-  }
+:root{--navy:#173F5F;--navy-deep:#0E2A40;--steel:#41789B;--cerulean:#76B5C5;--cyan:#A9CFD9;--slate:#D1D9E0;--offwhite:#F3F7F9;--white:#fff;--warning:#E0A94B}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;color:var(--navy);background:var(--offwhite);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--cerulean);text-decoration:none}a:hover{text-decoration:underline}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(243,247,249,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--slate)}
+nav .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:1px}nav .brand img{height:40px;width:40px;border-radius:50%;object-fit:cover}nav .brand b{color:var(--navy)}nav .brand i{font-style:normal;color:var(--steel)}
+nav .links{display:flex;gap:20px;font-size:13.5px}nav .links a{color:var(--navy);font-weight:600}nav .links a.here{color:var(--steel)}
+header.hero{min-height:48vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:150px 24px 58px;background:linear-gradient(180deg,var(--offwhite),#E7EEF2);position:relative;overflow:hidden}
+header.hero:before{content:"";position:absolute;inset:0;background-image:url('/assets/art/net-1crn.svg');background-repeat:no-repeat;background-size:520px;background-position:left -160px top -120px;opacity:.55;pointer-events:none}
+header.hero:after{content:"";position:absolute;inset:0;background-image:url('/assets/art/net-1m17.svg');background-repeat:no-repeat;background-size:540px;background-position:right -180px bottom -160px;opacity:.45;pointer-events:none}
+header.hero .inner{position:relative;z-index:1;max-width:900px}.kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--steel);font-weight:700;margin-bottom:18px}
+h1{font-size:clamp(34px,5vw,58px);line-height:1.08;font-weight:800;letter-spacing:-.02em;margin-bottom:18px}header.hero p{font-size:19px;color:var(--steel);max-width:760px;margin:0 auto}
+main{max-width:1050px;margin:0 auto;padding:20px 24px 76px}
+.scope{background:var(--white);border-left:4px solid var(--warning);padding:16px 18px;margin:0 0 30px;color:var(--steel);font-size:14px;border-radius:0 8px 8px 0;box-shadow:0 4px 18px rgba(23,63,95,.05)}.scope b{color:var(--navy)}
+.stages{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.stage{background:var(--white);border:1px solid var(--slate);border-radius:12px;padding:24px;box-shadow:0 6px 20px rgba(23,63,95,.05)}
+.stage .n{display:inline-block;font-size:11px;letter-spacing:1.3px;text-transform:uppercase;color:var(--steel);font-weight:700;margin-bottom:8px}.stage h2{font-size:21px;line-height:1.2;margin-bottom:9px}.stage p{font-size:14.5px;color:#3f647d}.stage ul{margin:12px 0 0 18px;font-size:14px;color:#3f647d}.stage li{margin:4px 0}
+.outcome{background:var(--white);border:1px solid var(--slate);border-radius:12px;padding:26px;margin:22px 0;box-shadow:0 6px 20px rgba(23,63,95,.05)}
+.outcome h2{font-size:24px;margin-bottom:10px}.outcome p{font-size:15px;color:#3f647d;margin-bottom:10px}
+.note{background:#FFF8E8;border:1px solid #E9D6A6;border-radius:10px;padding:16px 18px;color:#6b5520;font-size:14px;margin:20px 0}
+footer{background:var(--navy-deep);color:var(--slate);padding:52px 40px 34px}footer .fwrap{max-width:1050px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr;gap:36px}footer h4{color:var(--white);margin-bottom:12px;font-size:15px}footer p{font-size:13.5px;margin-bottom:8px}footer a{color:var(--cyan)}footer .legal{border-top:1px solid rgba(169,207,217,.2);margin-top:34px;padding-top:18px;text-align:center;font-size:12.5px;max-width:1050px;margin-left:auto;margin-right:auto}
+@media(max-width:820px){nav{padding:14px 20px}nav .links{display:none}header.hero{padding:120px 20px 44px}main{padding:16px 18px 56px}.stages{grid-template-columns:1fr}footer{padding:40px 20px 28px}footer .fwrap{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <nav>
-  <a class="brand" href="/" style="color:inherit;text-decoration:none;">
-    <img src="../assets/logo-512.jpg" width="40" height="40" alt="NEXUS NIGHTINGALE">
+  <a class="brand" href="/" style="text-decoration:none">
+    <img src="/assets/logo-512.jpg" width="40" height="40" alt="NEXUS NIGHTINGALE">
     <span><b>NEXUS</b> <i>NIGHTINGALE</i></span>
   </a>
   <div class="links">
     <a href="/#pipeline">Pipeline</a>
-    <a href="/#example">Example</a>
-    <a href="/#diseases">Diseases</a>
+    <a href="/pipeline/" class="here">Architecture</a>
+    <a href="/folding/">Fold Explorer</a>
     <a href="/course/">Course</a>
+    <a href="/course/road-to-nexus-nightingale/">Road to NEXUS</a>
     <a href="/#contact">Contact</a>
   </div>
 </nav>
 
-<header class="page">
-  <div class="wrap">
-    <div class="kicker">NEXUS-9 · system architecture</div>
-    <h1>The pipeline is <em>fourteen stages</em>, not five.</h1>
-    <p class="lead">The production orchestrator <code>nexus9 dossier &lt;target&gt;</code> runs intake → supervised
-    fold → mechanism gate → design summary in one command. Around that spine sit the rest of the platform:
-    co-evolution, contact prediction, the nine-layer ENNEAD solver, thirteen modality routes, patient and
-    trial matching, the 24-database evidence chain, and the TJ Compassion audit. Below is every stage, the
-    command that runs it, and what it actually returned on a real target.</p>
+<header class="hero">
+  <div class="inner">
+    <div class="kicker">Sabre-Tek · NEXUS Nightingale</div>
+    <h1>From a target to a cited dossier</h1>
+    <p>A complete computational drug-discovery pipeline, described by what it does — not by the machinery underneath.</p>
   </div>
 </header>
 
-<section>
-  <div class="wrap">
-    <h2>The four phases</h2>
-    <p class="lead">Twelve of the fourteen stages are target-specific; the other two validate the canonical
-    design set. Some run automatically inside <code>nexus9 dossier</code>; the rest are separate commands in
-    the same 39-command binary and compose into the same evidence chain.</p>
+<main>
+  <div class="scope"><b>Research use only.</b> NEXUS is a computational research platform. It is not clinically validated, has no regulatory approval, and does not provide diagnosis, treatment or clinical advice. Every output requires independent experimental and clinical validation.</div>
 
-    <!-- PHASE I -->
-    <div class="phase">
-      <div class="ph"><span class="tag">Phase I</span><h3>Resolve the target</h3></div>
-      <p class="pdesc">Everything begins with a verified identifier. No target is described from memory —
-      the sequence, organism, length and mass come from UniProt at run time, and the structural evidence is
-      pulled from public databases before a single prediction is made.</p>
-      <div class="stages">
+  <section class="stages">
+    <article class="stage">
+      <div class="n">Stage 01</div>
+      <h2>Intake and identity</h2>
+      <p>Start with a protein target, a UniProt accession, a sequence, a gene, or a disease. NEXUS resolves the identity against public reference data, records what it knows, and fails loudly when an identifier cannot be resolved rather than guessing.</p>
+      <ul><li>Target and sequence resolution</li><li>Gene, disease and organism context</li><li>Structured research record</li></ul>
+    </article>
 
-        <article class="stage">
-          <div class="num">01</div>
-          <div>
-            <h4>Live target intake</h4>
-            <span class="cmd">nexus9 live &lt;UniProt&gt;</span>
-            <p>Fetches the canonical record from UniProt and resolves the same protein across AlphaFold, the
-            PDB, PubChem and ClinicalTrials.gov. Unknown accessions fail loudly instead of being guessed at.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>UniProt accession or gene symbol</code></div>
-              <div><div class="t">Output</div><code>ID · gene · organism · length · molecular weight</code></div>
-            </div>
-            <div class="evidence"><b>Real run (P00533):</b> EGFR · Homo sapiens · 1,210 aa · 134,277.0 Da.</div>
-          </div>
-        </article>
+    <article class="stage">
+      <div class="n">Stage 02</div>
+      <h2>Evidence assembly</h2>
+      <p>The pipeline gathers public evidence from biomedical databases and registries, then binds each statement to a source and an evidence tier. The result is an evidence chain, not an unsourced summary.</p>
+      <ul><li>Disease, gene, structure and trial evidence</li><li>Source identifiers and retrieval dates</li><li>Evidence tiers and explicit gaps</li></ul>
+    </article>
 
-        <article class="stage">
-          <div class="num">02</div>
-          <div>
-            <h4>Deep MSA and co-evolution</h4>
-            <span class="cmd">nexus9 karen deepmsa &lt;UniProt&gt;</span>
-            <p>Builds a real deep multiple-sequence alignment from OMA orthologs and stores the co-evolutionary
-            signal. This is the raw statistics that contact prediction and DCA consume — not a canned alignment.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>UniProt accession</code></div>
-              <div><div class="t">Output</div><code>Deep MSA + stored co-evolution signal</code></div>
-            </div>
-          </div>
-        </article>
+    <article class="stage">
+      <div class="n">Stage 03</div>
+      <h2>Structural assessment</h2>
+      <p>Where structural data exist, NEXUS uses them to ask better questions about domains, pockets, interfaces and stability. Experimental structures and computational models are labelled separately. A structure is treated as evidence, not as proof.</p>
+      <ul><li>Experimental and predicted structures</li><li>Domain and pocket context</li><li>Confidence and limitations recorded</li></ul>
+    </article>
 
-        <article class="stage">
-          <div class="num">03</div>
-          <div>
-            <h4>Contact map</h4>
-            <span class="cmd">nexus9 dca compute &lt;msa.fasta&gt; [uniprot]</span>
-            <span class="cmd">nexus9 dca contacts &lt;uniprot&gt;</span>
-            <span class="cmd">nexus9 contactnet check &lt;uniprot&gt;</span>
-            <p>Two independent contact routes. DCA implements the Morcos 2011 direct-coupling method and ranks
-            pairs by an average-product score; ContactNet is the neural contact predictor. They are
-            mathematically different, so agreement between them is meaningful. DCA now auto-generates: if no
-            coevolution data exists for a target, <code>dca contacts</code> fetches orthologs, builds the MSA,
-            computes the direct couplings and saves them — no pre-computed file required.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Deep MSA / sequence</code></div>
-              <div><div class="t">Output</div><code>Ranked residue-residue contacts</code></div>
-            </div>
-            <div class="evidence"><b>On disk:</b> 95 ContactNet checkpoints, from 364-byte seed maps to
-            5,644-byte trained maps.</div>
-          </div>
-        </article>
+    <article class="stage">
+      <div class="n">Stage 04</div>
+      <h2>Mechanism and modality</h2>
+      <p>Rare disease is not only a protein problem. The pipeline assesses the mechanism and the appropriate route: small molecule, biologic, gene therapy, editing, RNA-directed approach, protein replacement, cell therapy, or symptomatic care.</p>
+      <ul><li>Mechanism-aware route selection</li><li>Multiple therapeutic modalities</li><li>Explicit “research needed” where evidence is thin</li></ul>
+    </article>
 
-      </div>
-    </div>
+    <article class="stage">
+      <div class="n">Stage 05</div>
+      <h2>Therapeutic design</h2>
+      <p>Where the mechanism supports a design, NEXUS generates candidate routes and records the reasoning, the target engagement hypothesis and the proposed readout. Designs are research hypotheses, not medicines.</p>
+      <ul><li>Candidate therapeutic routes</li><li>Target engagement and safety hypotheses</li><li>Falsifiers and critical experiments</li></ul>
+    </article>
 
-    <!-- PHASE II -->
-    <div class="phase">
-      <div class="ph"><span class="tag">Phase II</span><h3>Solve the structure</h3></div>
-      <p class="pdesc">Structure is solved two ways and labelled honestly. The supervised NIGHTINGALE path is
-      the production route; the ENNEAD nine-layer solver is the research route. Both report TM-score and RMSD
-      against the experimental reference, and both numbers travel with the dossier.</p>
-      <div class="stages">
+    <article class="stage">
+      <div class="n">Stage 06</div>
+      <h2>Safety and evidence gates</h2>
+      <p>Before anything leaves the research environment, it passes through evidence and safety checks: unresolved citations, unsupported claims, single-run results presented as conclusions, and clinical overreach are rejected by design.</p>
+      <ul><li>Citation and source checks</li><li>Benchmark leakage and result gates</li><li>Scope and compassion review</li></ul>
+    </article>
 
-        <article class="stage">
-          <div class="num">04</div>
-          <div>
-            <h4>Supervised fold — NIGHTINGALE</h4>
-            <span class="cmd">nexus9 fold &lt;UniProt&gt;</span>
-            <p>Predicts the three-dimensional structure and scores it against a known experimental structure.
-            TM-score measures fold agreement (1.0 perfect, above 0.5 the same fold); RMSD measures average
-            atomic displacement in ångströms.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>UniProt accession + reference PDB</code></div>
-              <div><div class="t">Output</div><code>Coordinates · TM-score · RMSD · fold status</code></div>
-            </div>
-            <div class="evidence"><b>Real run (P00533, corrected 2 Nov 2026 build):</b> reference PDB 1XKK ·
-            TM 0.9706 · RMSD 1.64 Å · Status OK — <b>supervised against a reference structure, so a
-            reconstruction rather than a blind prediction.</b> The figure is the peak TM along a
-            1,000-iteration trajectory (Papa's rule). The earlier 0.6502 was lowered by a numerically
-            unstable 3×3 superposition in the scorer; the quaternion alignment fix raises the same run to
-            0.9706. The 0.7393 figure came from a stale ContactNet checkpoint and remains retired.</div>
-          </div>
-        </article>
+    <article class="stage">
+      <div class="n">Stage 07</div>
+      <h2>Dossier and scientist review</h2>
+      <p>The output is a cited dossier: the disease, the gene, the evidence, the hypotheses, the candidate routes, the trials, the gaps and the next experiment. The scientist reviews it, challenges it, and owns the judgement.</p>
+      <ul><li>Citation-referenced research dossier</li><li>Gaps and review questions</li><li>Read-only trust boundary</li></ul>
+    </article>
 
-        <article class="stage">
-          <div class="num">05</div>
-          <div>
-            <h4>Ab initio fold — ENNEAD</h4>
-            <span class="cmd">nexus9 ennead fold</span>
-            <span class="cmd">nexus9 ennead resolve</span>
-            <p>A nine-layer constraint solver that folds without a template, then refines the result. It is
-            research code: it can collapse and stall, and it is not the production path. It is included because
-            a sovereign system should be able to attempt the problem without borrowing a template.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Sequence / constraint set</code></div>
-              <div><div class="t">Output</div><code>De novo coordinates · constraint residuals</code></div>
-            </div>
-          </div>
-        </article>
+    <article class="stage">
+      <div class="n">Stage 08</div>
+      <h2>Portfolio scale</h2>
+      <p>The same pipeline can run across a portfolio. For the orphan-disease programme, NEXUS catalogued 11,645 clinical entities, ran the therapeutic stage on 4,245 gene-associated entities, and produced 15 enriched priority dossiers. Where the record had no gene, it said so.</p>
+      <ul><li>Portfolio-level evidence status</li><li>Explicit no-gene records</li><li>No invented targets</li></ul>
+    </article>
+  </section>
 
-        <article class="stage">
-          <div class="num">06</div>
-          <div>
-            <h4>Domains and pockets</h4>
-            <span class="cmd">nexus9 fold-domains &lt;target|fasta&gt;</span>
-            <span class="cmd">nexus9 pocket &lt;target&gt;</span>
-            <p>Large proteins are decomposed into domains and folded hierarchically; the pocket finder locates
-            a binding cavity and recommends a degradation route. Known pocket targets: KRAS, TP53, SNCA, TAU,
-            BCL2. Structural context is cross-checked against the PDB structural database and AlphaFold models.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Target or FASTA / Nonary DB record</code></div>
-              <div><div class="t">Output</div><code>Domain folds · pocket coordinates · route</code></div>
-            </div>
-          </div>
-        </article>
+  <section class="outcome">
+    <h2>What the pipeline gives a scientist</h2>
+    <p>A structured starting point: what is known, what is uncertain, what is missing, which hypotheses are testable, and which experiment would move the field. The pipeline organises evidence and designs; the scientist sets the question and validates the answer.</p>
+    <p><a href="/course/road-to-nexus-nightingale/">Listen to the Road to NEXUS Nightingale series →</a></p>
+  </section>
 
-      </div>
-    </div>
-
-    <!-- PHASE III -->
-    <div class="phase">
-      <div class="ph"><span class="tag">Phase III</span><h3>Decide and design</h3></div>
-      <p class="pdesc">The gate is the ethical centre of the system. Degradation is only valid for a toxic
-      gain of function; for a missing or weak protein it would make the patient worse. The system refuses the
-      wrong action before any molecule is drawn. After design, two validation stages score the nine canonical
-      designs for binding and toxicity — both explicit that they are estimates, not experiments.</p>
-      <div class="stages">
-
-        <article class="stage">
-          <div class="num">07</div>
-          <div>
-            <h4>Mechanism gate</h4>
-            <span class="cmd">nexus9 therapeutic &lt;target&gt;</span>
-            <p>Reads the disease mechanism — gain of function, loss of function, aggregation — and decides
-            whether degradation is valid. A loss-of-function target is protected and routed elsewhere; the
-            refusal is code, not prose.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Target + mechanism class</code></div>
-              <div><div class="t">Output</div><code>PASSED (degradable) or BLOCKED (protected)</code></div>
-            </div>
-            <div class="evidence"><b>Real run (P00533):</b> GAIN-OF-FUNCTION → AUTOTAC eligibility PASSED,
-            90% confidence. <b>Counter-example, verified:</b> UBE3A (Angelman) and FXN (Friedreich's ataxia)
-            are LOSS-OF-FUNCTION → <b>BLOCKED</b>, no degrader issued. HPRT1 returns BLOCKED on
-            mechanism-unknown, sending it to primary research instead of a design.</div>
-          </div>
-        </article>
-
-        <article class="stage">
-          <div class="num">08</div>
-          <div>
-            <h4>Modality routing</h4>
-            <span class="cmd">modality_db · 13 routes</span>
-            <p>Not every disease wants a degrader. The router selects among thirteen modalities: AUTOTAC,
-            repurposing, polypharmacology, botanicals, medicinal fungi, natural proteins, phage, microbiome,
-            CAR-T, mRNA, psychedelics, gene therapy and peptide.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Mechanism + target biology</code></div>
-              <div><div class="t">Output</div><code>Selected modality + rationale</code></div>
-            </div>
-          </div>
-        </article>
-
-        <article class="stage">
-          <div class="num">09</div>
-          <div>
-            <h4>Molecular design</h4>
-            <span class="cmd">nexus9 ligand &lt;target&gt;</span>
-            <span class="cmd">nexus9 mass-reduce &lt;target&gt;</span>
-            <p>Assembles a bifunctional chimera: a target-binding ligand, a linker, and an autophagy-targeting
-            ligand that recruits p62/SQSTM1. It computes total mass, predicted logP and permeability, and states
-            when the molecule is too large to cross membranes.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Eligible target + binding site</code></div>
-              <div><div class="t">Output</div><code>TBL + linker + ATL · MW · logP · permeability</code></div>
-            </div>
-            <div class="evidence"><b>Real run (P00533):</b> TBL gefitinib analog 446.0 Da + PEG4 linker 194.2 Da +
-            ATL YTK-105 257.0 Da = <b>897.2 Da</b>; logP 0.9; permeability <b>LOW</b> (MW &gt; 800, not
-            CNS-penetrant) — the tool reports the limitation rather than hiding it.</div>
-          </div>
-        </article>
-
-        <article class="stage">
-          <div class="num">10</div>
-          <div>
-            <h4>Docking estimate</h4>
-            <span class="cmd">nexus9 dock</span>
-            <p>Scores all nine canonical AUTOTAC designs against their warheads' expected IC50 and ranks them
-            into affinity classes. It is an estimate of whether the warhead binds — not a docking simulation
-            of the full chimera.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Nine canonical AUTOTAC designs</code></div>
-              <div><div class="t">Output</div><code>IC50 estimate · affinity class 1–9</code></div>
-            </div>
-            <div class="evidence"><b>Real run:</b> six of nine score <b>8/9 STRONG</b> (osimertinib EGFR C797S
-            842.84 Da, IC50 6.0; enzalutamide AR/VHL 802.97 Da, IC50 2.0), three score <b>6/9 MODERATE</b>.
-            The tool's own note: IC50 is the warhead's known binding, not the full AUTOTAC — real docking needs
-            AutoDock/Glide-class confirmation.</div>
-          </div>
-        </article>
-
-        <article class="stage">
-          <div class="num">11</div>
-          <div>
-            <h4>Toxicity screen</h4>
-            <span class="cmd">nexus9 tox</span>
-            <p>Rule-based structural alerts over the same nine designs — hERG cardiotoxicity, teratogenicity,
-            solubility — with a 1–9 risk score. Predicted, not measured.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Nine canonical AUTOTAC designs</code></div>
-              <div><div class="t">Output</div><code>Risk score · structural alerts</code></div>
-            </div>
-            <div class="evidence"><b>Real run:</b> all nine pass Lipinski; eight score <b>9/9 total risk</b>,
-            the AR/VHL design 5/9. Every thalidomide-class design carries a <b>HIGH teratogenicity</b> alert —
-            the kind of risk a degrader programme must see before synthesis.</div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-    <div class="phase">
-      <div class="ph"><span class="tag">Phase IV</span><h3>Evidence, patients, verification</h3></div>
-      <p class="pdesc">A design is worthless without the evidence behind it. This phase assembles the
-      twenty-four biomedical databases, matches the target to real patients and recruiting trials, applies the
-      TJ Compassion / L.O.V.E. gate, and writes the dossier in native Rust.</p>
-      <div class="stages">
-
-        <article class="stage">
-          <div class="num">12</div>
-          <div>
-            <h4>Knowledge assembly — KAREN</h4>
-            <span class="cmd">nexus9 karen query &lt;name&gt;</span>
-            <span class="cmd">nexus9 karen pipeline &lt;uniprot&gt;</span>
-            <p>KAREN is the zero-search co-processor: a constant-time lookup over the assembled evidence, with
-            live connectors to UniProt, PubChem, RCSB PDB, ClinicalTrials.gov, ChEMBL, NCBI Gene, Reactome and
-            OpenTargets. The twenty-four biomedical databases are surfaced through it into one record.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Target, design, pathway</code></div>
-              <div><div class="t">Output</div><code>24-database evidence chain</code></div>
-            </div>
-            <div class="evidence"><b>Coverage in the binary:</b> 101 clinical phenotypes, 36 curated trials,
-            77 pharmacogenomic rules, 9 patient variant records.</div>
-          </div>
-        </article>
-
-        <article class="stage">
-          <div class="num">13</div>
-          <div>
-            <h4>Patient and trial matching</h4>
-            <span class="cmd">nexus9 patient · nexus9 pgx</span>
-            <span class="cmd">nexus9 ptrials for &lt;patient_id&gt;</span>
-            <p>The eleven-dimensional Nonary matcher scores a patient against recruiting trials: variant
-            lookup, gene and indication filter, status, mutation specificity, mechanism alignment,
-            line-of-therapy fit, phase readiness, recruitment freshness, biomarker match, endpoint relevance
-            and safety — plus PDB structural coverage and line-timeline fit.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Patient variant + indication</code></div>
-              <div><div class="t">Output</div><code>Ranked trials · PGx risk · structural coverage</code></div>
-            </div>
-          </div>
-        </article>
-
-        <article class="stage">
-          <div class="num">14</div>
-          <div>
-            <h4>Verification and report</h4>
-            <span class="cmd">nexus9 audit compassion</span>
-            <span class="cmd">nexus9 dossier-pdf &lt;target&gt;</span>
-            <p>Every fact is stamped with its source, or labelled unverified — there is no middle state. The
-            TJ Compassion audit scans the workspace for harm, destruction and deceit before release; the
-            L.O.V.E. gate (Learn, Observe, Verify, Explain) runs on individual claims. The dossier is rendered
-            to PDF natively, with no Python in the path.</p>
-            <div class="io">
-              <div><div class="t">Input</div><code>Full evidence chain</code></div>
-              <div><div class="t">Output</div><code>Audited, citation-referenced dossier</code></div>
-            </div>
-            <div class="evidence"><b>Real run:</b> the P00533 dossier states mechanism, modality, warhead,
-            897.2 Da design and 90% confidence — with the fold caveat and the scope note attached.</div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section style="background:var(--white);border-top:1px solid var(--slate);border-bottom:1px solid var(--slate);">
-  <div class="wrap">
-    <h2>The 24 evidence <em>databases</em></h2>
-    <p class="lead">These are the biomedical databases the evidence chain draws from. Of the binary's 31
-    database modules, 24 are biomedical evidence; the other seven are pattern, game and infrastructure
-    (arc patterns, crystal palace, modality, nonary games, physics anomalies, resonance patterns, string
-    resonance) and are not counted as clinical evidence.</p>
-    <div class="dbs">
-      <span><b>Adverse events</b> — event and severity records</span>
-      <span><b>Antimicrobial resistance</b> — resistance determinants</span>
-      <span><b>AUTOTAC designs</b> — canonical bifunctional chimeras</span>
-      <span><b>Biomarkers</b> — diagnostic and prognostic markers</span>
-      <span><b>CDx diagnostics</b> — companion diagnostic links</span>
-      <span><b>Clinical guidelines</b> — treatment guidance</span>
-      <span><b>Clinical phenotypes</b> — 101 disease indications</span>
-      <span><b>Clinical trials</b> — 36 curated trials + live feed</span>
-      <span><b>Drug interactions</b> — CYP450 and transporter matrix</span>
-      <span><b>Endothelial / vascular</b> — vascular biology</span>
-      <span><b>Human genome</b> — 81 therapeutic genes (9 × 9)</span>
-      <span><b>Interaction network</b> — protein and pathway interactions</span>
-      <span><b>Patent / FTO</b> — freedom-to-operate landscape</span>
-      <span><b>Microbiome</b> — microbiome therapeutics</span>
-      <span><b>NIGHTINGALE structural</b> — fold and structure records</span>
-      <span><b>Orphan disease</b> — rare disease registry</span>
-      <span><b>Pathways</b> — Reactome-anchored pathways</span>
-      <span><b>Patient variants</b> — variant-level patient records</span>
-      <span><b>PDB structural</b> — experimental structures</span>
-      <span><b>Pharmacogenomics</b> — 77 PGx rules</span>
-      <span><b>Pharmacology / PK</b> — absorption and clearance</span>
-      <span><b>Psychedelics</b> — 10 PubChem-verified compounds</span>
-      <span><b>Resistance</b> — acquired resistance mechanisms</span>
-      <span><b>Vaccine / cell therapy</b> — immunotherapeutic routes</span>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>Engines and <em>subsystems</em></h2>
-    <p class="lead">The pipeline is not a single model. It is a set of engines with different mathematics,
-    wired together so that each checks a different property of the answer.</p>
-    <table>
-      <tr><th>Subsystem</th><th>What it does</th><th>Evidence</th></tr>
-      <tr><td><b>NIGHTINGALE fold</b></td><td>Supervised protein structure prediction with TM/RMSD scoring</td><td>Production path</td></tr>
-      <tr><td><b>ENNEAD solver</b></td><td>Nine-layer ab initio constraint solver, fold / resolve / bench</td><td>Research path</td></tr>
-      <tr><td><b>ContactNet</b></td><td>Neural residue-contact prediction</td><td>95 checkpoints</td></tr>
-      <tr><td><b>DCA</b></td><td>Direct coupling analysis, Morcos 2011, AP contact score</td><td>Independent of ContactNet</td></tr>
-      <tr><td><b>KAREN</b></td><td>Zero-search co-processor over the evidence chain; 8 live connectors</td><td>UniProt · PubChem · PDB · ChEMBL · Gene · Reactome · OpenTargets · trials</td></tr>
-      <tr><td><b>NELLY swarm</b></td><td>81-node PHI-constrained consensus brain</td><td>PHI 1.618034; coherence &gt; 0.90</td></tr>
-      <tr><td><b>ptrials</b></td><td>Eleven-dimensional patient-to-trial matcher</td><td>36 curated trials + live feed</td></tr>
-      <tr><td><b>QEYNOS</b></td><td>Five-layer sovereign encryption (Argon2id · AES-256-GCM · nonary diffusion · Shamir · photonic seal)</td><td>81 shards, threshold 27</td></tr>
-      <tr><td><b>SABRE-9</b></td><td>Nonary VM, PTX/CUBIN compilation, photonic blockchain</td><td>RTX 5060 path</td></tr>
-    </table>
-    <div class="callout">
-      <p><b>Scale, verified from the binary:</b> 39 advertised commands, 141 dispatch arms, 219 Rust source
-      modules, 95 ContactNet checkpoints, 24 evidence databases — against the release build of
-      <b>22 October 2026, 09:41</b>. The README's older figures (139 commands, 192 modules, 43 checkpoints) are
-      stale; the numbers above are what the current help and source tree report.</p>
-    </div>
-  </div>
-</section>
-
-<section style="background:var(--white);border-top:1px solid var(--slate);border-bottom:1px solid var(--slate);">
-  <div class="wrap">
-    <h2>The rest of the <em>binary</em></h2>
-    <p class="lead">The dossier orchestrator is one path through a much larger program. These are the
-    current build's other working surfaces — separate commands, not hidden steps inside
-    <code>nexus9 dossier</code>.</p>
-    <table>
-      <tr><th>Capability</th><th>Command</th><th>What it does</th></tr>
-      <tr><td><b>Ortholog route</b></td><td><code>nexus9 ortholog pipeline</code></td><td>EBI Proteins + UniProt → BLOSUM62 Smith-Waterman → MSA → DCA → ENNEAD fold → PDB. Fetches up to 500 orthologs to solve the coevolution-depth limit.</td></tr>
-      <tr><td><b>Proteome scale</b></td><td><code>nexus9 proteome</code></td><td>Partitions a 20,431-protein input across 81 Nelly nodes (27 non-empty at the 18/27 floor/ceiling) with 16 workers.</td></tr>
-      <tr><td><b>Batch reports</b></td><td><code>nexus9 gen-reports</code></td><td>Generates therapeutic reports from a prepared target list.</td></tr>
-      <tr><td><b>Training</b></td><td><code>nexus9 train · train-n9 · sovereign</code></td><td>Ternary funnel training, ContactNet N9 training, sovereign autotrain loop.</td></tr>
-      <tr><td><b>GPU / VM</b></td><td><code>nexus9 sabre-ptx · sabre-gpu · compile · run</code></td><td>Neo9 source → bytecode → PTX → CUBIN, targeting the RTX 5060.</td></tr>
-      <tr><td><b>Sovereign stack</b></td><td><code>nexus9 qeynos · blockchain</code></td><td>Five-layer encryption and the QEYNOS photonic blockchain seal.</td></tr>
-      <tr><td><b>Maintenance</b></td><td><code>nexus9 surgery</code></td><td>81-node surgery agent: scan, sweep, heal, test-fix, with rollback if cargo check fails.</td></tr>
-      <tr><td><b>Code generation</b></td><td><code>nexus9 rag</code></td><td>RAG generate / validate / improve / stats over the training corpus.</td></tr>
-    </table>
-    <div class="callout">
-      <p><b>Honest boundary:</b> the proteome and batch-report runners need prepared input files
-      (<code>human_proteome_training.json</code>, <code>top_targets_live.json</code>). The docking and
-      toxicity screens cover the nine canonical designs, not a newly generated chimera.</p>
-    </div>
-  </div>
-</section>
-
-<section style="background:var(--white);border-top:1px solid var(--slate);border-bottom:1px solid var(--slate);">
-  <div class="wrap">
-    <h2>One target, <em>actually run</em></h2>
-    <p class="lead">Verbatim excerpts from a real run on 22 October 2026. Nothing below is illustrative copy —
-    it is what the binary printed.</p>
-    <pre>$ nexus9 dossier P00533
-
-▌ STAGE 1: LIVE UNIPROT FETCH
-  ✓ ID: P00533
-  ✓ Gene: EGFR
-  ✓ Organism: Homo sapiens
-  ✓ Length: 1210 aa
-  ✓ MW: 134277.0 Da
-
-▌ STAGE 2: NIGHTINGALE SUPERVISED FOLD (production iterations)
-  ✓ PDB: 1XKK  TM=0.9706  RMSD=1.64 Å  Status=OK
-
-✓ STRUCTURAL EVIDENCE: TM=0.9706 (>= 0.5, correct-fold threshold).
-
-▌ STAGE 3: THERAPEUTIC / DESIGN PIPELINE
-  Mechanism: GAIN-OF-FUNCTION
-  Modality: AUTOTAC degrader
-  Recommendation: P00533: AUTOTAC-mediated degradation
-  Confidence: 90%
-  Warhead: Gefitinib analog | Design MW: 897.2 Da
-
-$ nexus9 ligand P00533
-  TBL: Gefitinib analog (446.0 Da)
-  ATL: YTK-105 p62/ZZ binder (257.0 Da)
-  Linker: PEG4 (tetraethylene glycol) (194.2 Da)
-  TOTAL: 897.2 Da  (&lt; 1200 Da)
-  LogP: 0.9  Permeability: LOW (MW &gt; 800 ... NOT CNS-penetrant)</pre>
-    <div class="note">
-      <p><b>Read the fold number correctly.</b> TM 0.9706 / RMSD 1.64 Å is the <b>supervised</b> path,
-      folded against PDB 1XKK, reporting the peak TM along a 1,000-iteration trajectory. It measures
-      how well the engine reconstructs a known structure, not how well it predicts an unseen one.</p>
-      <p><b>Why the number moved:</b> the earlier 0.6502 was not a folding failure. The scorer's 3×3
-      Kabsch alignment returned a bad frame on near-degenerate covariance; identical coordinates scored
-      TM 0.0992. The quaternion superposition fixes that, and <code>nexus9 fold P00533</code> now
-      returns TM 0.9706 / RMSD 1.64 Å. The older 0.7393 came from a stale-checkpoint bug and remains
-      retired. The benchmark fold (1M17) is TM 0.9959 / 0.42 Å on the corrected build.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>What it does <em>not</em> claim</h2>
-    <p class="lead">The same discipline that makes the evidence chain useful makes its limits explicit.</p>
-    <div class="note">
-      <p><b>Ab initio folding is research, not production.</b> ENNEAD can collapse and stall; the supervised
-      path is the production route.</p>
-      <p><b>The CUDA GPU paths do not execute</b> — they report zeros and fall back to CPU. The working GPU
-      path is the Nonary Vulkan driver targeting the RTX 5060.</p>
-      <p><b>Proteome-scale and batch report generation need prepared input files</b>
-      (<code>human_proteome_training.json</code>, <code>top_targets_live.json</code>); they are not turnkey
-      from an empty folder.</p>
-      <p><b>Nothing here is clinical advice.</b> Every design requires experimental validation, cell-based
-      assays and regulatory review. No regulatory approval is claimed or implied.</p>
-    </div>
-  </div>
-</section>
+  <div class="note"><b>Scope note.</b> NEXUS NIGHTINGALE is a research platform. It is not a diagnostic, a treatment recommendation, a clinical decision system or a regulatory submission. No result on this site is a clinical claim.</div>
+</main>
 
 <footer>
-  <div class="wrap">
-    <h4>NEXUS NIGHTINGALE</h4>
-    <p>A sovereign therapeutic pipeline — protein folding, molecule design and a 24-database evidence chain,
-    producing citation-referenced dossiers on a single desktop computer.</p>
-    <p><a href="/">Home</a> · <a href="/#pipeline">Pipeline</a> · <a href="/course/">Course</a> ·
-    <a href="/diseases/">Disease dossiers</a> · <a href="/#contact">Contact</a></p>
-    <p class="legal">© 2026 Sabre-Tek Limited · Research use only · Not clinically validated ·
-    TJ Compassion / L.O.V.E. certified internally</p>
+  <div class="fwrap">
+    <div>
+      <h4>NEXUS NIGHTINGALE</h4>
+      <p>A sovereign therapeutic pipeline — protein folding, molecule design and an evidence chain, producing citation-referenced research dossiers.</p>
+      <p>A Sabre-Tek Limited program.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p><a href="/">Home</a> · <a href="/folding/">Fold Explorer</a></p>
+      <p><a href="/course/">Course</a> · <a href="/course/road-to-nexus-nightingale/">Road to NEXUS</a></p>
+      <p><a href="/#contact">Contact</a></p>
+    </div>
   </div>
+  <div class="legal">© 2026 Sabre-Tek Limited. All rights reserved. · Computational research platform — not clinically validated; no regulatory approval.</div>
 </footer>
-
 </body>
 </html>

@@ -98,6 +98,18 @@
   .chapter-nav button:hover:not(:disabled){border-color:var(--navy);}
   .chapter-nav button:disabled{opacity:0.35; cursor:default;}
 
+  .podcast-banner{max-width:1100px; margin:28px auto 0; padding:22px 26px;
+    background:var(--white); border:1px solid var(--slate); border-left:4px solid var(--cerulean);
+    border-radius:0 12px 12px 0; display:flex; align-items:center; justify-content:space-between;
+    gap:24px; box-shadow:0 8px 24px rgba(23,63,95,0.06);}
+  .podcast-banner .tag{font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--steel); font-weight:700; margin-bottom:5px;}
+  .podcast-banner h2{font-size:22px; color:var(--navy); margin-bottom:5px;}
+  .podcast-banner p{font-size:14px; color:var(--steel); max-width:700px;}
+  .podcast-banner .go{flex:0 0 auto; background:var(--navy); color:var(--white);
+    border-radius:7px; padding:10px 15px; font-size:13px; font-weight:700; text-decoration:none;}
+  .podcast-banner .go:hover{filter:brightness(.95); text-decoration:none;}
+
   footer{background:var(--navy-deep); color:var(--slate); padding:52px 40px 34px;}
   footer .fwrap{max-width:1100px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr; gap:36px;}
   footer h4{color:var(--white); margin-bottom:12px; font-size:15px;}
@@ -113,6 +125,7 @@
     section.reader{padding:26px 22px 30px;}
     nav{padding:14px 20px;} nav .links{display:none;}
     footer .fwrap{grid-template-columns:1fr;}
+    .podcast-banner{flex-direction:column; align-items:flex-start; margin:18px; padding:20px;}
   }
   @media(max-width:560px){
     .chapter-list{grid-template-columns:1fr;}
@@ -131,6 +144,7 @@
     <a href="/">Home</a>
     <a href="/#pipeline">Pipeline</a>
     <a href="/course/" class="here">Course</a>
+    <a href="/course/road-to-nexus-nightingale/">Road to NEXUS</a>
     <a href="/#verification">Verification</a>
     <a href="/#contact">Contact</a>
   </div>
@@ -141,6 +155,15 @@
   <h1>The NIGHTINGALE <em>Course</em></h1>
   <p>Ten chapters on how a protein target becomes a therapeutic dossier. Pick a chapter to read the writing, or press play and listen to it.</p>
 </header>
+
+<section class="podcast-banner">
+  <div>
+    <div class="tag">Course podcast series</div>
+    <h2>Road to NEXUS Nightingale</h2>
+    <p>Long-form conversations about the work behind the course: the ab initio programme, the orphan-disease catalogue, what failed, what the data says, and what comes next.</p>
+  </div>
+  <a class="go" href="/course/road-to-nexus-nightingale/">Listen to the series →</a>
+</section>
 
 <main class="coursewrap">
   <aside class="chapters">
