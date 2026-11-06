@@ -261,50 +261,48 @@
 <section id="pipeline">
   <div class="wrap">
     <div class="section-kicker">The pipeline</div>
-    <h2>Fourteen stages. <em>Four phases.</em> One dossier.</h2>
-    <p class="lead">The production orchestrator () runs intake → supervised fold → mechanism gate → design in one command. Around it sit the rest of the platform: co-evolution, contact prediction, the the ab initio research engine, thirteen modality routes, patient and trial matching, the 24-database evidence chain and the TJ Compassion audit.</p>
+    <h2>From target to <em>cited dossier</em>.</h2>
+    <p class="lead">A complete computational pipeline: resolve the target, assemble the evidence, assess the structure, choose a mechanism and modality, design a candidate, run the safety gates, and return a citation-referenced dossier. The scientist sets the question; NEXUS organises the evidence.</p>
     <div class="phases">
 
       <div class="phase-block">
-        <div class="phase-head"><span class="phase-tag">Phase I · Resolve</span><h3>Target and co-evolution</h3></div>
+        <div class="phase-head"><span class="phase-tag">Phase I · Resolve</span><h3>Target and evidence</h3></div>
         <div class="stagegrid">
-          <div class="step"><span class="n">01</span><h3>Live intake</h3><p>UniProt, AlphaFold, PDB, PubChem and ClinicalTrials.gov resolve the target at run time — 1,210 aa and 134,277 Da for EGFR.</p></div>
-          <div class="step"><span class="n">02</span><h3>Deep MSA</h3><p>A real multiple-sequence alignment from OMA orthologs, storing the co-evolutionary signal the next stage consumes.</p></div>
-          <div class="step"><span class="n">03</span><h3>Contact map</h3><p>Two independent routes: DCA direct couplings (Morcos 2011) and the ContactNet neural predictor, an ensemble of contact models on disk.</p></div>
+          <div class="step"><span class="n">01</span><h3>Live intake</h3><p>Resolve a protein target, sequence, gene or disease against public reference data. Unknown identifiers fail loudly rather than being guessed.</p></div>
+          <div class="step"><span class="n">02</span><h3>Evidence assembly</h3><p>Gather disease, gene, structure and trial evidence, with a source and an evidence tier attached to each claim.</p></div>
+          <div class="step"><span class="n">03</span><h3>Research record</h3><p>Turn the question into a structured record: what is known, what is uncertain, what is missing, and what would count as an answer.</p></div>
         </div>
       </div>
 
       <div class="phase-block">
-        <div class="phase-head"><span class="phase-tag">Phase II · Structure</span><h3>Fold, refine, locate</h3></div>
+        <div class="phase-head"><span class="phase-tag">Phase II · Structure</span><h3>Fold, assess, locate</h3></div>
         <div class="stagegrid">
-          <div class="step"><span class="n">04</span><h3>Supervised fold</h3><p>NIGHTINGALE predicts the structure and scores it against the experimental reference: TM-score and RMSD, labelled as guided or unguided.</p></div>
-          <div class="step"><span class="n">05</span><h3>Ab initio fold</h3><p>the ab initio research engine folds without a template and refines the result. Research path, not production.</p></div>
-          <div class="step"><span class="n">06</span><h3>Domains &amp; pockets</h3><p>Hierarchical domain decomposition and a binding-pocket finder that recommends a degradation route.</p></div>
+          <div class="step"><span class="n">04</span><h3>Supervised fold</h3><p>Predict a structure and score it against an experimental reference. Guided results are labelled as reconstruction, not blind prediction.</p></div>
+          <div class="step"><span class="n">05</span><h3>Ab initio research</h3><p>A research path that attempts a fold without a template. It is reported separately and never presented as a production prediction.</p></div>
+          <div class="step"><span class="n">06</span><h3>Domains &amp; pockets</h3><p>Locate domains and binding cavities before any design begins, using experimental and predicted structural evidence.</p></div>
         </div>
       </div>
 
       <div class="phase-block">
         <div class="phase-head"><span class="phase-tag">Phase III · Decide</span><h3>Gate, route, design</h3></div>
         <div class="stagegrid">
-          <div class="step"><span class="n">07</span><h3>Mechanism gate</h3><p>Gain of function may be degraded; loss of function is protected. The refusal is code — UBE3A and FXN return BLOCKED, not a degrader.</p></div>
-          <div class="step"><span class="n">08</span><h3>Modality routing</h3><p>Thirteen routes: AUTOTAC, repurposing, polypharmacology, botanicals, fungi, natural proteins, phage, microbiome, CAR-T, mRNA, psychedelics, gene therapy, peptide.</p></div>
-          <div class="step"><span class="n">09</span><h3>Molecular design</h3><p>Target-binding ligand + linker + p62-recruiting ligand. P00533: 446.0 + 194.2 + 257.0 = 897.2 Da, logP 0.9, permeability LOW.</p></div>
-          <div class="step"><span class="n">10</span><h3>Docking estimate</h3><p>All the canonical AUTOTAC designs ranked by warhead IC50 — six STRONG, three MODERATE. An estimate, not a docking simulation.</p></div>
-          <div class="step"><span class="n">11</span><h3>Toxicity screen</h3><p>Rule-based structural alerts over the the designs: hERG, teratogenicity, solubility. Eight score 9/9 risk; predicted, not measured.</p></div>
+          <div class="step"><span class="n">07</span><h3>Mechanism gate</h3><p>Gain of function may be degraded; loss of function is protected. The refusal is explicit: no degrader is issued where the mechanism would make the patient worse.</p></div>
+          <div class="step"><span class="n">08</span><h3>Modality routing</h3><p>Choose among therapeutic routes — small molecule, biologic, gene therapy, editing, RNA-directed approach, protein replacement, cell therapy or symptomatic care.</p></div>
+          <div class="step"><span class="n">09</span><h3>Candidate design</h3><p>Record the target-engagement hypothesis, the proposed readout, the safety questions and the falsifier. Designs are research hypotheses, not medicines.</p></div>
         </div>
       </div>
 
       <div class="phase-block">
         <div class="phase-head"><span class="phase-tag">Phase IV · Evidence</span><h3>Assemble, match, verify</h3></div>
         <div class="stagegrid">
-          <div class="step"><span class="n">12</span><h3>Knowledge assembly</h3><p>the knowledge layer surfaces twenty-four biomedical databases and eight live connectors into one evidence chain — 101 phenotypes, 36 trials, 77 PGx rules.</p></div>
-          <div class="step"><span class="n">13</span><h3>Patient &amp; trial match</h3><p>An multi-dimensional matcher ranks recruiting trials against the patient's variant, therapy line, biomarkers and safety profile.</p></div>
-          <div class="step"><span class="n">14</span><h3>Verify &amp; report</h3><p>The TJ Compassion audit and L.O.V.E. gate run before release; the dossier is written to PDF natively, with limitations declared.</p></div>
+          <div class="step"><span class="n">10</span><h3>Knowledge assembly</h3><p>Bring biomedical databases and registries into one evidence chain, with provenance and retrieval dates.</p></div>
+          <div class="step"><span class="n">11</span><h3>Patient &amp; trial context</h3><p>Where appropriate, rank recruiting trials against variant, therapy line, biomarkers and safety profile — as research context, not clinical advice.</p></div>
+          <div class="step"><span class="n">12</span><h3>Verify &amp; report</h3><p>Run the citation, evidence and compassion gates; then return a cited dossier with its limitations and scope note attached.</p></div>
         </div>
       </div>
 
     </div>
-    <p class="archlink"><a href="/pipeline/">Full pipeline architecture — every stage, command and real output →</a></p>
+    <p class="archlink"><a href="/pipeline/">See the pipeline, described by what it does →</a></p>
   </div>
 </section>
 
